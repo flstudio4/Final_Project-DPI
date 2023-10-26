@@ -11,56 +11,52 @@
         
         <li class="nav-item">
             <%= link_to "/home", class: "nav-link" do %>
-              <i class="fas fa-home fa-fw"></i>
+              <i class="fas fa-home fa-fw"></i>Home
+            <% end %>
+        </li>
 
-              Home
+        <li class="nav-item">
+          <%= link_to "/about", class: "nav-link" do %>
+            <i class="fa-solid fa-circle-info"></i>About
             <% end %>
           </li>
-        <li class="nav-item">
-            <%= link_to "/about", class: "nav-link" do %>
-              <i class="fa-solid fa-circle-info"></i>
 
-              About
-            <% end %>
-          </li>
         <li class="nav-item">
-            <%= link_to "/help", class: "nav-link" do %>
-              <i class="fa-solid fa-circle-question"></i>
-
-              Help
-            <% end %>
+          <%= link_to "/help", class: "nav-link" do %>
+          <i class="fa-solid fa-circle-question"></i>Help
+          <% end %>
       </ul>
     </div>
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "/", class: "nav-link" do %>
+
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "/", class: "nav-link" do %>
             <i class="fa-solid fa-user"></i>
+        <% end %>
+          </li>
 
-          
-          <% end %>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= current_user.username %>
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to "View profile", "#", class: "dropdown-item" %>
-            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to "View profile", "#", class: "dropdown-item" %>
+              <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </div>
+          </li>
 
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
+        <% else %>
+          <li class="nav-item">
           <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-        </li>
+          </li>
 
-        <li class="nav-item">
+          <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
