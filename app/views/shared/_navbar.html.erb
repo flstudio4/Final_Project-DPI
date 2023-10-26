@@ -8,22 +8,21 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
+        
+        <li class="nav-item">
             <%= link_to "/home", class: "nav-link" do %>
               <i class="fas fa-home fa-fw"></i>
 
               Home
             <% end %>
           </li>
-          <li class="nav-item">
+        <li class="nav-item">
             <%= link_to "/about", class: "nav-link" do %>
               <i class="fa-solid fa-circle-info"></i>
 
               About
             <% end %>
           </li>
-        <% end %>
         <li class="nav-item">
             <%= link_to "/help", class: "nav-link" do %>
               <i class="fa-solid fa-circle-question"></i>
