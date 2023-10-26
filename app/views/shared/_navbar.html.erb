@@ -7,38 +7,37 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto">
         
         <li class="nav-item">
             <%= link_to "/home", class: "nav-link" do %>
-              <i class="fas fa-home fa-fw"></i>Home
+              <i class="fas fa-home fa-fw">&nbsp;</i>&nbsp;Home
             <% end %>
         </li>
 
         <li class="nav-item">
           <%= link_to "/about", class: "nav-link" do %>
-            <i class="fa-solid fa-circle-info"></i>About
+            <i class="fa-solid fa-circle-info"></i>&nbsp;About
             <% end %>
           </li>
 
         <li class="nav-item">
           <%= link_to "/help", class: "nav-link" do %>
-          <i class="fa-solid fa-circle-question"></i>Help
+          <i class="fa-solid fa-circle-question"></i>&nbsp;Help
           <% end %>
       </ul>
-    </div>
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "/", class: "nav-link" do %>
-            <i class="fa-solid fa-user"></i>
         <% end %>
           </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= current_user.username %>
+            <i class="fa-solid fa-user"></i>
+            <%= current_user.username.capitalize %>
             </a>
             <div class="dropdown-menu">
               <%= link_to "View profile", "#", class: "dropdown-item" %>
