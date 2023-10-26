@@ -1,6 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Favorites</h1>
+<% provide(:title, "Favorites") %>
+<% content_for :h1, 'These are your favorites' %>
 
 <div id="favorites">
   <% @favorites.each do |favorite| %>

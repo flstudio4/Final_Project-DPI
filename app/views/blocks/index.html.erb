@@ -1,6 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Blocks</h1>
+<% provide(:title, "Blocked") %>
+<% content_for :h1, 'Blocked users' %>
 
 <div id="blocks">
   <% @blocks.each do |block| %>
