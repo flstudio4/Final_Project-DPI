@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dating app</title>
+    <title>Singles</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,25 +13,11 @@
   </head>
 
   <body>
+<div class="container">
+<%= render partial: "shared/navbar" %>
+</div>
 
   <div class="container">
-
-    <% if current_user != nil %>
-      <%= link_to 'Home', '/home' %> |
-      <%= link_to 'About', '/about' %> |
-      <%= link_to 'Help', '/help' %> |
-      <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete } %> |
-      <%= link_to 'Edit', edit_user_registration_path %>
-
-    <% else %>
-
-      <%= link_to 'Home', '/home' %> |
-      <%= link_to 'About', '/about' %> |
-      <%= link_to 'Help', '/help' %>  |
-      <%= link_to 'Sign_In', new_user_session_path %> |
-      <%= link_to "Sign Up", new_user_registration_path %>
-
-    <% end %>  
 
       <% if notice.present? %>
             <%= render partial: "shared/flash", locals: { message: notice, css_class: "success" } %>
