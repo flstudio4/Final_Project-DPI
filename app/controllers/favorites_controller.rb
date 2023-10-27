@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  layout 'custom'
   before_action :set_favorite, only: %i[ show edit update destroy ]
 
   # GET /favorites or /favorites.json

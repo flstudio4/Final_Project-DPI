@@ -9,14 +9,14 @@
 
     <%= render partial: "shared/cdn_assets" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Indie+Flower&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <div class="container">
+      <%= render partial: "shared/navbar" %>
+    </div>
       <div class="container">
       <h1 id="main_h1"><%= yield :h1 %></h1>
       </div>
@@ -29,7 +29,13 @@
       <% if alert.present? %>
         <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
       <% end %>
+      <div id="left">
+      <%= render partial: "shared/sidebar" %>
+      </div>
+    <div id="right">
       <%= yield %>
+    
+    </div>
     </div>
   </body>
 </html>

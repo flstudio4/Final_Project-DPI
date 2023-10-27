@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  layout 'custom'
   before_action :set_message, only: %i[ show edit update destroy ]
 
   # GET /messages or /messages.json
