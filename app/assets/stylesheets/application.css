@@ -19,37 +19,37 @@
    margin-bottom: 25px;
    text-align: center;
    font-size: 3.5em;
- }
+}
 
- article {
-   font-family: 'Dancing Script', cursive;
+article {
    font-family: 'Indie Flower', cursive;
-  padding: 25px;
-  width: 100%;
- }
+   padding: 25px;
+   width: 100%;
+}
 
- article h2 {
-    text-align: center;
-    font-size: 2em;
- }
+article h2 {
+   text-align: center;
+   font-size: 2em;
+}
 
- article p {
+article p {
    font-size: 1.5em;
- }
- 
- div#buttons {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 10px;
- }
+}
 
- .btn {
+div#buttons {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-bottom: 10px;
+}
+
+.btn {
    color: darkblue;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- }
+}
 
- body {
+body {
    background-image: url("background.jpg");
- }
+}
+

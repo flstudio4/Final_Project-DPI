@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  # root route for autenticated users
+  # root route for authenticated users
   authenticated :user do
     root "home#home", as: :authenticated_root 
   end
