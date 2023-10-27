@@ -28,7 +28,7 @@
 h1#main_h1 {
   margin-bottom: 25px;
   text-align: center;
-  background-color: brown;
+  background-color: cornflowerblue;
 }
 
 @media (min-width: 0px) and (max-width: 900px) {
