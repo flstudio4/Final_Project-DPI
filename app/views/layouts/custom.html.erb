@@ -29,13 +29,9 @@
   <% if alert.present? %>
     <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
   <% end %>
-  <div id="left">
-    <%= render partial: "shared/sidebar" %>
-  </div>
-  <div id="right">
+  <%= render 'shared/main_menu' %>
     <%= yield %>
 
-  </div>
 </div>
 </body>
 </html>

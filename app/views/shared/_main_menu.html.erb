@@ -1,0 +1,40 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><i class="fa-solid fa-heart fa-beat" style="color: #f21f07;"></i>&nbsp;Singles</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 style="font-size: 2em;" class="offcanvas-title" id="offcanvasNavbarLabel"><i class="fa-solid fa-user fa-xs" style="color: #050505;"></i>&nbsp;<%= current_user.username.capitalize %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page"><i class="fa-solid fa-eye" style="color: #080808;"></i>&nbsp;View profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= edit_user_registration_path %>" class="nav-link active" aria-current="page"><i class="fa-solid fa-pen-to-square" style="color: #121212;"></i>&nbsp;Edit profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="<%= destroy_user_session_path %>" class="nav-link active" aria-current="page" data-turbo-method="delete"><i class="fa-solid fa-right-from-bracket" style="color: #050505;"></i>&nbsp;Sign out</a>
+          </li>
+          <hr>
+          <li class="nav-item">
+            <a href="/chats" class="nav-link active" aria-current="page"><i class="fa-regular fa-comment-dots" style="color: #080808;"></i>&nbsp;Chats</a>
+          </li>
+          <li class="nav-item">
+            <a href="/search" class="nav-link active" aria-current="page"><i class="fa-solid fa-magnifying-glass" style="color: #080808;"></i>&nbsp;Search</a>
+          </li>
+          <li class="nav-item">
+            <a href="/favorites" class="nav-link active" aria-current="page"><i class="fa-regular fa-star" style="color: #050505;"></i>&nbsp;Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a href="/blocks" class="nav-link active" aria-current="page"><i class="fa-regular fa-thumbs-down" style="color: #050505;"></i>&nbsp;Blocked</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
