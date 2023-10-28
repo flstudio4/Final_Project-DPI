@@ -85,6 +85,8 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap-will_paginate (1.0.0)
+      will_paginate
     builder (3.2.4)
     capybara (3.39.1)
       addressable
@@ -394,6 +396,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.7)
@@ -408,6 +411,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
+  bootstrap-will_paginate
   capybara
   debug
   devise
@@ -442,6 +446,7 @@ DEPENDENCIES
   web_git
   webdrivers
   webmock
+  will_paginate
 
 RUBY VERSION
    ruby 3.2.1p31

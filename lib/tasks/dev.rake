@@ -27,7 +27,7 @@ task({ :sample_data => :environment }) do
     user.username = "#{$female_names[i]}"
     user.gender = "female"
     user.avatar = "females/#{j}.jpg"
-    user.bio = Faker::Games::Witcher.quote
+    user.bio = Faker::ChuckNorris.fact
     user.country = "US"
     user.state = "IL"
     user.city = "Chicago"
@@ -36,4 +36,6 @@ task({ :sample_data => :environment }) do
     i += 1
     j += 1
   end
+
+  pp "created #{i} female profiles"
 end
