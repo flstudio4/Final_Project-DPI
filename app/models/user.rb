@@ -30,4 +30,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def age(dob)
+    return (Date.today - self.dob).to_i / 365       
+  end
 end

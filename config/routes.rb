@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get '/home', to: 'home#home'
   get '/welcome', to: 'static_pages#welcome'
   get '/search', to: 'search#index'
+  get '/profiles', to: 'profile#index'
+  get '/profiles/:id', to: 'profile#show'
 
   devise_for :users
 

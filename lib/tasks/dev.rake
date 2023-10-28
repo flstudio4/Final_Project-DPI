@@ -16,19 +16,24 @@ task({ :sample_data => :environment }) do
     end
   end
 
-  1.times do
+  i = 0
+  j = 1
+
+  157.times do
     user = User.new
-    user.email = "mary@example.com"
+    user.email = "#{$female_names[i]}@example.com"
     user.password = "password"
     user.password_confirmation = "password"
-    user.username = "mary"
+    user.username = "#{$female_names[i]}"
     user.gender = "female"
-    user.avatar = "females/1.jpg"
-    user.bio = "I am sexy baby"
+    user.avatar = "females/#{j}.jpg"
+    user.bio = Faker::Games::Witcher.quote
     user.country = "US"
     user.state = "IL"
     user.city = "Chicago"
-    user.dob = "02/02/1995"
+    user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
     user.save
+    i += 1
+    j += 1
   end
 end
