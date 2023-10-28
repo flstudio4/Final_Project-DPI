@@ -1,10 +1,10 @@
 <h1>This is a list of all the profiles</h1>
-<div class="container pb-2">
+<div class="container">
 <% @profiles.order(:bio => :asc).each do |profile| %>
  
 <div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0 m-1">
-    <div class="col-md-3 mb-0">
+    <div class="col-md-3 mb-1">
       <%= image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end m-2 mb-2") %>
     </div>
     <div class="col-md-8">

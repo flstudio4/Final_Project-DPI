@@ -38,4 +38,26 @@ task({ :sample_data => :environment }) do
   end
 
   pp "created #{i} female profiles"
+  i = 0
+  j = 1
+
+  116.times do
+    user = User.new
+    user.email = "#{$male_names[i]}@example.com"
+    user.password = "password"
+    user.password_confirmation = "password"
+    user.username = "#{$male_names[i]}"
+    user.gender = "male"
+    user.avatar = "males/#{j}.jpg"
+    user.bio = Faker::ChuckNorris.fact
+    user.country = "US"
+    user.state = "IL"
+    user.city = "Chicago"
+    user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
+    user.save
+    i += 1
+    j += 1
+  end
+
+  pp "created #{i} male profiles"
 end
