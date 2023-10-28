@@ -28,15 +28,13 @@ h5 {
 
 /* Styling the currently active page link */
 .pagination .current {
-
   margin: 5px;
   padding: 5px 10px;
   text-decoration: none;
   border: 1px solid #ccc;
   color: #333;
   border-radius: 5px;
-
-  background-color: #007bff;
+  background-color: cornflowerblue;
   color: #fff;
 }
 
