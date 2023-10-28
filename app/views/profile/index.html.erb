@@ -1,7 +1,7 @@
 <h1>This is a list of all the profiles</h1>
 <div class="container pb-2">
 <% @profiles.order(:bio => :asc).each do |profile| %>
-  
+ 
 <div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0 m-1">
     <div class="col-md-3 mb-0">
@@ -20,5 +20,5 @@
 </div>
 
 <% end %>
-
+<%= will_paginate @profiles %>
 </div>

@@ -85,8 +85,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap-will_paginate (1.0.0)
-      will_paginate
     builder (3.2.4)
     capybara (3.39.1)
       addressable
@@ -411,7 +409,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
-  bootstrap-will_paginate
   capybara
   debug
   devise
