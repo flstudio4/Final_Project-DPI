@@ -5,22 +5,80 @@
 <div class="container">
   <% @profiles.order(:created_at => :desc).each do |profile| %>
 
-  <div class="card mb-3 mx-auto" style="max-width: 540px;">
-          <div class="row g-0 m-1">
-            <div class="col-md-3 mb-1">
-              <%=  image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end m-2 mb-2")  %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><%=  profile.gender[0].capitalize  %>, <%= profile.username.capitalize %>
-                  , <%=  profile.age  %></h5>
-                <p class="card-text"><%=  profile.country  %>, <%=  profile.state  %>, <%=  profile.city  %></p>
-                <p class="card-text"><small class="text-body-secondary">Joined <%= time_ago_in_words(profile.created_at) %> ago</small></p>
+    <div class="card mb-3 mx-auto text-bg-light" style="max-width: 540px;">
+      <div class="row g-0 m-1">
+        <div class="col-md-3 mb-1">
+          <%= image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end m-2 mb-2") %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= profile.gender[0].capitalize %>, <%= profile.username.capitalize %>
+              , <%= profile.age %></h5>
+            <p class="card-text"><%= profile.country %>, <%= profile.state %>, <%= profile.city %></p>
+            <p class="card-text">
+              <small class="text-body-secondary">Joined <%= time_ago_in_words(profile.created_at) %> ago</small></p>
+
+
+            <!-- Button trigger modal for profile preview -->
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#<%= profile.id %>">Quick preview</button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>">Send a message</button>
+
+            <!-- Modal preview -->
+            <div class="modal fade" id="<%= profile.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-1" id="exampleModalLabel"><%= profile.username.capitalize %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  <%= image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end mx-auto") %>
+                  </div>
+                  <div class="modal-footer justify-content-md-center">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>">Send a message</button>
+                    <button type="button" class="btn btn-outline-primary">Add to favorites</button>
+                    <button type="button" class="btn btn-outline-danger">Block</button>
+                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+
+                  </div>
+                </div>
               </div>
             </div>
+
+            <!-- Modal preview end -->
+
+            <!-- Modal for sending message start -->
+
+            <div class="modal fade" id="<%= profile.username %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message to <%= profile.username.capitalize %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal for sending message end -->
+
           </div>
-  </div>
-  <%  end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <%= will_paginate @profiles %>
 </div>
 

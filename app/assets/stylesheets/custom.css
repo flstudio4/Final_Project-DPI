@@ -32,7 +32,6 @@ h5 {
   padding: 5px 10px;
   text-decoration: none;
   border: 1px solid #ccc;
-  color: #333;
   border-radius: 5px;
   background-color: cornflowerblue;
   color: #fff;
@@ -42,3 +41,4 @@ h5 {
 .pagination .previous, .pagination .next {
   font-weight: bold;
 }
+
