@@ -31,6 +31,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :bio, length: { maximum: 90, message: "Bio must be less than 91 characters" }
+
   def age
     (Date.today - self.dob).to_i / 365
   end
