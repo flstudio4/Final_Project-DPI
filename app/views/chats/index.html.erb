@@ -3,25 +3,35 @@
 
 <p>Here all my chats</p>
 
-<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#1">Send a message</button>
 
-<div class="modal fade" id="1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="dropdown">
+  <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Quick preview</a></li>
+    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Send a message</a></li>
+    <li><a class="dropdown-item" href="#" >See full profile</a></li>
+  </ul>
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <% Chat.where(:id => 1).where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id).each do |chat| %>
-          <% Message.where(:chat_id => chat.id).each do |message| %>
-            <%= message.content %><br>
-          <% end %>
-        <% end %>
+        This is the modal content.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

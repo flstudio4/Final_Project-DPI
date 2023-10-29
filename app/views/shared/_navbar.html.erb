@@ -11,8 +11,8 @@
       <ul class="navbar-nav me-auto">
 
         <li class="nav-item">
-          <%= link_to "/home", class: "nav-link", aria: { current: "page" } do %>
-            <i class="fas fa-home fa-fw"></i>&nbsp;Home
+          <%= link_to "/dashboard", class: "nav-link", aria: { current: "page" } do %>
+            <i class="fa-solid fa-address-card"></i>&nbsp;Dashboard
           <% end %>
         </li>
         <li class="nav-item">
@@ -46,7 +46,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-user"></i>&nbsp;<%= current_user.username.capitalize %>
+              <i class="fa-solid fa-user"></i>&nbsp;<%= current_user.email %>
             </a>
             <div class="dropdown-menu">
               <%= link_to "View profile", "#", class: "dropdown-item" %>

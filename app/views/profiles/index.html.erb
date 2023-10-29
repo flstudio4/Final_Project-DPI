@@ -1,27 +1,40 @@
-<% provide(:title, "Home") %>
-
-<h1>New users in your area</h1>
-
+<h1>Search by parameters</h1>
 <div class="container">
-  <% @profiles.order(:created_at => :desc).each do |profile| %>
-
-    <div class="card mb-3 mx-auto text-bg-light" style="max-width: 540px;">
+  <% @profiles.order(:bio => :asc).each do |profile| %>
+    <div class="card mb-3 mx-auto" style="max-width: 540px;">
       <div class="row g-0 m-1">
         <div class="col-md-3 mb-1">
           <%= image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end m-2 mb-2") %>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><%= profile.gender[0].capitalize %>, <%= profile.username.capitalize %>
-              , <%= profile.age %></h5>
-            <p class="card-text"><%= profile.country %>, <%= profile.state %>, <%= profile.city %></p>
+            <h5 class="card-title"><%= profile.username.capitalize %>, <%= profile.age %></h5>
+
+
+
+
             <p class="card-text">
-              <small class="text-body-secondary">Joined <%= time_ago_in_words(profile.created_at) %> ago</small></p>
+              <%= profile.country %>, <%= profile.state %>, <%= profile.city %>
+            </p>
 
 
-            <!-- Button trigger modal for profile preview -->
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#<%= profile.id %>">Quick preview</button>
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>">Send a message</button>
+            <p class="card-text"><%= profile.bio %></p>
+
+            <div class="dropdown dropend">
+              <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Options
+              </a>
+
+              <ul class="dropdown-menu" style="background-color: gainsboro" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#<%= profile.id %>"><i class="fa-solid fa-eye" style="color: #585555;"></i>&nbsp;Quick preview</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>"><i class="fa-regular fa-comment" style="color: #585555;"></i>&nbsp;Send a message</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-address-card" style="color: #585555;"></i>&nbsp;See full profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-star" style="color: #02f740;"></i>&nbsp;Add to favorites</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-lock" style="color: #f50505;"></i>&nbsp;Block</a></li>
+              </ul>
+            </div>
+
 
             <!-- Modal preview -->
             <div class="modal fade" id="<%= profile.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -32,12 +45,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                  <%= image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end mx-auto") %>
+                    <%= image_tag("#{profile.avatar}", alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end mx-auto") %>
                   </div>
                   <div class="modal-footer justify-content-md-center">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>">Send a message</button>
-                    <button type="button" class="btn btn-outline-primary">Add to favorites</button>
-                    <button type="button" class="btn btn-outline-danger">Block</button>
+
                     <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
 
                   </div>
@@ -53,7 +64,8 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message to <%= profile.username.capitalize %></h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message
+                      to <%= profile.username.capitalize %></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -78,7 +90,7 @@
         </div>
       </div>
     </div>
+
   <% end %>
   <%= will_paginate @profiles %>
 </div>
-

@@ -33,7 +33,7 @@ RUN add-apt-repository -y ppa:git-core/ppa \
 
 ### Container user ###
 # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-RUN useradd -l -u 33334 -G sudo -md /home/student -s /bin/bash -p student student \
+RUN useradd -l -u 33334 -G sudo -md /dashboard/student -s /bin/bash -p student student \
     # passwordless sudo for users in the 'sudo' group
     && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 ENV HOME=/home/student
@@ -46,8 +46,8 @@ USER student
 # use sudo so that user does not get sudo usage info on (the first) login
 RUN sudo echo "Running 'sudo' for container: success" && \
     # create .bashrc.d folder and source it in the bashrc
-    mkdir /home/student/.bashrc.d && \
-    (echo; echo "for i in \$(ls \$HOME/.bashrc.d/*); do source \$i; done"; echo) >> /home/student/.bashrc
+    mkdir /dashboard/student/.bashrc.d && \
+    (echo; echo "for i in \$(ls \$HOME/.bashrc.d/*); do source \$i; done"; echo) >> /dashboard/student/.bashrc
 
 ### Ruby ###
 LABEL dazzle/layer=lang-ruby
@@ -62,7 +62,7 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
         && rvm use 3.2.1 --default \
         && rvm rubygems current \
         && gem install bundler:2.4.6 --no-document" \
-    && echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*' >> /home/student/.bashrc.d/70-ruby
+    && echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*' >> /dashboard/student/.bashrc.d/70-ruby
 RUN echo "rvm_gems_path=/home/student/.rvm" > ~/.rvmrc
 
 ENV GEM_HOME=/workspaces/.rvm
@@ -202,7 +202,7 @@ __git_complete g __git_main" >> ~/.bash_aliases
 
 # Alias bundle exec to be
 RUN echo "alias be='bundle exec'" >> ~/.bash_aliases
-# RUN sudo cp -r /home/student /home/gitpod && sudo chmod 777 /home/gitpod
+# RUN sudo cp -r /dashboard/student /dashboard/gitpod && sudo chmod 777 /dashboard/gitpod
 
 # Add bin/rake to path for non-Rails projects
 RUN echo 'export PATH="$PWD/bin:$PATH"' >> ~/.bashrc

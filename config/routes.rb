@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get '/home', to: 'home#home'
+  get '/dashboard', to: 'dashboard#home'
   get '/welcome', to: 'static_pages#welcome'
-  get '/profiles', to: 'profile#index'
-  get '/profiles/:id', to: 'profile#show'
+  get '/profiles', to: 'profiles#index'
+  get '/profiles/:id', to: 'profiles#show'
 
   devise_for :users
 
   # root route for authenticated users
   authenticated :user do
-    root "home#home", as: :authenticated_root 
+    root "dashboard#home", as: :authenticated_root
   end
 
   # landing page if you are not logged in
@@ -20,3 +20,7 @@ Rails.application.routes.draw do
   resources :chats
 
 end
+# ------------------------------------------------------------------------------------------------------------------------
+# https://gist.github.com/withoutwax/46a05861aa4750384df971b641170407  Helpful resource for messing with devise controller
+# ------------------------------------------------------------------------------------------------------------------------
+#
