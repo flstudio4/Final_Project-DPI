@@ -1,6 +1,6 @@
 <% provide(:title, "Favorites") %>
 <% content_for :h1, 'My favorites' %>
-
+<div class="container">
 <div id="favorites">
   <% @favorites.each do |favorite| %>
     <%= render favorite %>
@@ -11,3 +11,4 @@
 </div>
 
 <%= link_to "New favorite", new_favorite_path %>
+</div>

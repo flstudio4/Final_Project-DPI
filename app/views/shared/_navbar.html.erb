@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container">
     <i class="fa-solid fa-heart fa-beat" style="color: #f21f07;"></i>&nbsp;
-    <%= link_to "Singles", root_path, class: "navbar-brand" %>
+    <%= link_to "Singles", root_path, class: "navbar-brand", aria: { current: "page" } %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,8 +11,28 @@
       <ul class="navbar-nav me-auto">
 
         <li class="nav-item">
-          <%= link_to "/home", class: "nav-link" do %>
-            <i class="fas fa-home fa-fw">&nbsp;</i>&nbsp;Home
+          <%= link_to "/home", class: "nav-link", aria: { current: "page" } do %>
+            <i class="fas fa-home fa-fw"></i>&nbsp;Home
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "/chats", class: "nav-link", aria: { current: "page" } do %>
+            <i class="fa-solid fa-comment-dots"></i>&nbsp;Chats
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "/profiles", class: "nav-link", aria: { current: "page" } do %>
+            <i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "/favorites", class: "nav-link", aria: { current: "page" } do %>
+            <i class="fa-solid fa-star"></i>&nbsp;Favorites
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "/blocks", class: "nav-link", aria: { current: "page" } do %>
+            <i class="fa-solid fa-thumbs-down"></i>&nbsp;Blocked
           <% end %>
         </li>
       </ul>
@@ -26,8 +46,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-user"></i>
-              <%= current_user.username.capitalize %>
+              <i class="fa-solid fa-user"></i>&nbsp;<%= current_user.username.capitalize %>
             </a>
             <div class="dropdown-menu">
               <%= link_to "View profile", "#", class: "dropdown-item" %>

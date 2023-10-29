@@ -32,6 +32,8 @@ task({ :sample_data => :environment }) do
     user.state = "IL"
     user.city = "Chicago"
     user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
+    user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
+    user.updated_at = '2023-10-28'
     user.save
     i += 1
     j += 1
@@ -54,6 +56,8 @@ task({ :sample_data => :environment }) do
     user.state = "IL"
     user.city = "Chicago"
     user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
+    user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
+    user.updated_at = '2023-10-29'
     user.save
     i += 1
     j += 1

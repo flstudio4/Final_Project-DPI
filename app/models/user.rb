@@ -31,7 +31,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def age(dob)
-    return (Date.today - self.dob).to_i / 365       
+  def age
+    (Date.today - self.dob).to_i / 365
   end
 end
