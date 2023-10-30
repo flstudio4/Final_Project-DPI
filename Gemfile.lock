@@ -70,8 +70,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
-    ansispan (0.0.1)
+	@@ -75,18 +75,19 @@ GEM
     appdev_support (0.2.1)
       tabulo
     awesome_print (1.9.2)
@@ -90,18 +89,7 @@ GEM
       addressable
       matrix
       mini_mime (>= 0.1.3)
-      nokogiri (~> 1.8)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      regexp_parser (>= 1.5, < 3.0)
-      xpath (~> 3.2)
-    choice (0.2.0)
-    coderay (1.1.3)
-    color (1.8)
-    color_namer (0.1.0)
-      color (>= 1.4.1)
-    concurrent-ruby (1.2.2)
-    crack (0.4.5)
+	@@ -105,11 +106,11 @@ GEM
       rexml
     crass (1.0.6)
     date (3.3.3)
@@ -113,21 +101,7 @@ GEM
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-    diff-lcs (1.5.0)
-    diffy (3.4.2)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
-    draft_generators (0.0.4)
-      devise
-      indefinite_article
-    draft_matchers (0.0.2)
-      capybara
+	@@ -131,22 +132,24 @@ GEM
       color_namer
       rspec
     erubi (1.12.0)
@@ -150,18 +124,7 @@ GEM
     grade_runner (0.0.8)
       activesupport (>= 2.3.5)
       faraday-retry (~> 1.0.3)
-      octokit (~> 5.0)
-      oj (~> 3.13.12)
-      rake (~> 13)
-    hashdiff (1.0.1)
-    htmlbeautifier (1.4.2)
-    http (5.1.1)
-      addressable (~> 2.8)
-      http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.4.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
+	@@ -165,14 +168,16 @@ GEM
     http-form_data (2.3.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -176,18 +139,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    kaminari (1.2.2)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.2)
-      kaminari-activerecord (= 1.2.2)
-      kaminari-core (= 1.2.2)
-    kaminari-actionview (1.2.2)
-      actionview
-      kaminari-core (= 1.2.2)
-    kaminari-activerecord (1.2.2)
-      activerecord
-      kaminari-core (= 1.2.2)
-    kaminari-core (1.2.2)
+	@@ -191,9 +196,9 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -197,8 +149,7 @@ GEM
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
-      net-pop
-      net-smtp
+	@@ -202,98 +207,107 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -297,12 +248,7 @@ GEM
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
-      rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.2)
-      rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.3)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
+	@@ -306,61 +320,63 @@ GEM
     rspec-html-matchers (0.10.0)
       nokogiri (~> 1)
       rspec (>= 3.0.0.a)
@@ -364,10 +310,7 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    tzinfo (2.0.6)
-      concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2023.3)
-      tzinfo (>= 1.0.0)
+	@@ -371,10 +387,10 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -378,11 +321,7 @@ GEM
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
-      railties (>= 6.0.0)
-    web_git (0.1.0)
-      actionview
-      ansispan
-      diffy
+	@@ -386,24 +402,25 @@ GEM
       git
       sinatra
       tzinfo-data
@@ -404,54 +343,6 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  arm64-darwin-22
   x64-mingw-ucrt
   x86_64-linux
-
-DEPENDENCIES
-  annotate
-  appdev_support
-  awesome_print
-  better_errors
-  binding_of_caller
-  bootsnap
-  capybara
-  debug
-  devise
-  dotenv-rails
-  draft_generators
-  draft_matchers
-  faker
-  grade_runner
-  htmlbeautifier
-  http
-  importmap-rails
-  jbuilder
-  pg (~> 1.1)
-  pry-rails
-  puma (~> 5.0)
-  rails (~> 7.0.4, >= 7.0.4.3)
-  rails-erd
-  rails_db
-  redis (~> 4.0)
-  rspec-html-matchers
-  rspec-rails (~> 6.0.0)
-  rufo
-  selenium-webdriver
-  specs_to_readme
-  sprockets-rails
-  sqlite3 (~> 1.4)
-  stimulus-rails
-  table_print
-  turbo-rails
-  tzinfo-data
-  web-console
-  web_git
-  webdrivers
-  webmock
-  will_paginate
-
-RUBY VERSION
-   ruby 3.2.1p31
-
-BUNDLED WITH
-   2.4.6
