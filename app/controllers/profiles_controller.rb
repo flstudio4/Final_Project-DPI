@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   layout 'custom'
   def show
+    user_id = params.fetch(:id)
+    @user = User.where(:id => user_id)[0]
     render 'profiles/show'
   end
 
