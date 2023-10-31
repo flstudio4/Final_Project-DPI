@@ -2,14 +2,14 @@
   <h1><%= @user.username.capitalize + ", " %><%= @user.age %></h1><br>
   <div class="row">
     <div class="col-3">
-      <%= image_tag(@user.avatar, class: "img-fluid img-thumbnail rounded float-start", alt: "An example image", style: "max-width: 200px;") %>
+      <%= image_tag(@user.avatar, class: "img-fluid img-thumbnail rounded float-start", alt: "An example image", style: "max-width: 300px;") %>
     </div>
     <div class="col">
 
 
       <h3><%= @user.city + ", "%><%= @user.state + ", " %><%= @user.country %></h3>
       <h4>Bio:</h4><%= @user.bio %><br>
-      <%= link_to "Return Back", request.referer, class: "btn btn-primary" %>
+      <%= link_to "Return Back", request.referer, class: "btn btn-primary mt-4" %>
 
     </div>
   </div>
