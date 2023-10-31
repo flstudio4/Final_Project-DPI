@@ -1,1 +1,16 @@
-<h1>This is my or someone else's profile</h1>
+<div class="container">
+  <h1><%= @user.username.capitalize + ", " %><%= @user.age %></h1><br>
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag(@user.avatar, class: "img-fluid img-thumbnail rounded float-start", alt: "An example image", style: "max-width: 200px;") %>
+    </div>
+    <div class="col">
+
+
+      <h3><%= @user.city + ", "%><%= @user.state + ", " %><%= @user.country %></h3>
+      <h4>Bio:</h4><%= @user.bio %><br>
+      <%= link_to "Return Back", request.referer, class: "btn btn-primary" %>
+
+    </div>
+  </div>
+</div>
