@@ -53,3 +53,7 @@ body {
    background-image: url("background.jpg");
 }
 
+.card {
+    opacity: 0.8;
+}
+

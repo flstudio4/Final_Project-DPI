@@ -42,3 +42,25 @@ h5 {
   font-weight: bold;
 }
 
+.navbar {
+  border-radius: 30px;
+  background: linear-gradient(to left, lavenderblush, lavender);
+  opacity: 0.8;
+  font-family: "Tahoma", Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.2em;
+  margin-top: 15px;
+}
+
+body {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-link:hover {
+  color: olive;
+}
+
+.card {
+  background-color: #eef2ff;
+}
