@@ -47,8 +47,8 @@ Before you begin, ensure you have met the following requirements:
 2. ```bash
    bundle install
 3. ```bash
-   rails db:create```
+   rails db:create
 4. ```bash
-   rails db:migrate```
+   rails db:migrate
  ```bash rails s```
 
