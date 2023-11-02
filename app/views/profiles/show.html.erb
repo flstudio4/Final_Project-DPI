@@ -14,8 +14,3 @@
     </div>
   </div>
 </div>
-
-<% result = ActiveRecord::Base.connection.exec_query("SELECT DISTINCT C5 FROM us_cities_states_counties WHERE C2 = 'IL' ORDER BY C5 ASC") %>
-<% result.each do |r| %>
-  <p><%= r.fetch("C5") %>
-<% end %>
