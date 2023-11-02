@@ -41,19 +41,19 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
 
-   ```bash
+   ```
    git clone https://github.com/yourusername/my-dating-website.git](https://github.com/flstudio4/Final_Project-DPI.git)https://github.com/flstudio4/Final_Project-DPI.git
    ```
    
-2. ```bash
+2. ```
    bundle install
    ```
    
-3. ```bash
+3. ```
    rails db:create
    ```
    
-4. ```bash
+4. ```
    rails db:migrate
    ```
 5. ```rails s```
