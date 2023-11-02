@@ -34,7 +34,7 @@ Singles is a modern and user-friendly dating platform built with Ruby on Rails. 
 Before you begin, ensure you have met the following requirements:
 
 - Ruby (3.2.1)
-- Ruby on Rails (7)
+- Ruby on Rails (7.0.4)
 - PostgreSQL database
 
 ### Installation
