@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def age
     (Date.today - self.dob).to_i / 365
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["state", "city", "country", "age_min", "age_max"]
+  end
 end
