@@ -44,8 +44,8 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    git clone https://github.com/yourusername/my-dating-website.git](https://github.com/flstudio4/Final_Project-DPI.git)https://github.com/flstudio4/Final_Project-DPI.git
    ```
-2. run bundle install
-3. rails db:create
-4. rails db:migrate
-6. Start the server rails s
+2. run ```bundle install```
+3. ```rails db:create```
+4. ```rails db:migrate```
+6. Start the server ```rails s```
 
