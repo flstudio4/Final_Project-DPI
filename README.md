@@ -50,5 +50,6 @@ Before you begin, ensure you have met the following requirements:
    rails db:create
 4. ```bash
    rails db:migrate
- ```bash rails s```
+5.```bash
+ rails s```
 
