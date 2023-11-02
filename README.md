@@ -44,12 +44,17 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    git clone https://github.com/yourusername/my-dating-website.git](https://github.com/flstudio4/Final_Project-DPI.git)https://github.com/flstudio4/Final_Project-DPI.git
    ```
+   
 2. ```bash
    bundle install
+   ```
+   
 3. ```bash
    rails db:create
+   ```
+   
 4. ```bash
    rails db:migrate
-5.```bash
- rails s```
+   ```
+5. ```rails s```
 
