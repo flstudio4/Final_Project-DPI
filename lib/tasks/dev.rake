@@ -18,7 +18,8 @@ task({ :sample_data => :environment }) do
 
   i = 0
   j = 1
-
+  states = ["Illinois", "Florida", "New York"]
+  cities = ["Chicago", "Miami", "New York"]
   157.times do
     user = User.new
     user.email = "#{$female_names[i]}@example.com"
@@ -28,9 +29,9 @@ task({ :sample_data => :environment }) do
     user.gender = "female"
     user.avatar = "females/#{j}.jpg"
     user.bio = Faker::ChuckNorris.fact
-    user.country = "US"
-    user.state = "IL"
-    user.city = "Chicago"
+    user.country = "United States"
+    user.state = states.sample
+    user.city = cities.sample
     user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-28'
@@ -52,9 +53,9 @@ task({ :sample_data => :environment }) do
     user.gender = "male"
     user.avatar = "males/#{j}.jpg"
     user.bio = Faker::ChuckNorris.fact
-    user.country = "US"
-    user.state = "IL"
-    user.city = "Chicago"
+    user.country = "United States"
+    user.state = states.sample
+    user.city = cities.sample
     user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-29'

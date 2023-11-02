@@ -1,6 +1,39 @@
-<h1>Search by parameters</h1>
 <div class="container">
-  <% @profiles.order(:bio => :asc).each do |profile| %>
+
+  <!-- script for updating age slider -->
+
+  <script>
+      function updateSlider() {
+          document.getElementById("age").innerText = document.getElementById("age_min").value;
+      }
+
+      function updateSlider2() {
+          document.getElementById("age2").innerText = document.getElementById("age_max").value;
+      }
+  </script>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-outline-secondary d-grid gap-2 d-md-block mx-auto mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Search parameters
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Search</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        <%= render partial: "profiles/search_form" %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <% @profiles.each do |profile| %>
     <div class="card mb-3 mx-auto p-2" style="max-width: 540px;">
       <div class="row g-0 m-1">
         <div class="col-md-3">
@@ -25,8 +58,9 @@
                 <li>
                   <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>"><i class="fa-regular fa-comment" style="color: #585555;"></i>&nbsp;Send
                     a message</a></li>
-                <li><a class="dropdown-item" href="profiles/<%= profile.id %>"><i class="fa-regular fa-address-card" style="color: #585555;"></i>&nbsp;See
-                  full profile</a></li>
+                <li>
+                  <a class="dropdown-item" href="profiles/<%= profile.id %>"><i class="fa-regular fa-address-card" style="color: #585555;"></i>&nbsp;See
+                    full profile</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
@@ -96,5 +130,6 @@
     </div>
 
   <% end %>
+
   <%= will_paginate @profiles %>
 </div>
