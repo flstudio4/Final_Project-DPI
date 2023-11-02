@@ -1,6 +1,6 @@
-# My Dating Website
+# 'Singles' dating web app
 
-Welcome to My Dating Website, a Ruby on Rails application designed to help people find their perfect match!
+Welcome to Singles, a Ruby on Rails application designed to help people find their perfect match!
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Welcome to My Dating Website, a Ruby on Rails application designed to help peopl
 
 ## About
 
-My Dating Website is a modern and user-friendly dating platform built with Ruby on Rails. It offers a range of features to help users connect, build meaningful relationships, and find their ideal partner.
+Singles is a modern and user-friendly dating platform built with Ruby on Rails. It offers a range of features to help users connect, build meaningful relationships, and find their ideal partner.
 
 ## Features
 
@@ -44,7 +44,7 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    git clone https://github.com/yourusername/my-dating-website.git](https://github.com/flstudio4/Final_Project-DPI.git)https://github.com/flstudio4/Final_Project-DPI.git
    ```
-2. run ```bash
+2. ```bash
    bundle install```
 4. ```rails db:create```
 5. ```rails db:migrate```
