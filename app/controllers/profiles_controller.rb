@@ -6,22 +6,20 @@ class ProfilesController < ApplicationController
     render 'profiles/show'
   end
 
-  def search
-    country = "%#{params[:country]}%"
-    state = "%#{params[:state]}%"
-    city = "%#{params[:city]}%"
+  def index
+    @q = User.ransack(params[:q])
 
-    @profiles = User.where("country LIKE ? OR state LIKE ? OR city LIKE ?", country, state, city).paginate(page: params[:page], per_page: 10)
+    if current_user.gender == "male"
+      @profiles = @q.result(distinct: true).where(:gender => "female").paginate(page: params[:page], per_page: 10)
+    else
+      @profiles = @q.result(distinct: true).where(:gender => "male").paginate(page: params[:page], per_page: 10)
+    end
     render 'profiles/index'
   end
 
+  private
 
-  def index
-    if current_user.gender == "male"
-      @profiles = User.where(:gender => "female").paginate(page: params[:page], per_page: 10)
-    else
-      @profiles = User.where(:gender => "male").paginate(page: params[:page], per_page: 10)
-    end
-    render 'profiles/index'
+  def post_params
+    params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)
   end
 end
