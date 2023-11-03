@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/welcome', to: 'static_pages#welcome'
   get '/profiles', to: 'profiles#index'
   get '/profiles/:id', to: 'profiles#show'
+  get '/search', to: 'profiles#search'
 
   devise_for :users
 

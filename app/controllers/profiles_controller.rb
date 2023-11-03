@@ -7,11 +7,19 @@ class ProfilesController < ApplicationController
   end
 
   def index
+    @q = User.ransack(params[:q])
+
     if current_user.gender == "male"
-      @profiles = User.where(:gender => "female").paginate(page: params[:page], per_page: 10)
+      @profiles = @q.result(distinct: true).where(:gender => "female").paginate(page: params[:page], per_page: 10)
     else
-      @profiles = User.where(:gender => "male").paginate(page: params[:page], per_page: 10)
+      @profiles = @q.result(distinct: true).where(:gender => "male").paginate(page: params[:page], per_page: 10)
     end
     render 'profiles/index'
+  end
+
+  private
+
+  def post_params
+    params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)
   end
 end
