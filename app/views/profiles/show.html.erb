@@ -7,7 +7,7 @@
     <div class="col">
 
 
-      <h3><%= @user.city + ", "%><%= @user.state + ", " %><%= @user.country %></h3>
+      <h3><%= @user.country + ", " %><%= @user.state + ", " %><%= @user.city%></h3>
       <h4>Bio:</h4><%= @user.bio %><br>
       <%= link_to "Return Back", request.referer, class: "btn btn-primary mt-4" %>
 
