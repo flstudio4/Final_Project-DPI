@@ -46,7 +46,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-user"></i>&nbsp;<%= current_user.email %>
+              <i class="fa-solid fa-user"></i>&nbsp;<%= current_user.username.capitalize %>
             </a>
             <div class="dropdown-menu">
               <%= link_to "/dashboard", class: "dropdown-item" do %>

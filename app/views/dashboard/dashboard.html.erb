@@ -42,9 +42,12 @@
     </div>
 
     <div class="card mx-auto mb-3" style="width: 35rem;">
-      <button type="button" class="btn btn-outline-success mb-1 col-6 d-md-block mt-3 mx-auto">Edit profile</button>
-      <button type="button" class="btn btn-outline-primary mb-1 col-6 d-md-block mb-3 mx-auto">Sign out</button>
-
+      <a href="<%= edit_user_registration_path %>" data-turbo-method="delete" class="btn btn-outline-primary mb-1 col-6 d-md-block mt-3 mx-auto">
+        <i class="fa-solid fa-pen-to-square" style="color: #585555;"></i>&nbsp;Edit profile
+      </a>
+      <a href="<%= destroy_user_session_path %>" data-turbo-method="delete" class="btn btn-outline-primary mb-1 col-6 d-md-block mb-3 mx-auto">
+        <i class="fa-solid fa-right-from-bracket" style="color: #585555;"></i>&nbsp;Sign out
+      </a>
     </div>
   </div>
 </div>
