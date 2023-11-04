@@ -33,6 +33,7 @@
       </div>
     </div>
   </div>
+  <% if @profiles.any? %>
   <% @profiles.each do |profile| %>
     <div class="card mb-3 mx-auto p-2" style="max-width: 540px;">
       <div class="row g-0 m-1">
@@ -133,6 +134,9 @@
     </div>
 
   <% end %>
+    <% else %>
+  <h2>No results</h2>
+    <% end %>
 
   <%= will_paginate @profiles %>
 </div>
