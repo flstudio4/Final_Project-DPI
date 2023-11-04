@@ -1,19 +1,58 @@
 <% provide(:title, "Home") %>
 <%= stylesheet_link_tag 'dashboard.css', media: 'all' %>
 
-<h1>My dashboard</h1>
+<h1><%= "Hello, " + current_user.username.capitalize %></h1>
 
-<div class="container">
-  <h1><%= current_user.username.capitalize + ", " %><%= current_user.age %></h1><br>
-  <div class="row">
-    <div class="col-3">
-      <%= image_tag(current_user.avatar, class: "img-fluid img-thumbnail rounded float-start", alt: "An example image", style: "max-width: 200px;") %>
+<div class="row">
+  <div class="col">
+    <div class="card mx-auto mb-3" style="width: 25rem;">
+      <%= image_tag(current_user.avatar, class: "img-fluid img-thumbnail rounded float-start", alt: "Profile image", style: "max-width: 500px;") %>
     </div>
-    <div class="col">
+  </div>
 
+  <div class="col">
 
-      <h3><%= current_user.city + ", "%><%= current_user.state + ", " %><%= current_user.country %></h3>
-      <h4>Bio:</h4><%= current_user.bio %>
+    <div class="card mx-auto mb-3" style="width: 35rem;">
+      <div class="card-header">
+        Location
+      </div>
+      <div class="card-body">
+        <h3><%= current_user.country + ", " %><%= current_user.state + ", " %><%= current_user.city %></h3>
+      </div>
+    </div>
+
+    <div class="card mx-auto mb-3" style="width: 35rem;">
+      <div class="card-header">
+        Bio
+      </div>
+      <div class="card-body">
+        <p><%= current_user.bio %></p>
+      </div>
+    </div>
+
+    <div class="card mx-auto mb-3" style="width: 35rem;">
+      <div class="card-header">
+        Info
+      </div>
+      <div class="card-body">
+        <p>Chats -</p>
+        <p>Messages sent -</p>
+        <p>Visitors -</p>
+      </div>
+    </div>
+
+    <div class="card mx-auto mb-3" style="width: 35rem;">
+      <button type="button" class="btn btn-outline-success mb-1 col-6 d-md-block mt-3 mx-auto">Edit profile</button>
+      <button type="button" class="btn btn-outline-primary mb-1 col-6 d-md-block mb-3 mx-auto">Sign out</button>
+
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
