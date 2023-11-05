@@ -48,6 +48,94 @@
               <% end %>
             <% end %>
           </div>
+          <hr>
+
+          <div class="form-group">
+            <%= f.label :avatar, "Avatar" %>
+            <%= f.text_field :avatar, class: "form-control", :placeholder => "Enter URL of your picture" %>
+          </div>
+
+          <hr>
+
+          <div class="form-group">
+            <%= f.label :country, "Country" %>
+            <%= f.select :country, [['Select Country', nil], ['Country 1', 'Country 1'], ['Country 2', 'Country 2']], {}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :state, "State" %>
+            <%= f.select :state, [['Select State', nil], ['State 1', 'State 1'], ['State 2', 'State 2']], {}, class: "form-control" %>
+          </div>
+
+
+          <div class="form-group">
+            <%= f.label :city, "City" %>
+            <%= f.select :city, [['Select City', nil], ['City 1', 'City 1'], ['City 2', 'City 2']], {}, class: "form-control" %>
+          </div>
+
+          <hr>
+          <div class="form-group">
+            <%= f.label :bio, "Bio" %>
+            <%= f.text_area :bio, class: "form-control", :placeholder => "This field is not required" %>
+          </div>
+
+          <hr class="mt-4">
+
+          <small class="form-text text-muted">
+
+            <i class="fa-solid fa-arrow-down-long" style="color: #262627;"></i>&nbsp;Be aware, you will not be able to
+            change this later&nbsp;<i class="fa-solid fa-arrow-down-long" style="color: #262627;"></i>
+          </small>
+
+          <hr class="mt-4">
+
+          <!-- Devise Input for username start -->
+          <div class="form-group">
+            <% username_was_invalid = resource.errors.include?(:username) %>
+
+            <% username_class = "form-control" %>
+
+            <% if was_validated %>
+              <% if username_was_invalid %>
+                <% username_class << " is-invalid" %>
+              <% else %>
+                <% username_class << " is-valid" %>
+              <% end %>
+            <% end %>
+
+            <%= f.label :username %>
+
+            <%= f.text_field :username, :class => username_class, :placeholder => "Enter username" %>
+
+            <% if username_was_invalid %>
+              <% resource.errors.full_messages_for(:username).each do |message| %>
+                <div class="invalid-feedback d-flex">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <!-- Devise Input for username end -->
+
+          <div class="form-group">
+            <%= f.label :dob, "Date of Birth" %>
+            <%= f.date_field :dob, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :gender, "Gender" %>
+            <div class="form-check">
+              <%= f.radio_button :gender, "male", class: "form-check-input" %>
+              <%= f.label :gender, "male", class: "form-check-label" %>
+            </div>
+            <div class="form-check">
+              <%= f.radio_button :gender, "female", class: "form-check-input" %>
+              <%= f.label :gender, "female", class: "form-check-label" %>
+            </div>
+          </div>
+
+          <hr class="mt-4">
 
           <div class="form-group">
             <% password_was_invalid = resource.errors.include?(:password) %>
@@ -101,38 +189,9 @@
             <% end %>
           </div>
 
-          <!-- Devise Input for username start -->
-          <div class="form-group">
-            <% username_was_invalid = resource.errors.include?(:username) %>
-
-            <% username_class = "form-control" %>
-
-            <% if was_validated %>
-              <% if username_was_invalid %>
-                <% username_class << " is-invalid" %>
-              <% else %>
-                <% username_class << " is-valid" %>
-              <% end %>
-            <% end %>
-
-            <%= f.label :username %>
-
-            <%= f.text_field :username, :class => username_class, :placeholder => "Enter username" %>
-
-            <% if username_was_invalid %>
-              <% resource.errors.full_messages_for(:username).each do |message| %>
-                <div class="invalid-feedback d-flex">
-                  <%= message %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-
-          <!-- Devise Input for username end -->
-
           <%= f.button class: "btn btn-outline-primary btn-block mt-3" %>
 
-          <hr>
+          <hr class="mt-4">
 
           <%= render "devise/shared/links" %>
         <% end %>

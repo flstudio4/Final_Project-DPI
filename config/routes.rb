@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # root route for authenticated users
   authenticated :user do
-    root "dashboard#home", as: :authenticated_root
+    root "profiles#index", as: :authenticated_root
   end
 
   # landing page if you are not logged in

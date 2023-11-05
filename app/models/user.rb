@@ -31,7 +31,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  before_save {self.email = email.downcase}
+  before_save {self.username = username.downcase}
+
   validates :bio, length: { maximum: 90, message: "Bio must be less than 91 characters" }
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :dob, presence: true
+  validates :country, presence: true
+  validates :state, presence: true
+  validates :city, presence: true
+  validates :gender, presence: true
 
   def age
     (Date.today - self.dob).to_i / 365
