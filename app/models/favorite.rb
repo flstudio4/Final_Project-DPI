@@ -9,4 +9,6 @@
 #  liking_user_id :integer
 #
 class Favorite < ApplicationRecord
+  belongs_to :liking_user, class_name: 'User', foreign_key: 'liking_user_id'
+  belongs_to :liked_user, class_name: 'User', foreign_key: 'liked_user_id'
 end

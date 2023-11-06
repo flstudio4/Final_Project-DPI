@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
 
   # GET /chats or /chats.json
   def index
-    @chats = Chat.all
+    @chats = Chat.where(sender_id: current_user.id).or(Chat.where(receiver_id: current_user.id))
   end
 
   # GET /chats/1 or /chats/1.json

@@ -9,4 +9,6 @@
 #  blocker_id :integer
 #
 class Block < ApplicationRecord
+  belongs_to :blocker, class_name: 'User', foreign_key: 'blocker_id'
+  belongs_to :blocked_user, class_name: 'User', foreign_key: 'blocked_id'
 end

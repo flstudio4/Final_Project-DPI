@@ -66,3 +66,33 @@ task({ :sample_data => :environment }) do
 
   pp "created #{i} male profiles"
 end
+
+task({ :create_data => :environment }) do
+  if Rails.env.development?
+    Chat.destroy_all
+    Message.destroy_all
+  end
+
+  User.all.where(:gender => "female").each do |female|
+    User.all.where(:gender => "male").each do |male|
+      ch = Chat.new
+      ch.receiver_id = female.id
+      ch.sender_id = male.id
+      ch.save
+
+      20.times do
+        m = Message.new
+        m.author_id = female.id
+        m.chat_id = ch.id
+        m.content = "#{$conversational_phrases.sample}"
+        m.save
+
+        f = Message.new
+        f.author_id = male.id
+        f.chat_id = ch.id
+        f.content = "#{$conversational_phrases.sample}"
+        f.save
+      end
+    end
+  end
+end
