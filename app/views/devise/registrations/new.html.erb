@@ -59,18 +59,18 @@
 
           <div class="form-group">
             <%= f.label :country, "Country" %>
-            <%= f.select :country, [['Select Country', nil], ['Country 1', 'Country 1'], ['Country 2', 'Country 2']], {}, class: "form-control" %>
+            <%= f.select :country, [['Select Country', nil], ['United States', 'United States']], {}, class: "form-control" %>
           </div>
 
           <div class="form-group">
             <%= f.label :state, "State" %>
-            <%= f.select :state, [['Select State', nil], ['State 1', 'State 1'], ['State 2', 'State 2']], {}, class: "form-control" %>
+            <%= f.select :state, render("list_of_states"), {}, class: "form-control" %>
           </div>
 
 
           <div class="form-group">
             <%= f.label :city, "City" %>
-            <%= f.select :city, [['Select City', nil], ['City 1', 'City 1'], ['City 2', 'City 2']], {}, class: "form-control" %>
+            <%= f.text_field :city, class: "form-control" %>
           </div>
 
           <hr>
