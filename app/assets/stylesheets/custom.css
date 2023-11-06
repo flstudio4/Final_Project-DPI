@@ -114,4 +114,9 @@ body {
     margin: 1px;
     padding: 1px;
   }
+
+  body {
+    background-image: url("background.jpg");
+    min-height: 100vh;
+  }
 }
