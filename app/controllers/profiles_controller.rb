@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show]
+  before_action :redirect_if_current_profile, only: [:show]
   layout 'custom'
   def show
     user_id = params.fetch(:id)
@@ -21,5 +23,16 @@ class ProfilesController < ApplicationController
 
   def post_params
     params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)
+  end
+
+  def set_profile
+    @user = User.find(params[:id])
+  end
+
+  # Redirect the current_user to the dashboard if they are trying to view their own profile
+  def redirect_if_current_profile
+    if current_user == @user
+      redirect_to dashboard_path
+    end
   end
 end

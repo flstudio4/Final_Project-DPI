@@ -3,44 +3,58 @@
 
 <% @chats.each do |chat| %>
 
-  <div class="card col-6 mx-auto">
+  <div class="card col-6 mx-auto m-1">
     <div class="card-body">
-      <h3 style="display:inline;"><%= chat.receiver.username %></h3><span style="float:right;"><%= Message.all.where(:chat_id => chat.id).count %></span>
+      <!-- Link to trigger modal -->
+      <%= link_to "#{chat.receiver.username}", "#exampleModal#{chat.id}", 'data-bs-toggle': 'modal', 'data-bs-target': "#exampleModal#{chat.id}" %>
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal<%= chat.id %>" tabindex="-1" aria-labelledby="exampleModalLabel<%= chat.id %>" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel<%= chat.id %>">Chat with <%= chat.receiver.username %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% chat.messages.each do |message| %>
+            <% @user = User.where(:id => message.author_id)[0] %>
+            <%= image_tag(@user.avatar, alt: "user image", style: "width: 40px; height: 40px; margin: 5px; border-radius: 50%; object-fit: cover;") %>
+            &nbsp;<span style="color: cornflowerblue">
+          <% if @user.id == current_user.id %>
+            <%= link_to @user.username.capitalize, dashboard_path %> <%= time_ago_in_words(message.created_at) %> ago
+
+            <% else %>
+          <%= link_to @user.username.capitalize, "/profiles/#{@user.id}" %> <%= time_ago_in_words(message.created_at) %> ago
+
+        <% end %>
+        </span>
+            <p style="margin: 10px">
+              <%= message.content %>
+              <br>
+            <hr>
+          <% end %>
+
+        </div>
+        <div class="modal-footer">
+          <div class="container">
+
+            <label for="message-text"></label>
+            <textarea class="form-control" id="message-text"></textarea>
+
+          </div>
+        </div>
+        <div class="button-group m-3 col-6">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 <% end %>
-<div class="dropdown">
-  <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown link
-  </a>
-
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Quick preview</a></li>
-    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Send a message</a></li>
-    <li><a class="dropdown-item" href="#" >See full profile</a></li>
-  </ul>
-</div>
-
-
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is the modal content.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <%= will_paginate @chats %>

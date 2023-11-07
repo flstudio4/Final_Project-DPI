@@ -44,13 +44,9 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :gender, presence: true
 
-  has_many :received_messages, class_name: 'Chat', foreign_key: 'receiver_id'
-  has_many :sent_messages, class_name: 'Chat', foreign_key: 'sender_id'
-  has_many :messages, foreign_key: 'author_id'
-  has_many :blocks_by_users, class_name: "Block", foreign_key: 'blocker_id'
-  has_many :blocked_users, class_name: "Block", foreign_key: 'blocked_id'
-  has_many :chats, class_name: 'Chat', foreign_key: 'sender_id'
-  has_many :chats, class_name: 'Chat', foreign_key: 'receiver_id'
+  has_many :messages
+  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id'
+  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id'
 
 
   def age
