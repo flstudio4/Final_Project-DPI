@@ -1,10 +1,13 @@
 <% provide(:title, "Chats") %>
 <% content_for :h1, 'My chats' %>
 
-<p>Here all my chats</p>
-
 <% @chats.each do |chat| %>
-<%= chat.receiver.username %><hr>
+
+  <div class="card col-6 mx-auto">
+    <div class="card-body">
+      <h3 style="display:inline;"><%= chat.receiver.username %></h3><span style="float:right;"><%= Message.all.where(:chat_id => chat.id).count %></span>
+    </div>
+  </div>
 
 <% end %>
 <div class="dropdown">
@@ -39,3 +42,5 @@
     </div>
   </div>
 </div>
+
+<%= will_paginate @chats %>
