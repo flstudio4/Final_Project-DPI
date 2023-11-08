@@ -26,6 +26,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,7 +34,7 @@ class User < ApplicationRecord
 
   before_save {self.email = email.downcase}
   before_save {self.username = username.downcase}
-
+  has_one_attached :avatar
   validates :bio, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
@@ -44,7 +45,7 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :gender, presence: true
 
-  has_many :messages, dependent: :destroy
+  has_many :messages
   has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id', dependent: :destroy
 

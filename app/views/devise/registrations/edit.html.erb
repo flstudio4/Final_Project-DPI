@@ -10,7 +10,7 @@
 
         <% form_html_options = { method: :put, novalidate: true, class: "mb-3" } %>
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: form_html_options) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { enctype: 'multipart/form-data' }.merge(form_html_options)) do |f| %>
           <% if flash[:notice].present? %>
             <div class="alert alert-info" role="alert">
               <%= flash[:notice] %>
@@ -91,7 +91,7 @@
 
           <div class="form-group">
             <%= f.label :avatar, "Avatar" %>
-            <%= f.text_field :avatar, class: "form-control", :placeholder => "Enter URL of your picture" %>
+            <%= f.file_field :avatar, class: "form-control", :placeholder => "Enter URL of your picture" %>
           </div>
 
           <hr class="mt-4">
