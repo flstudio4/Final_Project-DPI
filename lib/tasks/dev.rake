@@ -20,6 +20,7 @@ task({ :sample_data => :environment }) do
   j = 1
   states = ["Illinois", "Florida", "New York"]
   cities = ["Chicago", "Miami", "New York"]
+
   157.times do
     user = User.new
     user.email = "#{$female_names[i]}@example.com"
@@ -28,14 +29,15 @@ task({ :sample_data => :environment }) do
     user.username = "#{$female_names[i]}"
     user.gender = "female"
     user.avatar = "females/#{j}.jpg"
-    user.bio = Faker::ChuckNorris.fact
+    user.bio = $bios.sample
     user.country = "United States"
     user.state = states.sample
     user.city = cities.sample
-    user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
+    user.dob = Faker::Date.between(from: '1985-09-23', to: '2003-09-25')
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-28'
     user.save
+    pp "created #{i} female profile"
     i += 1
     j += 1
   end
@@ -52,14 +54,15 @@ task({ :sample_data => :environment }) do
     user.username = "#{$male_names[i]}"
     user.gender = "male"
     user.avatar = "males/#{j}.jpg"
-    user.bio = Faker::ChuckNorris.fact
+    user.bio = $bios.sample
     user.country = "United States"
     user.state = states.sample
     user.city = cities.sample
-    user.dob = Faker::Date.between(from: '1985-09-23', to: '1999-09-25')
+    user.dob = Faker::Date.between(from: '1985-09-23', to: '2003-09-25')
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-29'
     user.save
+    pp "created #{j} male profile"
     i += 1
     j += 1
   end
@@ -67,7 +70,7 @@ task({ :sample_data => :environment }) do
   pp "created #{i} male profiles"
 end
 
-task({ :create_data => :environment }) do
+task({ :sample_chats => :environment }) do
   if Rails.env.development?
     Chat.destroy_all
     Message.destroy_all
