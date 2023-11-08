@@ -1,60 +1,13 @@
 <% provide(:title, "Chats") %>
 <% content_for :h1, 'My chats' %>
 
-<% @chats.each do |chat| %>
-
-  <div class="card col-6 mx-auto m-1">
-    <div class="card-body">
-      <!-- Link to trigger modal -->
-      <%= link_to "#{chat.receiver.username}", "#exampleModal#{chat.id}", 'data-bs-toggle': 'modal', 'data-bs-target': "#exampleModal#{chat.id}" %>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal<%= chat.id %>" tabindex="-1" aria-labelledby="exampleModalLabel<%= chat.id %>" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel<%= chat.id %>">Chat with <%= chat.receiver.username %></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <% chat.messages.each do |message| %>
-            <% @user = User.where(:id => message.author_id)[0] %>
-            <%= image_tag(@user.avatar, alt: "user image", style: "width: 40px; height: 40px; margin: 5px; border-radius: 50%; object-fit: cover;") %>
-            &nbsp;<span style="color: cornflowerblue">
-          <% if @user.id == current_user.id %>
-            <%= link_to @user.username.capitalize, dashboard_path %> <%= time_ago_in_words(message.created_at) %> ago
-
-            <% else %>
-          <%= link_to @user.username.capitalize, "/profiles/#{@user.id}" %> <%= time_ago_in_words(message.created_at) %> ago
-
-        <% end %>
-        </span>
-            <p style="margin: 10px">
-              <%= message.content %>
-              <br>
-            <hr>
-          <% end %>
-
-        </div>
-        <div class="modal-footer">
-          <div class="container">
-
-            <label for="message-text"></label>
-            <textarea class="form-control" id="message-text"></textarea>
-
-          </div>
-        </div>
-        <div class="button-group m-3 col-6">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send</button>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-<% end %>
+<ul class="list-group">
+  <% @chats.each do |chat| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center col-6 mx-auto m-1 ">
+      <%= link_to chat.receiver.username, chat_path(chat), class: 'stretched-link' %>
+      <span class="badge badge-primary badge-pill"><%= chat.messages.count %></span>
+    </li>
+  <% end %>
+</ul>
 
 <%= will_paginate @chats %>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :blocks
   resources :favorites
   resources :messages
-  resources :chats
+  resources :chats, only: [:index, :show]
 
 end
 # ------------------------------------------------------------------------------------------------------------------------

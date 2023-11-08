@@ -48,6 +48,8 @@ class User < ApplicationRecord
   has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id'
   has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id'
 
+  scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
+  scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }
 
   def age
     (Date.today - self.dob).to_i / 365
@@ -55,5 +57,9 @@ class User < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     ["state", "city", "country", "age_min", "age_max"]
+  end
+
+  def self.ransackable_scopes(auth_object = nil)
+    ["age_gt", "age_lt"]
   end
 end

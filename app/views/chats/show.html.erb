@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<% provide(:title, "Chat with #{ @chat.receiver.username }") %>
+<% content_for :h1, "Chat with #{ @chat.receiver.username }" %>
 
-<%= render @chat %>
-
-<div>
-  <%= link_to "Edit this chat", edit_chat_path(@chat) %> |
-  <%= link_to "Back to chats", chats_path %>
-
-  <%= button_to "Destroy this chat", @chat, method: :delete %>
+<div class="container">
+  <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary mb-3' %>
+  <div class="card">
+    <div class="card-body">
+      <% @chat.messages.each do |message| %>
+        <% user = User.where(id: [message.author_id]) %>
+      <%= user[0].username.capitalize %> : <%= message.content %><hr>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
 </div>
+
+

@@ -16,11 +16,11 @@
   </div>
 
   <label for="age_min">Age min</label>
-  <%= f.range_field :age_min, in: 18..60, step: 1, value: 18, class: "form-range", id: "age_min", oninput: "updateSlider()" %>
+  <%= f.range_field :age_gt, in: 18..60, step: 1, value: @age_gt, class: "form-range", id: "age_min", oninput: "updateSlider()" %>
   <span id="age">18</span><br>
 
   <label for="age_max">Age max</label>
-  <%= f.range_field :age_max, in: 18..60, step: 1, value: 18, class: "form-range", id: "age_max", oninput: "updateSlider2()" %>
+  <%= f.range_field :age_lt, in: 18..60, step: 1, value: @age_lt, class: "form-range", id: "age_max", oninput: "updateSlider2()" %>
   <span id="age2">18</span>
   <hr>
 

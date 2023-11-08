@@ -9,6 +9,8 @@ class ChatsController < ApplicationController
 
   # GET /chats/1 or /chats/1.json
   def show
+    @chat = Chat.includes(messages: :user).find(params[:id])
+
   end
 
   # GET /chats/new

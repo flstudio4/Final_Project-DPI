@@ -11,6 +11,9 @@ class ProfilesController < ApplicationController
   def index
     @q = User.ransack(params[:q])
 
+    @age_gt = params.dig(:q, :age_gt) || 18
+    @age_lt = params.dig(:q, :age_lt) || 28
+
     if current_user.gender == "male"
       @profiles = @q.result(distinct: true).where(:gender => "female").paginate(page: params[:page], per_page: 10)
     else
