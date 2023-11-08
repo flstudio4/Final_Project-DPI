@@ -44,17 +44,49 @@ div#buttons {
    margin-bottom: 10px;
 }
 
-.btn {
+#landing1, #landing2 {
    color: darkblue;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-family: 'Indie Flower', 'Arial Narrow', Arial, sans-serif;
+   font-size: 1.7em;
+   font-weight: bolder;
 }
 
 body {
-   background-image: url("background.jpg");
+    background: linear-gradient(to right, #ff85a2, #85a8ff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 .card {
     opacity: 0.8;
 }
 
+#landing1 {
+    transition: all 0.3s ease;
+    border: 2px solid #28a745; /* Green border */
+    color: #28a745; /* Green text */
+}
 
+#landing1:hover,
+#landing1:focus {
+    background-color: #28a745; /* Green background on hover/focus */
+    color: white; /* White text on hover/focus */
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+#landing2 {
+    transition: all 0.3s ease;
+    border: 2px solid #6c757d; /* Grey border */
+    color: #6c757d; /* Grey text */
+}
+
+#landing2:hover,
+#landing2:focus {
+    background-color: #6c757d; /* Grey background on hover/focus */
+    color: white; /* White text on hover/focus */
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}

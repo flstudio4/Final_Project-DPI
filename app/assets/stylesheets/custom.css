@@ -1,7 +1,18 @@
 h1 {
+  color: #d0d6ec; /* Adjust the blue color to your liking */
+  font-size: 3em; /* Adjust size as needed */
+  font-weight: bold; /* Makes the text bolder */
   margin-bottom: 40px;
+  text-shadow:
+          1px 1px 0 #7abfff, /* Light blue shadow to the right and down */
+          -1px -1px 0 #0056b3, /* Dark blue shadow to the left and up */
+          1px -1px 0 #7abfff, /* Light blue shadow to the right and up */
+          -1px 1px 0 #0056b3, /* Dark blue shadow to the left and down */
+          0px 4px 5px rgba(0, 0, 0, 0.3), /* Soft shadow for depth */
+          0px 7px 10px rgba(0, 0, 0, 0.05), /* Softer shadow for ambiance */
+          0px 9px 25px rgba(0, 0, 0, 0.05); /* Softest shadow for glow effect */
+  font-family: 'Consolas', 'Arial', sans-serif;
   text-align: center;
-  font-family: 'Indie Flower', cursive;
 }
 
 h2 {
@@ -24,8 +35,8 @@ h5 {
   margin: 5px;
   padding: 5px 10px;
   text-decoration: none;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
+  border: 1px solid darkblue;
+  background-color: #F7F7F7;
   color: #333;
   border-radius: 5px;
 }
@@ -59,7 +70,7 @@ h5 {
 .dropdown-menu {
   border-radius: 10px;
   background: linear-gradient(to left, lavenderblush, lavender);
-  opacity: 0.8;
+  opacity: 0.95;
   margin-bottom: 5px;
 }
 
@@ -68,9 +79,11 @@ h5 {
 }
 
 body {
-  background-image: url("background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: linear-gradient(to right, #ff85a2, #85a8ff);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
 .nav-link:hover {
@@ -79,6 +92,8 @@ body {
 
 .card {
   background-color: #eef2ff;
+  box-shadow: 0 10px 20px rgba(130, 153, 241, 0.75), 0 10px 20px rgba(10, 10, 10, 0.76);
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -116,7 +131,15 @@ body {
   }
 
   body {
-    background-image: url("background.jpg");
-    min-height: 100vh;
+    background: linear-gradient(to right, #ff85a2, #85a8ff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
   }
+}
+
+#scrollable {
+  max-height: 40%; /* Adjust the height as needed */
+  overflow-y: auto;
 }
