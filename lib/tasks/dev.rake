@@ -62,7 +62,7 @@ task({ :sample_data => :environment }) do
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-29'
     user.save
-    pp "created #{j} male profile"
+    puts "created #{j} male profile"
     i += 1
     j += 1
   end
@@ -82,8 +82,9 @@ task({ :sample_chats => :environment }) do
       ch.receiver_id = female.id
       ch.sender_id = male.id
       ch.save
+      puts "created chat"
 
-      20.times do
+      10.times do
         m = Message.new
         m.author_id = female.id
         m.chat_id = ch.id
@@ -95,6 +96,7 @@ task({ :sample_chats => :environment }) do
         f.chat_id = ch.id
         f.content = "#{$conversational_phrases.sample}"
         f.save
+        puts "message"
       end
     end
   end

@@ -34,7 +34,7 @@ class User < ApplicationRecord
   before_save {self.email = email.downcase}
   before_save {self.username = username.downcase}
 
-  validates :bio, length: { maximum: 90, message: "Bio must be less than 91 characters" }
+  validates :bio, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :username, presence: true, uniqueness: true
@@ -44,9 +44,9 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :gender, presence: true
 
-  has_many :messages
-  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id'
-  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id'
+  has_many :messages, dependent: :destroy
+  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id', dependent: :destroy
 
   scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
   scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }
