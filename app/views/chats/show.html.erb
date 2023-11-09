@@ -3,13 +3,14 @@
 
 <div class="container">
   <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary mb-3' %>
-  <div class="card">
+  <div class="card col-12 mx-auto">
     <div class="card-body">
 
       <% @chat.messages.each do |message| %>
         <% user = User.where(id: [message.author_id]) %>
       <%= user[0].username.capitalize %> : <%= message.content %><hr>
       <% end %>
+      <%= render "messages/form" %>
     </div>
   </div>
   <div class="card-footer">

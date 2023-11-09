@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   resources :messages
   resources :chats, only: [:index, :show]
 
+  resources :chats do
+    resources :messages
+  end
+
 end
 # ------------------------------------------------------------------------------------------------------------------------
 # https://gist.github.com/withoutwax/46a05861aa4750384df971b641170407  Helpful resource for messing with devise controller
