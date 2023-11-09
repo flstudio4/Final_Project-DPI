@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @q = User.ransack(params[:q])
 
     @age_gt = params.dig(:q, :age_gt) || 18
-    @age_lt = params.dig(:q, :age_lt) || 18
+    @age_lt = params.dig(:q, :age_lt) || 60
 
     if current_user.gender == "male"
       @profiles = @q.result(distinct: true).where(:gender => "female").paginate(page: params[:page], per_page: 10)
@@ -23,7 +23,6 @@ class ProfilesController < ApplicationController
   end
 
   private
-
   def post_params
     params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)
   end

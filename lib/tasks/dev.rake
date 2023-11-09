@@ -2,6 +2,10 @@ require 'data_file'
 
 desc "Fill the database tables with some sample data"
 task({ :sample_data => :environment }) do
+  avatar_links = File.readlines("females.txt").map(&:chomp)
+  puts "loaded females.txt"
+  avatar_links2 = File.readlines("males.txt").map(&:chomp)
+  puts "loaded males.txt"
   if Rails.env.development?
     User.destroy_all
   end
@@ -14,6 +18,8 @@ task({ :sample_data => :environment }) do
 
   i = 0
   j = 1
+  k = 0
+  m = 0
   states = ["Illinois", "Florida", "New York"]
   cities = ["Chicago", "Miami", "New York"]
 
@@ -24,7 +30,7 @@ task({ :sample_data => :environment }) do
     user.password_confirmation = "password"
     user.username = "#{$female_names[i]}"
     user.gender = "female"
-    user.avatar = "females/#{j}.jpg"
+    user.avatar = avatar_links[k] if k >= 0 && k < avatar_links.size
     user.bio = $bios.sample
     user.country = "United States"
     user.state = states.sample
@@ -36,6 +42,7 @@ task({ :sample_data => :environment }) do
     pp "created #{i} female profile"
     i += 1
     j += 1
+    k += 1
   end
 
   pp "created #{i} female profiles"
@@ -49,7 +56,7 @@ task({ :sample_data => :environment }) do
     user.password_confirmation = "password"
     user.username = "#{$male_names[i]}"
     user.gender = "male"
-    user.avatar = "males/#{j}.jpg"
+    user.avatar = avatar_links2[m] if m >= 0 && m < avatar_links.size
     user.bio = $bios.sample
     user.country = "United States"
     user.state = states.sample
@@ -61,6 +68,7 @@ task({ :sample_data => :environment }) do
     puts "created #{j} male profile"
     i += 1
     j += 1
+    m += 1
   end
 
   pp "created #{i} male profiles"
@@ -80,7 +88,7 @@ task({ :sample_chats => :environment }) do
       ch.save
       puts "created chat"
 
-      10.times do
+      5.times do
         m = Message.new
         m.author_id = female.id
         m.chat_id = ch.id
@@ -98,6 +106,3 @@ task({ :sample_chats => :environment }) do
   end
 end
 
-task({ :sample_chats => :environment }) do
-  user.update(avatar: url)
-end

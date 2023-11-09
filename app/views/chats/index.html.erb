@@ -3,7 +3,11 @@
 <ul class="list-group">
   <% @chats.each do |chat| %>
     <li class="list-group-item d-flex justify-content-between align-items-center col-6 mx-auto m-1 ">
-      <%= link_to chat.receiver.username, chat_path(chat), class: 'stretched-link' %>
+      <% if current_user.id == chat.receiver_id %>
+        <%= link_to chat.sender.username.capitalize, chat_path(chat), class: 'stretched-link' %>
+      <% else %>
+        <%= link_to chat.receiver.username.capitalize, chat_path(chat), class: 'stretched-link' %>
+      <% end %>
     </li>
 
   <% end %>

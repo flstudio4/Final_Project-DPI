@@ -39,8 +39,10 @@
       <div class="row g-0 m-1">
         <div class="col-md-3">
           <%= link_to "profiles/#{profile.id}" do %>
-            <%= image_tag(profile.avatar, alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end", style: "max-width: 100%;") %>
-          <% end %>
+            <%#= image_tag(profile.avatar, alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end", style: "max-width: 100%;") %>
+            <img src="<%= profile.avatar %>" alt="<%= profile.username.capitalize %>'s photo" class="img-fluid rounded-start rounded-end" style="max-width: 100%;">
+
+        <% end %>
 
         </div>
         <div class="col-md-8">

@@ -1,5 +1,5 @@
-<% provide(:title, "Chat with #{ @chat.receiver.username }") %>
-<% content_for :h1, "Chat with #{ @chat.receiver.username }" %>
+<% provide(:title, "Chat with #{ @chat.receiver.username.capitalize }") %>
+<% content_for :h1, "Chat with #{ @chat.receiver.username.capitalize }" %>
 
 <div class="container">
   <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary mb-3' %>
