@@ -21,8 +21,8 @@ task({ :sample_data => :environment }) do
   states = ["Illinois", "Florida", "New York"]
   cities = ["Chicago", "Miami", "New York"]
 
-  # 157.times do
-  1.times do
+  157.times do
+
     user = User.new
     user.email = "#{$female_names[i]}@example.com"
     user.password = "password"
@@ -40,6 +40,8 @@ task({ :sample_data => :environment }) do
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-28'
     user.save
+    user.update(avatar: uploaded_image['secure_url'])
+
 
     pp "created #{i} female profile"
     i += 1
@@ -50,8 +52,8 @@ task({ :sample_data => :environment }) do
   i = 0
   j = 1
 
-  # 116.times do
-  1.times do
+  116.times do
+
     user = User.new
     user.email = "#{$male_names[i]}@example.com"
     user.password = "password"
@@ -69,6 +71,7 @@ task({ :sample_data => :environment }) do
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-29'
     user.save
+    user.update(avatar: uploaded_image['secure_url'])
 
     puts "created #{j} male profile"
     i += 1

@@ -34,7 +34,6 @@ class User < ApplicationRecord
 
   before_save {self.email = email.downcase}
   before_save {self.username = username.downcase}
-  has_one_attached :avatar
   validates :bio, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
