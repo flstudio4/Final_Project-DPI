@@ -44,9 +44,11 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :gender, presence: true
 
-  has_many :messages
-  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id'
-  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id'
+  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id', dependent: :destroy
+  has_many :messages, foreign_key: 'author_id', dependent: :destroy
+
+  before_destroy :destroy_all_related_chats
 
   scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
   scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }
@@ -61,5 +63,12 @@ class User < ApplicationRecord
 
   def self.ransackable_scopes(auth_object = nil)
     ["age_gt", "age_lt"]
+  end
+
+  private
+
+  def destroy_all_related_chats
+    # This will trigger the dependent: :destroy for messages within each chat
+    Chat.where("sender_id = ? OR receiver_id = ?", self.id, self.id).destroy_all
   end
 end
