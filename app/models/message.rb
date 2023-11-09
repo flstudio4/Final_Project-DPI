@@ -10,6 +10,6 @@
 #  chat_id    :integer
 #
 class Message < ApplicationRecord
-  belongs_to :user
-  belongs_to :chat
+  belongs_to :user, dependent: :destroy
+  belongs_to :chat, dependent: :destroy
 end
