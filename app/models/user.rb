@@ -26,7 +26,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  mount_uploader :avatar, AvatarUploader
+  #mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -45,8 +45,8 @@ class User < ApplicationRecord
   validates :gender, presence: true
 
   has_many :messages
-  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id', dependent: :destroy
-  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id', dependent: :destroy
+  has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id'
+  has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id'
 
   scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
   scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }

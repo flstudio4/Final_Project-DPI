@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_043547) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_09_062641) do
   create_table "blocks", force: :cascade do |t|
     t.integer "blocker_id"
     t.integer "blocked_id"
@@ -40,6 +40,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_043547) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "us_cities_states_counties1", id: false, force: :cascade do |t|
+    t.text "C1"
+    t.text "C2"
+    t.text "C3"
+    t.text "C4"
+    t.text "C5"
   end
 
   create_table "users", force: :cascade do |t|

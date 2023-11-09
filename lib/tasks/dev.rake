@@ -2,13 +2,9 @@ require 'data_file'
 
 desc "Fill the database tables with some sample data"
 task({ :sample_data => :environment }) do
-  # if Rails.env.development?
-  #   User.destroy_all
-  #   Block.destroy_all
-  #   Favorite.destroy_all
-  #   Message.destroy_all
-  #   Chat.destroy_all
-  # end
+  if Rails.env.development?
+    User.destroy_all
+  end
 
   if Rails.env.production?
     ActiveRecord::Base.connection.tables.each do |t|
@@ -22,16 +18,13 @@ task({ :sample_data => :environment }) do
   cities = ["Chicago", "Miami", "New York"]
 
   157.times do
-
     user = User.new
     user.email = "#{$female_names[i]}@example.com"
     user.password = "password"
     user.password_confirmation = "password"
     user.username = "#{$female_names[i]}"
     user.gender = "female"
-    uploaded_image = Cloudinary::Uploader.upload("app/assets/images/females/#{j}.jpg")
-    image_url = uploaded_image['url']
-    user.avatar = image_url
+    user.avatar = "females/#{j}.jpg"
     user.bio = $bios.sample
     user.country = "United States"
     user.state = states.sample
@@ -40,9 +33,6 @@ task({ :sample_data => :environment }) do
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-28'
     user.save
-    user.update(avatar: uploaded_image['secure_url'])
-
-
     pp "created #{i} female profile"
     i += 1
     j += 1
@@ -53,16 +43,13 @@ task({ :sample_data => :environment }) do
   j = 1
 
   116.times do
-
     user = User.new
     user.email = "#{$male_names[i]}@example.com"
     user.password = "password"
     user.password_confirmation = "password"
     user.username = "#{$male_names[i]}"
     user.gender = "male"
-    uploaded_image = Cloudinary::Uploader.upload("app/assets/images/males/#{j}.jpg")
-    image_url = uploaded_image['url']
-    user.avatar = image_url
+    user.avatar = "males/#{j}.jpg"
     user.bio = $bios.sample
     user.country = "United States"
     user.state = states.sample
@@ -71,8 +58,6 @@ task({ :sample_data => :environment }) do
     user.created_at = Faker::Date.between(from: '2022-03-05', to: '2023-10-22')
     user.updated_at = '2023-10-29'
     user.save
-    user.update(avatar: uploaded_image['secure_url'])
-
     puts "created #{j} male profile"
     i += 1
     j += 1
@@ -99,16 +84,20 @@ task({ :sample_chats => :environment }) do
         m = Message.new
         m.author_id = female.id
         m.chat_id = ch.id
-        m.content = "#{$conversational_phrases.sample}"
+         m.content = $conversational_phrases.sample
         m.save
 
         f = Message.new
         f.author_id = male.id
         f.chat_id = ch.id
-        f.content = "#{$conversational_phrases.sample}"
+        f.content = $conversational_phrases.sample
         f.save
-        puts "message"
       end
+      puts "created messages"
     end
   end
+end
+
+task({ :sample_chats => :environment }) do
+  user.update(avatar: url)
 end
