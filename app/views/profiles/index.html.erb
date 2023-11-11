@@ -1,16 +1,37 @@
 <div class="container">
 
-  <!-- script for updating age slider -->
-
   <script>
       function updateSlider() {
-          document.getElementById("age").innerText = document.getElementById("age_min").value;
+          var firstSliderValue = parseInt(document.getElementById("age_min").value);
+          var secondSlider = document.getElementById("age_max");
+          var secondSliderValue = parseInt(secondSlider.value);
+
+          // Ensure that the second slider is always at least +1 greater than the first slider
+          var minSecondSliderValue = Math.min(firstSliderValue + 1, 60); // Ensures not to exceed 60
+          secondSlider.min = minSecondSliderValue;
+
+          if (secondSliderValue < minSecondSliderValue) {
+              secondSlider.value = minSecondSliderValue;
+          }
+
+          // Update the displayed values
+          document.getElementById("age").innerText = firstSliderValue;
+          document.getElementById("age2").innerText = secondSlider.value;
       }
 
       function updateSlider2() {
-          document.getElementById("age2").innerText = document.getElementById("age_max").value;
+          var secondSliderValue = parseInt(document.getElementById("age_max").value);
+          document.getElementById("age2").innerText = secondSliderValue;
       }
   </script>
+
+
+
+
+
+
+
+
 
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-outline-secondary d-grid gap-2 d-md-block mx-auto mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -39,7 +60,6 @@
       <div class="row g-0 m-1">
         <div class="col-md-3">
           <%= link_to "profiles/#{profile.id}" do %>
-            <%#= image_tag(profile.avatar, alt: "#{profile.username.capitalize}'s photo", class: "img-fluid rounded-start rounded-end", style: "max-width: 100%;") %>
             <img src="<%= profile.avatar %>" alt="<%= profile.username.capitalize %>'s photo" class="img-fluid rounded-start rounded-end" style="max-width: 100%;">
 
         <% end %>

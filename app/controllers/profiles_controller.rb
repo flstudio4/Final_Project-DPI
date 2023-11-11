@@ -15,10 +15,17 @@ class ProfilesController < ApplicationController
     @age_lt = params.dig(:q, :age_lt) || 60
 
     if current_user.gender == "male"
-      @profiles = @q.result(distinct: true).where(:gender => "female").paginate(page: params[:page], per_page: 10)
+      @profiles = @q.result(distinct: true)
+                    .where(gender: "female")
+                    .order(created_at: :desc) # Ordering by created_at in descending order
+                    .paginate(page: params[:page], per_page: 10)
     else
-      @profiles = @q.result(distinct: true).where(:gender => "male").paginate(page: params[:page], per_page: 10)
+      @profiles = @q.result(distinct: true)
+                    .where(gender: "male")
+                    .order(created_at: :desc) # Ordering by created_at in descending order
+                    .paginate(page: params[:page], per_page: 10)
     end
+
     render 'profiles/index'
   end
 
