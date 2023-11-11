@@ -18,7 +18,7 @@
     <div class="card-body" style="overflow-y: auto; height: calc(100vh - 150px);">
       <ul class="list-unstyled" id="messages">
         <% @messages.each do |message| %>
-          <li id="message_<%= message.id %>" class="px-2">
+          <li id="message_<%= message.id %>" class="px-2" style="margin-bottom: 5px;">
             <div class="d-flex align-items-start">
               <!-- Avatar with original size -->
               <%= link_to image_tag(message.author.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{message.author.id}" %>
@@ -29,12 +29,12 @@
                 <div>
                   <!-- Username with comma, Date and Time in AM/PM format -->
                   <div class="mb-1">
-                    <%= link_to message.author.username.capitalize, "/profiles/#{message.author.id}", class: '', style: 'color: cornflowerblue; text-decoration: none;' %>,
-                    <span class="text-muted"><%= message.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
+                    <%= link_to message.author.username.capitalize, "/profiles/#{message.author.id}", class: '', style: 'font-size: 1.2em; color: cornflowerblue; text-decoration: none;' %>
+                    <span class="text-muted" style="font-size: 0.75em;"><%= message.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
                   </div>
                   <!-- Message Content and Delete Button on the same line -->
                   <div class="d-flex align-items-center">
-                    <div class="rounded px-2 py-1" style="background-color: lavender; word-wrap: break-word; flex-grow: 1;">
+                    <div class="rounded px-2 py-1" style="background-color: white; word-wrap: break-word; flex-grow: 1;">
                       <p class="mb-0" style="word-break: break-word;"><%= message.content %></p>
                     </div>
                     <% if message.author_id == current_user.id %>
