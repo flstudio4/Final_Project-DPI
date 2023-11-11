@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_062641) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_11_075219) do
   create_table "blocks", force: :cascade do |t|
     t.integer "blocker_id"
     t.integer "blocked_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_062641) do
     t.boolean "closed_by_receiver"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_message_sent_at"
   end
 
   create_table "favorites", force: :cascade do |t|

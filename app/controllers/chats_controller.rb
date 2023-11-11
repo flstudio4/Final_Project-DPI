@@ -4,7 +4,10 @@ class ChatsController < ApplicationController
 
   # GET /chats or /chats.json
   def index
-    @chats = Chat.where(sender_id: current_user.id).or(Chat.where(receiver_id: current_user.id)).order(:created_at => :desc).paginate(page: params[:page], per_page: 10)
+    @chats = Chat.where(sender_id: current_user.id)
+                 .or(Chat.where(receiver_id: current_user.id))
+                 .order(last_message_sent_at: :desc)
+                 .paginate(page: params[:page], per_page: 10)
   end
 
   # GET /chats/1 or /chats/1.json
