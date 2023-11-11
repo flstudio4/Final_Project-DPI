@@ -22,9 +22,8 @@
               <%= link_to message_path(message),
                           method: :delete,
                           data: { turbo_method: :delete },
-                          class: 'btn btn-danger btn-sm',
                           title: 'Delete Message' do %>
-                <i class="fa fa-trash"></i>
+                <i class="fa fa-trash text-danger"></i>
               <% end %>
             </div>
           <% end %>

@@ -12,18 +12,22 @@
       <div class="list-group shadow-sm">
 
         <% @chats.each do |chat| %>
-          <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center flex-nowrap">
             <% chat_link = current_user.id == chat.receiver_id ? chat.sender : chat.receiver %>
+            <% last_message = chat.messages.last %>
 
-            <%= link_to chat_path(chat), class: 'd-flex align-items-center text-decoration-none' do %>
-              <%= image_tag chat_link.avatar.url, class: 'rounded-circle', width: 40, height: 40 %>
-              <span class="ms-2 text-dark"><%= chat_link.username.capitalize %></span>
+            <%= link_to "chats/#{chat.id}", class: 'd-flex align-items-center text-decoration-none flex-grow-1' do %>
+              <%= image_tag chat_link.avatar.url, class: 'rounded-circle', width: 50, height: 50 %>
+              <div class="ms-3 d-flex flex-column">
+                <h5 class="mb-1 text-dark flex-grow-1 text-truncate"><%= chat_link.username.capitalize %></h5>
+                <p class="mb-1 text-muted text-truncate"><%= last_message ? truncate(last_message.content, length: 20) : 'No messages yet' %></p>
+              </div>
             <% end %>
 
-            <div>
-              <small class="text-muted me-3">Last message: <%= chat.last_message_date.strftime("%d %b %Y") %></small>
+            <div class="d-flex align-items-center">
+              <small class="text-muted me-3"><%= last_message.created_at.strftime("%d %b %Y at %I:%M %p") if last_message %></small>
               <%= link_to chat_path(chat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-link', title: 'Delete Chat' do %>
-                <i class="fa fa-times-circle text-danger"></i>
+                <i class="fa fa-trash text-danger"></i>
               <% end %>
             </div>
           </div>
@@ -36,5 +40,12 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
 
 
