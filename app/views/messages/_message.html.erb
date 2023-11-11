@@ -1,23 +1,35 @@
 <li id="message_<%= message.id %>" class="px-2">
   <div class="d-flex align-items-start">
-    <%= link_to image_tag(message.author.avatar.url, class: 'rounded-circle mt-1', width: 40, height: 40), "/profiles/#{message.author.id}" %>
-    <div class="flex-grow-1 ms-2">
-      <%= link_to message.author.username.capitalize, "/profiles/#{message.author.id}", class: 'text-muted', style: 'text-decoration: none;' %>
-      <span class="text-muted"><%= message.created_at.strftime("%-d %b %Y") %></span>
-      <div class="rounded px-2 py-1" style="background-color: lavender; word-wrap: break-word;">
-        <p class="mb-1" style="word-break: break-word;"><%= message.content %></p>
+    <!-- Avatar with original size -->
+    <%= link_to image_tag(message.author.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{message.author.id}" %>
+
+    <!-- Message Content with Delete Button aligned to first line -->
+    <div class="flex-grow-1 ms-2" style="width: calc(100% - 50px);"> <!-- Adjust width as necessary -->
+      <!-- Message Box -->
+      <div>
+        <!-- Username with comma, Date and Time in AM/PM format -->
+        <div class="mb-1">
+          <%= link_to message.author.username.capitalize, "/profiles/#{message.author.id}", class: '', style: 'color: cornflowerblue; text-decoration: none;' %>,
+          <span class="text-muted"><%= message.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
+        </div>
+        <!-- Message Content and Delete Button on the same line -->
+        <div class="d-flex align-items-center">
+          <div class="rounded px-2 py-1" style="background-color: lavender; word-wrap: break-word; flex-grow: 1;">
+            <p class="mb-0" style="word-break: break-word;"><%= message.content %></p>
+          </div>
+          <% if message.author_id == current_user.id %>
+            <div class="ms-2"> <!-- Margin from the message body -->
+              <%= link_to message_path(message),
+                          method: :delete,
+                          data: { turbo_method: :delete },
+                          class: 'btn btn-danger btn-sm',
+                          title: 'Delete Message' do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-
-    <% if message.author_id == current_user.id %>
-      <%= link_to message_path(message),
-                  method: :delete,
-                  data: { turbo_method: :delete },
-                  class: 'btn btn-danger btn-sm',
-                  title: 'Delete Message' do %>
-        <i class="fa fa-trash"></i>
-      <% end %>
-    <% end %>
-
   </div>
 </li>

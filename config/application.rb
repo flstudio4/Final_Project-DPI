@@ -29,5 +29,7 @@ module RailsTemplate
 
     config.action_controller.default_protect_from_forgery = false
     config.generators.system_tests = nil
+    config.time_zone = 'Central Time (US & Canada)'
+
   end
 end
