@@ -1,32 +1,11 @@
 <script>
-    document.addEventListener('turbo:load', function() {
-        // Code that was related to deleteModal has been removed.
-    });
-
     document.addEventListener('turbo:submit-end', (event) => {
-        // Check if the form submission was successful
         if (event.detail.success) {
-            // Clear the form fields
             const form = document.getElementById('new_message_form');
             if (form) {
                 form.reset();
             }
         }
-    });
-
-    document.addEventListener('turbo:render', () => {
-        // Debugging line
-        console.log("turbo:render event triggered");
-
-        // Use setTimeout to allow any DOM updates to complete before scrolling
-        setTimeout(() => {
-            const messagesContainer = document.getElementById("messages");
-            if (messagesContainer) {
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                // Debugging line
-                console.log("Scrolled to bottom");
-            }
-        }, 100); // Delay by 100 milliseconds
     });
 </script>
 
@@ -75,21 +54,3 @@
     </div>
   </div>
 </div>
-
-<script>
-    document.addEventListener('turbo:load', function() {
-        // Your existing deleteModal code...
-    });
-
-    document.addEventListener('turbo:submit-end', (event) => {
-        // Your existing form reset code...
-    });
-
-    document.addEventListener('turbo:render', () => {
-        // Automatically scroll to the bottom of the messages container
-        const messagesContainer = document.getElementById("messages");
-        if (messagesContainer) {
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-    });
-</script>
