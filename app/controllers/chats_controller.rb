@@ -11,7 +11,7 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @message = Message.new(chat_id: @chat.id)
-
+    @messages = @chat.messages.includes(:author).order(created_at: :asc)
   end
 
   # GET /chats/new

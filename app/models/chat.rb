@@ -14,4 +14,8 @@ class Chat < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
   has_many :messages, dependent: :destroy
+
+  def last_message_date
+    messages.order(created_at: :desc).first&.created_at
+  end
 end

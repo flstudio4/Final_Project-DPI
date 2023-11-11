@@ -1,20 +1,95 @@
-<% provide(:title, "Chat with #{ @chat.receiver.username.capitalize }") %>
-<% content_for :h1, "Chat with #{ @chat.receiver.username.capitalize }" %>
+<script>
+    document.addEventListener('turbo:load', function() {
+        // Code that was related to deleteModal has been removed.
+    });
 
-<div class="container">
-  <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary mb-3' %>
-  <div class="card col-12 mx-auto">
-    <div class="card-body">
+    document.addEventListener('turbo:submit-end', (event) => {
+        // Check if the form submission was successful
+        if (event.detail.success) {
+            // Clear the form fields
+            const form = document.getElementById('new_message_form');
+            if (form) {
+                form.reset();
+            }
+        }
+    });
 
-      <% @chat.messages.each do |message| %>
-        <% user = User.where(id: [message.author_id]) %>
-      <%= user[0].username.capitalize %> : <%= message.content %><hr>
-      <% end %>
-      <%= render "messages/form" %>
+    document.addEventListener('turbo:render', () => {
+        // Debugging line
+        console.log("turbo:render event triggered");
+
+        // Use setTimeout to allow any DOM updates to complete before scrolling
+        setTimeout(() => {
+            const messagesContainer = document.getElementById("messages");
+            if (messagesContainer) {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                // Debugging line
+                console.log("Scrolled to bottom");
+            }
+        }, 100); // Delay by 100 milliseconds
+    });
+</script>
+
+
+
+<div id="chat_container" class="container my-4">
+  <div class="card" style="height: calc(100vh - 200px);">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary me-auto' %>
+      <h4 class="mb-0 flex-grow-1 text-center">Chat with <%= @chat.receiver.username.capitalize %></h4>
     </div>
-  </div>
-  <div class="card-footer">
+    <div class="card-body" style="overflow-y: auto; height: calc(100vh - 150px);">
+      <ul class="list-unstyled" id="messages">
+        <% @messages.each do |message| %>
+          <li id="message_<%= message.id %>" class="px-2">
+            <div class="d-flex align-items-start">
+              <%= link_to image_tag(message.author.avatar.url, class: 'rounded-circle mt-1', width: 40, height: 40), "/profiles/#{message.author.id}" %>
+              <div class="flex-grow-1 ms-2">
+                <%= link_to message.author.username.capitalize, "/profiles/#{message.author.id}", class: 'text-muted', style: 'text-decoration: none;' %>
+                <span class="text-muted"><%= message.created_at.strftime("%-d %b %Y") %></span>
+                <div class="rounded px-2 py-1" style="background-color: lavender; word-wrap: break-word;">
+                  <p class="mb-1" style="word-break: break-word;"><%= message.content %></p>
+                </div>
+              </div>
+
+              <% if message.author_id == current_user.id %>
+                <%= link_to message_path(message),
+                            method: :delete,
+                            data: { turbo_method: :delete },
+                            class: 'btn btn-danger btn-sm',
+                            title: 'Delete Message' do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              <% end %>
+
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <%= turbo_frame_tag "new_message" do %>
+        <%= render "messages/form", message: Message.new(chat_id: @chat.id) %>
+      <% end %>
+
+    </div>
   </div>
 </div>
 
+<script>
+    document.addEventListener('turbo:load', function() {
+        // Your existing deleteModal code...
+    });
 
+    document.addEventListener('turbo:submit-end', (event) => {
+        // Your existing form reset code...
+    });
+
+    document.addEventListener('turbo:render', () => {
+        // Automatically scroll to the bottom of the messages container
+        const messagesContainer = document.getElementById("messages");
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    });
+</script>

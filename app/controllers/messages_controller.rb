@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   layout 'custom'
-  before_action :set_message, only: %i[ show edit update destroy ]
+  before_action :set_message, only: %i[ show destroy ]
 
   # GET /messages or /messages.json
   def index
@@ -23,14 +23,22 @@ class MessagesController < ApplicationController
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params)
+    @message.author = current_user
     @message.author_id = current_user.id
+
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message.chat, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
+          ]
+        end
+        format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
       else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('message_form', partial: 'messages/form', locals: { message: @message })
+        end
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,8 +61,8 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to messages_url, notice: "Message was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

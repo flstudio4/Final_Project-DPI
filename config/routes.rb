@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   end
 
   # landing page if you are not logged in
-  root "static_pages#welcome" 
+  root "static_pages#welcome"
 
-  resources :blocks
-  resources :favorites
+  resources :blocks, only: [:index, :create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
   resources :messages
-  resources :chats, only: [:index, :show]
+  resources :chats, only: [:index, :create, :destroy]
 
   resources :chats do
     resources :messages
