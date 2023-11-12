@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   # landing page if you are not logged in
   root "static_pages#welcome"
 
-  resources :blocks, only: [:index, :create, :destroy]
-  resources :favorites, only: [:index, :create, :destroy]
+  resources :blocks
+  resources :favorites
   resources :messages
   resources :chats, only: [:index, :create, :destroy]
 

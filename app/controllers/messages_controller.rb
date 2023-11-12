@@ -27,14 +27,14 @@ class MessagesController < ApplicationController
     @message.author_id = current_user.id
 
     respond_to do |format|
-      if @message.save
-        @message.chat.update(last_message_sent_at: Time.current)
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
-          ]
-        end
-        format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
+      if  @message.save
+          @message.chat.update(last_message_sent_at: Time.current) # Updates last message sen column an moves chat to the top of chats
+          format.turbo_stream do
+            render turbo_stream: [
+              turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
+            ]
+          end
+          format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
       else
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace('message_form', partial: 'messages/form', locals: { message: @message })
@@ -60,6 +60,7 @@ class MessagesController < ApplicationController
   # DELETE /messages/1 or /messages/1.json
   def destroy
     @message.destroy
+    @message.chat.update(last_message_sent_at: nil) # If all new messages deleted, chat moves lower in chat list, depending on the last saved message
 
     respond_to do |format|
       format.turbo_stream
