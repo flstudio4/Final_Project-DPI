@@ -1,3 +1,30 @@
+<script>
+    "use strict";
+
+    function updateSlider() {
+        const firstSliderValue = parseInt(document.getElementById("age_min").value);
+        const secondSlider = document.getElementById("age_max");
+        const secondSliderValue = parseInt(secondSlider.value);
+
+        // Ensure that the second slider is always at least +1 greater than the first slider
+        const minSecondSliderValue = Math.min(firstSliderValue + 1, 60); // Ensures not to exceed 60
+        secondSlider.min = minSecondSliderValue;
+
+        if (secondSliderValue < minSecondSliderValue) {
+            secondSlider.value = minSecondSliderValue;
+        }
+
+        // Update the displayed values
+        document.getElementById("age").innerText = firstSliderValue;
+        document.getElementById("age2").innerText = secondSlider.value;
+    }
+
+    function updateSlider2() {
+        const secondSliderValue = parseInt(document.getElementById("age_max").value);
+        document.getElementById("age2").innerText = secondSliderValue;
+    }
+</script>
+
 <%= search_form_for @q, url: profiles_path, method: :get, html: { class: "form-search" } do |f| %>
 
   <div class="input-group mb-3">

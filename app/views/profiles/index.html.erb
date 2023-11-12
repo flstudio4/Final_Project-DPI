@@ -1,38 +1,12 @@
 <% provide(:title, "Search") %>
-
 <div class="container">
 
-  <script>
-      function updateSlider() {
-          var firstSliderValue = parseInt(document.getElementById("age_min").value);
-          var secondSlider = document.getElementById("age_max");
-          var secondSliderValue = parseInt(secondSlider.value);
-
-          // Ensure that the second slider is always at least +1 greater than the first slider
-          var minSecondSliderValue = Math.min(firstSliderValue + 1, 60); // Ensures not to exceed 60
-          secondSlider.min = minSecondSliderValue;
-
-          if (secondSliderValue < minSecondSliderValue) {
-              secondSlider.value = minSecondSliderValue;
-          }
-
-          // Update the displayed values
-          document.getElementById("age").innerText = firstSliderValue;
-          document.getElementById("age2").innerText = secondSlider.value;
-      }
-
-      function updateSlider2() {
-          var secondSliderValue = parseInt(document.getElementById("age_max").value);
-          document.getElementById("age2").innerText = secondSliderValue;
-      }
-  </script>
-
-  <!-- Button trigger modal -->
+  <!-- Button trigger search modal -->
   <button type="button" class="btn btn-outline-secondary d-grid gap-2 d-md-block mx-auto mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Search parameters
   </button>
 
-  <!-- Modal -->
+  <!-- Search Modal start -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -41,13 +15,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
         <%= render partial: "profiles/search_form" %>
 
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Search modal end -->
+
   <% if @profiles.any? %>
   <% @profiles.each do |profile| %>
     <div class="card mb-3 mx-auto p-2" style="max-width: 540px;">
@@ -76,8 +52,7 @@
                   <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#<%= profile.id %>"><i class="fa-solid fa-eye" style="color: #585555;"></i>&nbsp;Quick
                     preview</a></li>
                 <li>
-                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#<%= profile.username %>"><i class="fa-regular fa-comment" style="color: #585555;"></i>&nbsp;Send
-                    a message</a></li>
+                  <a class="dropdown-item" href="#" >"><i class="fa-regular fa-comment" style="color: #585555;"></i>&nbsp;Send a message</a></li>
                 <li>
                   <a class="dropdown-item" href="profiles/<%= profile.id %>"><i class="fa-regular fa-address-card" style="color: #585555;"></i>&nbsp;See
                     full profile</a></li>
@@ -94,7 +69,8 @@
             </div>
 
 
-            <!-- Modal preview -->
+            <!-- Modal for quick preview -->
+
             <div class="modal fade" id="<%= profile.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -114,35 +90,7 @@
               </div>
             </div>
 
-            <!-- Modal preview end -->
-
-            <!-- Modal for sending message start -->
-
-            <div class="modal fade" id="<%= profile.username %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message
-                      to <%= profile.username.capitalize %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Modal for sending message end -->
+            <!-- Modal for quick preview end -->
 
           </div>
         </div>
