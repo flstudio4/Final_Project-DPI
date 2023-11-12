@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_075219) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_023327) do
   create_table "blocks", force: :cascade do |t|
     t.integer "blocker_id"
     t.integer "blocked_id"
@@ -21,11 +21,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_075219) do
   create_table "chats", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
-    t.boolean "closed_by_sender"
-    t.boolean "closed_by_receiver"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "last_message_sent_at"
+    t.datetime "last_message_at"
+    t.index ["last_message_at"], name: "index_chats_on_last_message_at"
   end
 
   create_table "favorites", force: :cascade do |t|

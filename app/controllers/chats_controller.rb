@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
   def index
     @chats = Chat.where(sender_id: current_user.id)
                  .or(Chat.where(receiver_id: current_user.id))
-                 .order(last_message_sent_at: :desc)
+                 .order(last_message_at: :desc)
                  .paginate(page: params[:page], per_page: 10)
   end
 
