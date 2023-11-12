@@ -1,3 +1,6 @@
+<% provide(:title, "Chat with #{@chat.receiver.username.capitalize}") %>
+<% content_for :h1, "Chat with #{@chat.receiver.username.capitalize}" %>
+
 <script>
     document.addEventListener('turbo:submit-end', (event) => {
         if (event.detail.success) {
@@ -9,23 +12,11 @@
     });
 </script>
 
-<script>
-    // MutationObserver to observe changes in the messages list
-    const observer = new MutationObserver(scrollToBottom);
-
-    // Start observing the target node for configured mutations
-    observer.observe(document.getElementById('messages'), { childList: true, subtree: true });
-
-    // Ensure the card-body container is scrolled to the bottom on page load
-    document.addEventListener('DOMContentLoaded', scrollToBottom);
-</script>
-
-
 <div id="chat_container" class="container my-4">
   <div class="card" style="height: calc(100vh - 200px);">
     <div class="card-header d-flex justify-content-between align-items-center">
       <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary me-auto' %>
-      <h4 class="mb-0 flex-grow-1 text-center">Chat with <%= @chat.receiver.username.capitalize %></h4>
+
     </div>
     <div class="card-body" style="overflow-y: auto; height: calc(100vh - 150px);">
       <ul class="list-unstyled" id="messages">
