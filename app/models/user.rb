@@ -34,6 +34,9 @@ class User < ApplicationRecord
 
   before_save {self.email = email.downcase}
   before_save {self.username = username.downcase}
+
+  before_destroy :remove_avatar_from_cloudinary
+
   validates :bio, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
@@ -70,5 +73,15 @@ class User < ApplicationRecord
   def destroy_all_related_chats
     # This will trigger the dependent: :destroy for messages within each chat
     Chat.where("sender_id = ? OR receiver_id = ?", self.id, self.id).destroy_all
+  end
+
+  def remove_avatar_from_cloudinary
+    # CarrierWave's Cloudinary integration provides a public_id method on the uploader.
+    if self.avatar? && self.avatar.file
+      public_id = self.avatar.file.public_id
+      Cloudinary::Uploader.destroy(public_id) if public_id.present?
+    end
+  rescue Cloudinary::Api::Error => e
+    Rails.logger.error "Cloudinary deletion failed: #{e.message}"
   end
 end
