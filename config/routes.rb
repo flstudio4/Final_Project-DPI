@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/profiles', to: 'profiles#index'
   get '/profiles/:id', to: 'profiles#show'
   get '/search', to: 'profiles#search'
+  get 'profiles/:id/send_message', to: 'chats#send_message', as: :send_message
+  get 'profiles/:id/send_message', to: 'profiles#send_message_to_profile', as: :send_message_to_profile
+
 
   devise_for :users
 

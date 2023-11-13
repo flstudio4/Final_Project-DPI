@@ -1,17 +1,26 @@
+<script>
+    document.addEventListener('turbo:submit-end', (event) => {
+        if (event.detail.success) {
+            const form = document.getElementById('new_message_form');
+            if (form) {
+                form.reset();
+            }
+        }
+    });
+</script>
+
 <%= stylesheet_link_tag "chats" %>
 
 <% if current_user == @chat.sender %>
-    <% provide(:title, "Chat with #{@chat.receiver.username.capitalize}") %>
-    <% content_for :h1, "Chat with #{@chat.receiver.username.capitalize}" %>
-  <% else %>
-    <% provide(:title, "Chat with #{@chat.sender.username.capitalize}") %>
-    <% content_for :h1, "Chat with #{@chat.sender.username.capitalize}" %>
-  <% end %>
-
-<script src="app/javascript/reset_message_form.js"></script>
+  <% provide(:title, "Chat with #{@chat.receiver.username.capitalize}") %>
+  <% content_for :h1, "Chat with #{@chat.receiver.username.capitalize}" %>
+<% else %>
+  <% provide(:title, "Chat with #{@chat.sender.username.capitalize}") %>
+  <% content_for :h1, "Chat with #{@chat.sender.username.capitalize}" %>
+<% end %>
 
 <div class="container my-4">
-  <div class="card" style="height: calc(100vh - 200px);">
+  <div class="card" style="height: calc(100vh - 250px);">
     <div class="card-header d-flex justify-content-between align-items-center">
       <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary me-auto' %>
 
@@ -64,4 +73,60 @@
   </div>
 </div>
 
-<script src="app/javascript/chat_scripts.js"></script>
+<script>
+    // Function to scroll to the bottom of the chat
+    function scrollToBottom() {
+        var messagesContainer = document.querySelector('.card-body');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Scroll to the bottom when Turbo loads the page
+    document.addEventListener('turbo:load', scrollToBottom);
+
+    // MutationObserver to detect when new messages are added and scroll to bottom
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            if (mutation.addedNodes.length) {
+                scrollToBottom();
+            }
+        });
+    });
+
+    // Start observing the target node for configured mutations
+    observer.observe(document.getElementById('messages'), {childList: true, subtree: true});
+
+    // Disconnect the observer when it's no longer needed to prevent memory leaks
+    function disconnectObserver() {
+        observer.disconnect();
+    }
+
+
+    document.addEventListener('turbo:load', function () {
+        var textarea = document.querySelector('.chat-textarea');
+
+        function resizeTextarea() {
+            textarea.style.height = '0'; // Reset the height
+            textarea.style.height = textarea.scrollHeight + 'px'; // Set new height
+        }
+
+        function resetTextareaHeight() {
+            textarea.style.height = ''; // Reset to default CSS height
+        }
+
+// Attach the event listener
+        if (textarea) {
+            textarea.addEventListener('input', resizeTextarea);
+            resizeTextarea(); // Adjust for initial content
+        }
+
+// Adjusting the form submission logic
+        var messageForm = document.getElementById('new_message_form');
+        if (messageForm) {
+            messageForm.addEventListener('submit', function () {
+// After successful message send, reset the textarea
+                resetTextareaHeight();
+
+            });
+        }
+    });
+</script>

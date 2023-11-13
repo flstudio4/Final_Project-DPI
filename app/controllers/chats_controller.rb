@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  include ChatManagement
   layout 'custom'
   before_action :set_chat, only: %i[ show edit update destroy ]
 
@@ -62,6 +63,10 @@ class ChatsController < ApplicationController
       format.html { redirect_to chats_url, notice: "Chat was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def send_message
+    super(params[:id].to_i)
   end
 
   private

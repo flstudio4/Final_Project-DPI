@@ -35,6 +35,7 @@ class User < ApplicationRecord
   before_save {self.email = email.downcase}
   before_save {self.username = username.downcase}
 
+  before_update :remove_old_avatar, if: :avatar_changed?
   before_destroy :remove_avatar_from_cloudinary
 
   validates :bio, presence: true
@@ -46,6 +47,7 @@ class User < ApplicationRecord
   validates :state, presence: true
   validates :city, presence: true
   validates :gender, presence: true
+  validates :name, presence: true
 
   has_many :sent_chats, class_name: 'Chat', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id', dependent: :destroy
@@ -83,5 +85,21 @@ class User < ApplicationRecord
     end
   rescue Cloudinary::Api::Error => e
     Rails.logger.error "Cloudinary deletion failed: #{e.message}"
+  end
+
+  def remove_old_avatar
+    if avatar_was.present?
+      old_public_id = extract_public_id(avatar_was)
+      Rails.logger.info "Attempting to delete Cloudinary image with public ID: #{old_public_id}"
+      Cloudinary::Uploader.destroy(old_public_id) if old_public_id.present?
+    end
+  rescue Cloudinary::Api::Error => e
+    Rails.logger.error "Cloudinary deletion failed: #{e.message}"
+  end
+
+  def extract_public_id(url_or_id)
+    # Extract the public ID from the URL if necessary
+    # This is a placeholder implementation; adjust as per your app's logic
+    url_or_id.split('/').last.split('.').first
   end
 end

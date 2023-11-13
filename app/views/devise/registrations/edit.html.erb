@@ -115,6 +115,11 @@
           <hr class="mt-4">
 
           <div class="form-group">
+            <%= f.label :name, "First Name" %>
+            <%= f.text_field :name, class: "form-control", :placeholder => "Enter your First Name" %>
+          </div>
+
+          <div class="form-group">
             <%= f.label :bio, "Bio" %>
             <%= f.text_area :bio, class: "form-control", :placeholder => "This field is not required" %>
           </div>
