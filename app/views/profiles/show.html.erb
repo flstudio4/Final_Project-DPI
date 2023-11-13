@@ -1,11 +1,11 @@
-<% provide(:title, "#{ @user.username.capitalize }") %>
+<% provide(:title, "#{ @user.name.capitalize }") %>
 
-<h1><%= @user.username.capitalize + ", " %><%= @user.age %></h1>
+<h1><%= @user.name.capitalize + ", " %><%= @user.age %></h1>
 
 <div class="row">
   <div class="col">
     <div class="card mx-auto mb-3" style="max-width: 500px">
-      <img src="<%= @user.avatar %>" alt="<%= @user.username.capitalize %>'s photo" class="img-fluid img-thumbnail rounded-start rounded-end" style="max-width: 500px;">
+      <img src="<%= @user.avatar %>" alt="<%= @user.name.capitalize %>'s photo" class="img-fluid img-thumbnail rounded-start rounded-end" style="max-width: 500px;">
     </div>
   </div>
   <div class="col">

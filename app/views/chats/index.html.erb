@@ -7,21 +7,31 @@
       <div class="list-group shadow-sm">
 
         <% @chats.each do |chat| %>
-          <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center flex-nowrap">
+          <div id="<%= dom_id(chat) %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center flex-nowrap">
             <% chat_link = current_user.id == chat.receiver_id ? chat.sender : chat.receiver %>
             <% last_message = chat.messages.last %>
 
             <%= link_to "chats/#{chat.id}", class: 'd-flex align-items-center text-decoration-none flex-grow-1' do %>
               <%= image_tag chat_link.avatar.url, class: 'rounded-circle', width: 50, height: 50 %>
               <div class="ms-3 d-flex flex-column">
-                <h5 class="mb-1 text-dark flex-grow-1 text-truncate"><%= chat_link.username.capitalize %></h5>
-                <p class="mb-1 text-muted text-truncate"><%= last_message ? truncate(last_message.content, length: 20) : 'No messages yet' %></p>
+                <h5 class="mb-1 text-dark flex-grow-1 text-truncate"><%= chat_link.name.capitalize %></h5>
+                <p class="mb-1 text-muted text-truncate">
+                  <% if last_message %>
+                    <% if last_message.author_id == current_user.id %>
+                      <%= "You: #{truncate(last_message.content, length: 20)}".html_safe %>
+                    <% else %>
+                      <%= truncate(last_message.content, length: 20).html_safe %>
+                    <% end %>
+                  <% else %>
+                    No messages yet
+                  <% end %>
+                </p>
               </div>
             <% end %>
 
             <div class="d-flex align-items-center">
               <small class="text-muted me-3"><%= last_message.created_at.strftime("%d %b %Y at %I:%M %p") if last_message %></small>
-              <%= link_to chat_path(chat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-link', title: 'Delete Chat' do %>
+              <%= link_to chat_path(chat), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this chat?' }, class: 'icon-link', title: 'Delete Chat' do %>
                 <i class="fa fa-trash text-danger"></i>
               <% end %>
             </div>

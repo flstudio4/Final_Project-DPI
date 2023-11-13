@@ -12,11 +12,11 @@
 <%= stylesheet_link_tag "chats" %>
 
 <% if current_user == @chat.sender %>
-  <% provide(:title, "Chat with #{@chat.receiver.username.capitalize}") %>
-  <% content_for :h1, "Chat with #{@chat.receiver.username.capitalize}" %>
+  <% provide(:title, "Chat with #{@chat.receiver.name.capitalize}") %>
+  <% content_for :h1, "Chat with #{@chat.receiver.name.capitalize}" %>
 <% else %>
-  <% provide(:title, "Chat with #{@chat.sender.username.capitalize}") %>
-  <% content_for :h1, "Chat with #{@chat.sender.username.capitalize}" %>
+  <% provide(:title, "Chat with #{@chat.sender.name.capitalize}") %>
+  <% content_for :h1, "Chat with #{@chat.sender.name.capitalize}" %>
 <% end %>
 
 <div class="container my-4">
@@ -39,7 +39,7 @@
                 <div>
                   <!-- Username with comma, Date and Time in AM/PM format -->
                   <div class="mb-1">
-                    <%= link_to message.author.username.capitalize, "/profiles/#{message.author.id}", class: '', style: 'font-size: 1.2em; color: cornflowerblue; text-decoration: none;' %>
+                    <%= link_to message.author.name.capitalize, "/profiles/#{message.author.id}", class: '', style: 'font-size: 1.2em; color: cornflowerblue; text-decoration: none;' %>
                     <span class="text-muted" style="font-size: 0.75em;"><%= message.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
                   </div>
                   <!-- Message Content and Delete Button on the same line -->
