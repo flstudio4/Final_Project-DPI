@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  include ChatManagement
+
   before_action :set_profile, only: [:show]
   before_action :redirect_if_current_profile, only: [:show]
   layout 'custom'
@@ -27,6 +29,10 @@ class ProfilesController < ApplicationController
     end
 
     render 'profiles/index'
+  end
+
+  def send_message_to_profile
+    super(params[:id].to_i)
   end
 
   private
