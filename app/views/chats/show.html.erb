@@ -13,17 +13,24 @@
 
 <% if current_user == @chat.sender %>
   <% provide(:title, "Chat with #{@chat.receiver.name.capitalize}") %>
-  <% content_for :h1, "Chat with #{@chat.receiver.name.capitalize}" %>
 <% else %>
   <% provide(:title, "Chat with #{@chat.sender.name.capitalize}") %>
-  <% content_for :h1, "Chat with #{@chat.sender.name.capitalize}" %>
 <% end %>
 
 <div class="container my-4">
-  <div class="card" style="height: calc(100vh - 250px);">
+  <div class="card" style="height: calc(100vh - 150px);">
     <div class="card-header d-flex justify-content-between align-items-center">
       <%= link_to 'Back to chats', chats_path, class: 'btn btn-outline-primary me-auto' %>
 
+      <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+        <% if current_user == @chat.sender %>
+          <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.receiver_id}" %>&nbsp;
+          <h4 class="mb-0"><%= "Chat with #{@chat.receiver.name.capitalize}" %></h4>
+        <% else %>
+          <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender_id}" %>&nbsp;
+          <h4 class="mb-0"><%= "Chat with #{@chat.sender.name.capitalize}" %></h4>
+        <% end %>
+      </div>
     </div>
     <div class="card-body" style="overflow-y: auto; height: calc(100vh - 150px);">
       <ul class="list-unstyled" id="messages">

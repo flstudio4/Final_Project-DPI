@@ -49,9 +49,6 @@
               <i class="fa-solid fa-user"></i>&nbsp;<%= current_user.username.capitalize %>
             </a>
             <div class="dropdown-menu">
-              <%= link_to "/dashboard", class: "dropdown-item" do %>
-                <i class="fa-solid fa-eye" style="color: #585555;"></i>&nbsp;View profile
-              <% end %>
               <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
                 <i class="fa-solid fa-pen-to-square" style="color: #585555;"></i>&nbsp;Edit profile
               <% end %>

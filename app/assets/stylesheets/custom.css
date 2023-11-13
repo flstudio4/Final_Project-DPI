@@ -65,7 +65,7 @@ h5 {
 .navbar {
   border-radius: 30px;
   background: linear-gradient(to left, lavenderblush, lavender);
-  opacity: 0.8;
+  opacity: 0.95;
   font-family: "Tahoma", Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.2em;
   margin-top: 15px;
@@ -75,7 +75,6 @@ h5 {
 .dropdown-menu {
   border-radius: 10px;
   background: linear-gradient(to left, lavenderblush, lavender);
-  opacity: 0.95;
   margin-bottom: 5px;
 }
 
@@ -146,4 +145,8 @@ body {
 #scrollable {
   max-height: 40%; /* Adjust the height as needed */
   overflow-y: auto;
+}
+
+.navbar, .dropdown-menu {
+  z-index: 1050; /* You may need to adjust this value */
 }
