@@ -2,6 +2,9 @@ class DashboardController < ApplicationController
   layout 'custom'
 
   def home
+    @messages_count = Message.all.where(:author_id => current_user.id).count
+    @chats_count = Chat.where(sender_id: current_user.id).or(Chat.where(receiver_id: current_user.id)).count
+
     if current_user.gender == "male"
       @profiles = User.where(:gender => "female").paginate(page: params[:page], per_page: 10)
     else
