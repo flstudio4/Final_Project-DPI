@@ -14,6 +14,7 @@ class Message < ApplicationRecord
   after_destroy :reset_chat_last_message_at
 
   validates :content, presence: { message: 'cannot be empty' }
+  validates :author_id, presence: true
 
   belongs_to :author, class_name: 'User'
   belongs_to :chat

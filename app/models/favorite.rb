@@ -9,6 +9,9 @@
 #  liking_user_id :integer
 #
 class Favorite < ApplicationRecord
+  validates :liking_user_id, presence: true
+  validates :liked_user_id, presence: true
+
   belongs_to :liking_user, class_name: 'User', foreign_key: 'liking_user_id'
   belongs_to :liked_user, class_name: 'User', foreign_key: 'liked_user_id'
 end

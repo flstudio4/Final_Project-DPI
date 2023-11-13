@@ -18,6 +18,9 @@ class Chat < ApplicationRecord
   belongs_to :receiver, class_name: 'User'
   has_many :messages, dependent: :destroy
 
+  validates :sender_id, presence: true
+  validates :receiver_id, presence: true
+
   default_scope { order(last_message_at: :desc) }
 
   def last_message_date
