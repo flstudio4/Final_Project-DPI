@@ -27,16 +27,21 @@
     </div>
     <div class="card mx-auto mb-3">
       <%= link_to 'Send message', send_message_to_profile_path(@user.id), class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto mt-3" %>
-      <button type="button" class="btn btn-outline-primary mb-1 col-6 d-md-block mx-auto">Add to favorites</button>
 
       <%= turbo_frame_tag 'block_button' do %>
         <% if @is_blocked_by_current_user %>
-          <%= link_to 'Unblock', unblock_profile_path(@user), method: :delete, data: { turbo_method: :delete } %>
+
+          <%= link_to unblock_profile_path(@user), method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
+            Unblock
+          <% end %>
+
         <% else %>
-          <%= link_to 'Block', block_profile_path(@user), method: :post, data: { turbo_method: :post } %>
+          <%= link_to block_profile_path(@user), method: :post, data: { turbo_method: :post }, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
+            Block
+          <% end %>
+
         <% end %>
       <% end %>
-
       <%= link_to "Back", request.referer, class: "btn btn-outline-primary mb-3 mt-5 col-3 mx-auto d-md-block" %>
     </div>
   </div>
