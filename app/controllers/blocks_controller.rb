@@ -22,16 +22,14 @@ class BlocksController < ApplicationController
 
   # POST /blocks or /blocks.json
   def create
-    @block = Block.new(block_params)
-
-    respond_to do |format|
-      if @block.save
-        format.html { redirect_to block_url(@block), notice: "Block was successfully created." }
-        format.json { render :show, status: :created, location: @block }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @block.errors, status: :unprocessable_entity }
+    @block = current_user.blocked_users.new(blocked_id: params[:blocked_id])
+    if @block.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to profiles_path(@block.blocked), notice: 'User blocked.' }
       end
+    else
+      # Handle errors
     end
   end
 
@@ -50,11 +48,16 @@ class BlocksController < ApplicationController
 
   # DELETE /blocks/1 or /blocks/1.json
   def destroy
-    @block.destroy
+    @block = current_user.blocked_users.find_by(id: params[:id])
+    @blocked_user = @block.blocked if @block.present?
 
-    respond_to do |format|
-      format.html { redirect_to blocks_url, notice: "Block was successfully destroyed." }
-      format.json { head :no_content }
+    if @block&.destroy
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to profiles_path(@blocked_user), notice: 'Block removed.' }
+      end
+    else
+      # Handle errors
     end
   end
 

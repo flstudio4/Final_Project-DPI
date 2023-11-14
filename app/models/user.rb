@@ -37,6 +37,7 @@ class User < ApplicationRecord
 
   before_update :remove_old_avatar, if: :avatar_changed?
   before_destroy :remove_avatar_from_cloudinary
+  before_destroy :destroy_all_related_chats
 
   validates :bio, presence: true
   validates :email, presence: true, uniqueness: true
@@ -53,7 +54,8 @@ class User < ApplicationRecord
   has_many :received_chats, class_name: 'Chat', foreign_key: 'receiver_id', dependent: :destroy
   has_many :messages, foreign_key: 'author_id', dependent: :destroy
 
-  before_destroy :destroy_all_related_chats
+  has_many :blocked_users, class_name: 'Block', foreign_key: 'blocker_id', dependent: :destroy
+  has_many :blockers, class_name: 'Block', foreign_key: 'blocked_id', dependent: :destroy
 
   scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
   scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }

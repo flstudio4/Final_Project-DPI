@@ -1,0 +1,4 @@
+<%# app/views/blocks/destroy.turbo_stream.erb %>
+<% if @block.present? %>
+  <%= turbo_stream.replace dom_id(@block.blocked), partial: "profiles/block_button", locals: { user: @block.blocked } %>
+<% end %>

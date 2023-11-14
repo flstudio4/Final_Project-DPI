@@ -1,0 +1,3 @@
+<%= turbo_stream.replace 'block_button' do %>
+  <%= link_to 'Block', block_profile_path(@user), method: :post, data: { turbo_method: :post } %>
+<% end %>

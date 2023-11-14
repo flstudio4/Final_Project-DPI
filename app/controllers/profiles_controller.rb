@@ -4,9 +4,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show]
   before_action :redirect_if_current_profile, only: [:show]
   layout 'custom'
+
   def show
     user_id = params.fetch(:id)
-    @user = User.where(:id => user_id)[0]
+    @user = User.find(user_id)
+    @is_blocked_by_current_user = current_user.blocked_users.exists?(blocked_id: @user.id)
+    @is_current_user_blocked = @user.blocked_users.exists?(blocked_id: current_user.id)
     render 'profiles/show'
   end
 
@@ -33,6 +36,25 @@ class ProfilesController < ApplicationController
 
   def send_message_to_profile
     super(params[:id].to_i)
+  end
+
+  def block
+    @user = User.find(params[:id])
+    current_user.blocked_users.find_or_create_by(blocked_id: @user.id)
+    @is_blocked_by_current_user = true
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to profile_path(params[:id]) }
+    end
+  end
+
+  def unblock
+    @user = User.find(params[:id])
+    current_user.blocked_users.find_by(blocked_id: @user.id)&.destroy
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to profile_path(params[:id]) }
+    end
   end
 
   private

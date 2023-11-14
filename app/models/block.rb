@@ -9,9 +9,9 @@
 #  blocker_id :integer
 #
 class Block < ApplicationRecord
-  validates :blocked_id, presence: true
+  validates :blocked_id, uniqueness: { scope: :blocker_id }
   validates :blocker_id, presence: true
 
-  belongs_to :blocker, class_name: 'User', foreign_key: 'blocker_id'
-  belongs_to :blocked_user, class_name: 'User', foreign_key: 'blocked_id'
+  belongs_to :blocker, class_name: 'User'
+  belongs_to :blocked, class_name: 'User'
 end

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace 'block_button' do %>
+  <%= link_to 'Unblock', unblock_profile_path(@user), method: :delete, data: { turbo_method: :delete } %>
+<% end %>
