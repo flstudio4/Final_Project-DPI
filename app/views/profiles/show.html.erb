@@ -28,13 +28,15 @@
     <div class="card mx-auto mb-3">
       <%= link_to 'Send message', send_message_to_profile_path(@user.id), class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto mt-3" %>
 
-      <% if @is_blocked_by_current_user %>
-        <%= link_to unblock_profile_path(@user), method: :delete, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-          Unblock
-        <% end %>
-      <% else %>
-        <%= link_to block_profile_path(@user), method: :post, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-          Block
+      <%= turbo_frame_tag "block_unblock_button" do %>
+        <% if @is_blocked_by_current_user %>
+          <%= link_to unblock_profile_path(@user), data: { turbo_method: :delete, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
+            Unblock
+          <% end %>
+        <% else %>
+          <%= link_to block_profile_path(@user), data: { turbo_method: :post, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
+            Block
+          <% end %>
         <% end %>
       <% end %>
 

@@ -1,3 +1,0 @@
-<%= link_to block_profile_path(@user), method: :post, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-  Block
-<% end %>

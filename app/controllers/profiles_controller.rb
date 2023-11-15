@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
     @is_blocked_by_current_user = true
 
     respond_to do |format|
-      format.js # This will look for a block.js.erb view
+      format.turbo_stream
       format.html { redirect_to profile_path(params[:id]) }
     end
   end
@@ -52,9 +52,10 @@ class ProfilesController < ApplicationController
   def unblock
     @user = User.find(params[:id])
     current_user.blocked_users.find_by(blocked_id: @user.id).destroy
+    @is_blocked_by_current_user = false
 
     respond_to do |format|
-      format.js # This will look for an unblock.js.erb view
+      format.turbo_stream
       format.html { redirect_to profile_path(params[:id]) }
     end
   end
