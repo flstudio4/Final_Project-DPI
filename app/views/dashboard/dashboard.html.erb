@@ -20,7 +20,7 @@
     </div>
 
     <div class="card mx-auto mb-3">
-      <div class="card-header">
+      <div class="card-header text-center">
         Bio
       </div>
       <div class="card-body">
@@ -29,13 +29,19 @@
     </div>
 
     <div class="card mx-auto mb-3">
-      <div class="card-header">
-        Info
+      <div class="card-header text-center">
+        Statistics
       </div>
       <div class="card-body">
-        <p>Chats - <%= @chats_count %></p>
-        <p>Messages sent - <%= @messages_count %></p>
-        <p>Visitors - N/A </p>
+        <h6>Chats - <%= @chats_count %></h6>
+        <hr>
+        <h6>Messages sent - <%= @messages_count %></h6>
+        <hr>
+        <span style="display: flex; justify-content: space-between;"><h6>Blocked users - <%= @blocked_users.count %></h6>
+          <a href="/blocks" style="text-align: right;">details</a>
+        </span>
+        <hr>
+        <h6>Visitors - N/A </h6>
       </div>
     </div>
 
@@ -49,6 +55,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
