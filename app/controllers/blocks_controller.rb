@@ -5,6 +5,7 @@ class BlocksController < ApplicationController
   # GET /blocks or /blocks.json
   def index
     @blocks = Block.all
+    @blocked_users = Block.where(:blocker_id => current_user.id)
   end
 
   # GET /blocks/1 or /blocks/1.json

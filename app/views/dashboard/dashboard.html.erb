@@ -38,7 +38,7 @@
         <h6>Messages sent - <%= @messages_count %></h6>
         <hr>
         <span style="display: flex; justify-content: space-between;"><h6>Blocked users - <%= @blocked_users.count %></h6>
-          <a href="#" style="text-align: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">details</a>
+          <a href="/blocks" style="text-align: right;">details</a>
         </span>
         <hr>
         <h6>Visitors - N/A </h6>
@@ -56,30 +56,7 @@
   </div>
 </div>
 
-<!-- Modal for blocked users -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Blocked users</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <% @blocked_users.each do |user| %>
-         <p><% person =  User.where(:id => user.blocked_id)[0] %></p>
-          <%= link_to profile_path(person), class: "text-decoration-none" do %>
-            <img src="<%= person.avatar %>" class="rounded-circle" style="width: 50px; height: 50px;" alt="profile picture" />
-            <%= person.name.capitalize %>
-          <% end %>
 
-      <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

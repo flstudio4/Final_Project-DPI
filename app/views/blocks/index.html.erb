@@ -1,13 +1,11 @@
 <% provide(:title, "Blocked") %>
 <% content_for :h1, 'Blocked users' %>
 
-<div id="blocks">
-  <% @blocks.each do |block| %>
-    <%= render block %>
-    <p>
-      <%= link_to "Show this block", block %>
-    </p>
+<% @blocked_users.each do |user| %>
+  <p><% person =  User.where(:id => user.blocked_id)[0] %></p>
+  <%= link_to profile_path(person), class: "text-decoration-none" do %>
+    <img src="<%= person.avatar %>" class="rounded-circle" style="width: 50px; height: 50px;" alt="profile picture" />
+    <%= person.name.capitalize %>
   <% end %>
-</div>
 
-<%= link_to "New block", new_block_path %>
+<% end %>
