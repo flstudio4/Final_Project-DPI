@@ -42,6 +42,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     current_user.blocked_users.find_or_create_by(blocked_id: @user.id)
     @is_blocked_by_current_user = true
+
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to profile_path(params[:id]) }
@@ -50,7 +51,9 @@ class ProfilesController < ApplicationController
 
   def unblock
     @user = User.find(params[:id])
-    current_user.blocked_users.find_by(blocked_id: @user.id)&.destroy
+    current_user.blocked_users.find_by(blocked_id: @user.id).destroy
+    @is_blocked_by_current_user = false
+
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to profile_path(params[:id]) }

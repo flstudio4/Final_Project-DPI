@@ -41,7 +41,6 @@ class User < ApplicationRecord
 
   validates :bio, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
   validates :username, presence: true, uniqueness: true
   validates :dob, presence: true
   validates :country, presence: true
