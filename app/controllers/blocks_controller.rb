@@ -5,7 +5,7 @@ class BlocksController < ApplicationController
   # GET /blocks or /blocks.json
   def index
     @blocks = Block.all
-    @blocked_users = Block.where(:blocker_id => current_user.id)
+    @blocked_users = Block.where(:blocker_id => current_user.id).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /blocks/1 or /blocks/1.json
