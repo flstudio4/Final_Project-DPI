@@ -1,11 +1,25 @@
 <% provide(:title, "Blocked") %>
 <% content_for :h1, 'Blocked users' %>
 
-<% @blocked_users.each do |user| %>
-  <p><% person =  User.where(:id => user.blocked_id)[0] %></p>
-  <%= link_to profile_path(person), class: "text-decoration-none" do %>
-    <img src="<%= person.avatar %>" class="rounded-circle" style="width: 50px; height: 50px;" alt="profile picture" />
-    <%= person.name.capitalize %>
+<div class="container mt-4">
+  <% @blocked_users.each do |user| %>
+    <div class="row mb-2" id="<%= dom_id(user) %>">
+      <div class="col-8 mx-auto">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <%= link_to profile_path(user.blocked), class: "text-decoration-none" do %>
+              <img src="<%= user.blocked.avatar %>" class="rounded-circle me-2" style="width: 50px; height: 50px;" alt="User Avatar">
+              <span><%= user.blocked.name.capitalize %></span>
+            <% end %>
+            <div class="ms-auto">
+              <%= link_to "/blocks/#{user.id}", method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-success btn-sm" do %>
+                <i class="fa-solid fa-lock-open"></i> Unblock
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-
-<% end %>
+  <%= will_paginate @blocked_users, class: 'pagination justify-content-center' %>
+</div>

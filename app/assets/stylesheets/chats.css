@@ -44,3 +44,16 @@
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glowing border effect on focus */
 }
 
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(12deg); }
+    20% { transform: rotate(-14deg); }
+    30% { transform: rotate(14deg); }
+    40%, 50%, 60% { transform: rotate(-12deg); }
+    70%, 80%, 90% { transform: rotate(12deg); }
+}
+
+.icon-link:hover .fa-trash-can {
+    animation: shake 0.5s; /* Adjust duration as needed */
+    animation-iteration-count: infinite;
+}
