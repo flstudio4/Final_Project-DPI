@@ -1,5 +1,5 @@
-<%= turbo_stream.replace "block_unblock_button" do %>
+<%= turbo_stream.update "block_unblock_button" do %>
   <%= link_to block_profile_path(@user), data: { turbo_method: :post, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-    Block
+    <i class="fa-solid fa-lock" style="color: #ff0000;"></i>&nbsp;Block
   <% end %>
 <% end %>

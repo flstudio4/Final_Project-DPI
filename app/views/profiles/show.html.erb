@@ -25,22 +25,22 @@
         <p><%= @user.bio %></p>
       </div>
     </div>
-    <div class="card mx-auto mb-3">
+    <div class="card mx-auto mb-3 text-center">
       <%= link_to 'Send message', send_message_to_profile_path(@user.id), class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto mt-3" %>
 
       <%= turbo_frame_tag "block_unblock_button" do %>
         <% if @is_blocked_by_current_user %>
-          <%= link_to unblock_profile_path(@user), data: { turbo_method: :delete, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-            Unblock
+          <%= link_to unblock_profile_path(@user), data: { turbo_method: :delete, turbo_frame: "block_unblock_button" },remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
+            <i class="fa-solid fa-lock-open" style="color: #0ad150;"></i>&nbsp;Unblock
           <% end %>
         <% else %>
-          <%= link_to block_profile_path(@user), data: { turbo_method: :post, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-            Block
+          <%= link_to block_profile_path(@user), data: { turbo_method: :post, turbo_frame: "block_unblock_button" },remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
+            <i class="fa-solid fa-lock" style="color: #ff0000;"></i>&nbsp;Block
           <% end %>
         <% end %>
       <% end %>
 
-      <%= link_to "Back", request.referer, class: "btn btn-outline-primary mb-3 mt-5 col-3 mx-auto d-md-block" %>
+      <%= link_to 'Back', '#', class: "btn btn-outline-primary mb-3 mt-5 col-3 mx-auto d-md-block", onclick: "event.preventDefault(); history.back();" %>
     </div>
   </div>
 </div>
