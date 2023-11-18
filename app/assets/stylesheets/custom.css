@@ -1,17 +1,10 @@
 h1 {
-  color: #d0d6ec; /* Adjust the blue color to your liking */
   font-size: 3em; /* Adjust size as needed */
   font-weight: bold; /* Makes the text bolder */
   margin-bottom: 40px;
-  text-shadow:
-          1px 1px 0 #7abfff, /* Light blue shadow to the right and down */
-          -1px -1px 0 #0056b3, /* Dark blue shadow to the left and up */
-          1px -1px 0 #7abfff, /* Light blue shadow to the right and up */
-          -1px 1px 0 #0056b3, /* Dark blue shadow to the left and down */
-          0px 4px 5px rgba(0, 0, 0, 0.3), /* Soft shadow for depth */
-          0px 7px 10px rgba(0, 0, 0, 0.05), /* Softer shadow for ambiance */
-          0px 9px 25px rgba(0, 0, 0, 0.05); /* Softest shadow for glow effect */
-  font-family: 'Consolas', 'Arial', sans-serif;
+  font-family: cursive, Consolas, serif;
+  color: cornflowerblue;
+  text-shadow: #333333 2px 2px;
   text-align: center;
 }
 

@@ -19,6 +19,9 @@
    margin-bottom: 25px;
    text-align: center;
    font-size: 3.5em;
+   font-family: cursive, Consolas, serif;
+   color: cornflowerblue;
+   text-shadow: #333333 2px 2px;
 }
 
 article {
