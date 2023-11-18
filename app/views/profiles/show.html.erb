@@ -40,7 +40,7 @@
         <% end %>
       <% end %>
 
-      <%= link_to "Back", request.referer, class: "btn btn-outline-primary mb-3 mt-5 col-3 mx-auto d-md-block" %>
+      <%= link_to 'Back', '#', class: "btn btn-outline-primary mb-3 mt-5 col-3 mx-auto d-md-block", onclick: "event.preventDefault(); history.back();" %>
     </div>
   </div>
 </div>

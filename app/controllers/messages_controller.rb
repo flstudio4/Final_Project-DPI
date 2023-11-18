@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
           format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
       else
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace('message_form', partial: 'messages/form', locals: { message: @message })
+          render chats_path turbo_stream: turbo_stream.replace('message_form', partial: 'messages/form', locals: { message: @message })
         end
         format.html { render :new, status: :unprocessable_entity }
       end

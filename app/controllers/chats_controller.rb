@@ -16,6 +16,13 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
     @message = Message.new(chat_id: @chat.id)
     @messages = @chat.messages.includes(:author).order(created_at: :asc)
+
+    other_user_id = @chat.sender_id == current_user.id ? @chat.receiver_id : @chat.sender_id
+
+    # Check if current_user is blocked by the other participant in the chat
+    if Block.exists?(blocker_id: other_user_id, blocked_id: current_user.id)
+      redirect_to request.referer, alert: "You cannot access this chat, because you were blocked by the user."
+    end
   end
 
   # GET /chats/new
@@ -71,6 +78,12 @@ class ChatsController < ApplicationController
   end
 
   private
+
+  def blocked?(chat, user)
+    other_user = chat.participant_other_than(user)
+    Block.exists?(blocker_id: other_user.id, blocked_id: user.id)
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_chat
       @chat = Chat.find(params[:id])
