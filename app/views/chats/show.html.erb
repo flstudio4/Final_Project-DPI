@@ -1,3 +1,14 @@
+<script>
+    document.addEventListener('turbo:submit-end', (event) => {
+        if (event.detail.success) {
+            const form = document.getElementById('new_message_form');
+            if (form) {
+                form.reset();
+            }
+        }
+    });
+</script>
+
 <%= stylesheet_link_tag "chats" %>
 
 <% if current_user == @chat.sender %>
@@ -105,23 +116,27 @@
             textarea.style.height = textarea.scrollHeight + 'px'; // Set new height
         }
 
-        function resetTextareaHeight() {
-            textarea.style.height = ''; // Reset to default CSS height
-        }
-
-// Attach the event listener
         if (textarea) {
             textarea.addEventListener('input', resizeTextarea);
             resizeTextarea(); // Adjust for initial content
         }
 
-// Adjusting the form submission logic
         var messageForm = document.getElementById('new_message_form');
         if (messageForm) {
             messageForm.addEventListener('submit', function () {
-// After successful message send, reset the textarea
-                resetTextareaHeight();
+                // Resize the textarea right before the form is submitted
+                resizeTextarea();
 
+                // Note: No event.preventDefault(), allow the form to submit
+            });
+
+            // Listen for turbo stream submit-end event
+            document.addEventListener('turbo:submit-end', (event) => {
+                if (event.detail.success) {
+                    // Reset the form and resize the textarea after the message is sent
+                    messageForm.reset();
+                    resizeTextarea(); // Resize after resetting the form
+                }
             });
         }
     });
