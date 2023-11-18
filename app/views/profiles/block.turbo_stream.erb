@@ -1,5 +1,5 @@
 <%= turbo_stream.update "block_unblock_button" do %>
-  <%= link_to unblock_profile_path(@user), data: { turbo_method: :delete, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-primary mb-1 col-6 d-md-block mx-auto" do %>
-    <i class="fa-solid fa-lock-open" style="color: #0ad150;"></i>&nbsp;Unblock
+  <%= link_to unblock_profile_path(@user), data: { turbo_method: :delete, turbo_frame: "block_unblock_button" }, remote: true, class: "btn btn-outline-success mb-1 col-6 d-md-block mx-auto" do %>
+    <i class="fa-solid fa-lock-open"></i>&nbsp;Unblock
   <% end %>
 <% end %>
