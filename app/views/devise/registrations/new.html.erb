@@ -51,38 +51,87 @@
           <hr>
 
           <div class="form-group">
+            <% avatar_was_invalid = resource.errors.include?(:avatar) %>
+
             <%= f.label :avatar, "Avatar" %>
-            <%= f.file_field :avatar, class: "form-control", :placeholder => "Enter URL of your picture" %>
+            <%= f.file_field :avatar, class: "form-control#{' is-invalid' if avatar_was_invalid}" %>
+
+            <% if avatar_was_invalid %>
+              <% resource.errors.full_messages_for(:avatar).each do |message| %>
+                <div class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
           <hr>
 
           <div class="form-group">
+            <% country_was_invalid = resource.errors.include?(:country) %>
+
             <%= f.label :country, "Country" %>
-            <%= f.select :country, [['Select Country', nil], ['United States', 'United States']], {}, class: "form-control" %>
+            <%= f.select :country, [['United States', 'United States']], {}, class: "form-control#{' is-invalid' if country_was_invalid}" %>
+
+            <% if country_was_invalid %>
+              <% resource.errors.full_messages_for(:country).each do |message| %>
+                <div class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
           <div class="form-group">
+            <% state_was_invalid = resource.errors.include?(:state) %>
+
             <%= f.label :state, "State" %>
-            <%= f.select :state, render("list_of_states"), {}, class: "form-control" %>
+            <%= f.select :state, options_for_select(us_states), {}, class: "form-control#{' is-invalid' if state_was_invalid}" %>
+
+            <% if state_was_invalid %>
+              <% resource.errors.full_messages_for(:state).each do |message| %>
+                <div class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
-
           <div class="form-group">
+            <% city_was_invalid = resource.errors.include?(:city) %>
+
             <%= f.label :city, "City" %>
-            <%= f.text_field :city, class: "form-control" %>
+            <%= f.text_field :city, class: "form-control#{' is-invalid' if city_was_invalid}" %>
+
+            <% if city_was_invalid %>
+              <% resource.errors.full_messages_for(:city).each do |message| %>
+                <div class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
           <hr>
 
           <div class="form-group">
+            <% name_was_invalid = resource.errors.include?(:name) %>
+
             <%= f.label :name, "First Name" %>
-            <%= f.text_field :name, class: "form-control", :placeholder => "Enter your First Name" %>
+            <%= f.text_field :name, class: "form-control#{' is-invalid' if name_was_invalid}", placeholder: "Enter your First Name" %>
+
+            <% if name_was_invalid %>
+              <% resource.errors.full_messages_for(:name).each do |message| %>
+                <div class="invalid-feedback">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
           <div class="form-group">
             <%= f.label :bio, "Bio" %>
-            <%= f.text_area :bio, class: "form-control", :placeholder => "This field is not required" %>
+            <%= f.text_area :bio, class: "form-control" %>
           </div>
 
           <hr class="mt-4">
@@ -125,20 +174,46 @@
           <!-- Devise Input for username end -->
 
           <div class="form-group">
+            <% dob_was_invalid = resource.errors.include?(:dob) %>
+
+            <% dob_class = "form-control" %>
+
+            <% if was_validated %>
+              <% if dob_was_invalid %>
+                <% dob_class << " is-invalid" %>
+              <% else %>
+                <% dob_class << " is-valid" %>
+              <% end %>
+            <% end %>
+
             <%= f.label :dob, "Date of Birth" %>
-            <%= f.date_field :dob, class: "form-control" %>
+            <%= f.date_field :dob, class: dob_class, placeholder: "Enter date of birth" %>
+
+            <% if dob_was_invalid %>
+              <% resource.errors.full_messages_for(:dob).each do |message| %>
+                <div class="invalid-feedback d-flex">
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
           <div class="form-group">
             <%= f.label :gender, "Gender" %>
             <div class="form-check">
               <%= f.radio_button :gender, "male", class: "form-check-input" %>
-              <%= f.label :gender, "male", class: "form-check-label" %>
+              <%= f.label :gender_male, "Male", class: "form-check-label" %>
             </div>
             <div class="form-check">
               <%= f.radio_button :gender, "female", class: "form-check-input" %>
-              <%= f.label :gender, "female", class: "form-check-label" %>
+              <%= f.label :gender_female, "Female", class: "form-check-label" %>
             </div>
+
+            <% if resource.errors.include?(:gender) %>
+              <div class="invalid-feedback d-block">
+                <%= resource.errors[:gender].join(', ') %>
+              </div>
+            <% end %>
           </div>
 
           <hr class="mt-4">

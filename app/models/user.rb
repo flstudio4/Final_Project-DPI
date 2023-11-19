@@ -27,6 +27,7 @@
 #
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -39,10 +40,13 @@ class User < ApplicationRecord
   before_destroy :remove_avatar_from_cloudinary
   before_destroy :destroy_all_related_chats
 
-  validates :bio, presence: true
+  validate :at_least_18_years_old
+  validate :less_than_100_years_old
+  validates :dob, presence: true
+
+  validates :avatar, presence: true, on: :create
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
-  validates :dob, presence: true
   validates :country, presence: true
   validates :state, presence: true
   validates :city, presence: true
@@ -72,6 +76,20 @@ class User < ApplicationRecord
   end
 
   private
+
+  def at_least_18_years_old
+    return if dob.blank?
+    if dob > 18.years.ago.to_date
+      errors.add(:dob, 'You must be at least 18 years old.')
+    end
+  end
+
+  def less_than_100_years_old
+    return if dob.blank?
+    if dob < 100.years.ago.to_date
+      errors.add(:dob, 'You are too old for dating.')
+    end
+  end
 
   def destroy_all_related_chats
     # This will trigger the dependent: :destroy for messages within each chat
