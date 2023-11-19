@@ -28,7 +28,8 @@ task({ :sample_data => :environment }) do
     user.email = "#{$female_names[i]}@example.com"
     user.password = "password"
     user.password_confirmation = "password"
-    user.username = "#{$female_names[i]}"
+    user.username = $female_names[i]
+    user.name = $female_names[i]
     user.gender = "female"
     user.avatar = avatar_links[k] if k >= 0 && k < avatar_links.size
     user.bio = $bios.sample
@@ -54,7 +55,8 @@ task({ :sample_data => :environment }) do
     user.email = "#{$male_names[i]}@example.com"
     user.password = "password"
     user.password_confirmation = "password"
-    user.username = "#{$male_names[i]}"
+    user.username = $male_names[i]
+    user.name = $male_names[i]
     user.gender = "male"
     user.avatar = avatar_links2[m] if m >= 0 && m < avatar_links.size
     user.bio = $bios.sample
@@ -76,8 +78,8 @@ end
 
 task({ :sample_chats => :environment }) do
   if Rails.env.development?
-    Chat.destroy_all
-    Message.destroy_all
+    #Chat.destroy_all
+    #Message.destroy_all
   end
 
   User.all.where(:gender => "female").each do |female|
@@ -92,7 +94,7 @@ task({ :sample_chats => :environment }) do
         m = Message.new
         m.author_id = female.id
         m.chat_id = ch.id
-         m.content = $conversational_phrases.sample
+        m.content = $conversational_phrases.sample
         m.save
 
         f = Message.new
@@ -105,4 +107,3 @@ task({ :sample_chats => :environment }) do
     end
   end
 end
-

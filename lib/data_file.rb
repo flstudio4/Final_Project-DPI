@@ -11,8 +11,8 @@ class DataFile
   "Oscar", "Owen", "Patrick", "Samuel", "Sebastian", "Theodore", "Thomas", "Tristan", "Victor", "William", "Wyatt",
   "Xander", "Zachary", "Zane", "Aleksandr", "Andrey", "Antono", "Artem", "Dmitri", "Fedor", "Ivan", "Kirill",
   "Konstantin", "Maksim", "Mikhail", "Nikita", "Nikolay", "Pavel", "Sergey", "Stanislav", "Vadim", "Viktor", "Vladimir",
-  "Yurio", "Aleksandr", "Alexei", "Anatoli", "Andrei", "Anton", "Arkadi", "Boris", "Dmitrii", "Evgenii", "Fyodor",
-  "Grigori", "Igor", "Ilya", "Leonid", "Mikhail", "Nikolai", "Pavelo", "Pyotr", "Sergei", "Viktorn", "Vladimiro", "Yuriis",
+  "Yuriont", "Aleksandron", "Alexeiko", "Anatoli", "Andrei", "Anton", "Arkadi", "Boris", "Dmitrii", "Evgenii", "Fyodor",
+  "Grigori", "Igor", "Ilya", "Leonid", "Mikhailos", "Nikolai", "Pavelo", "Pyotr", "Sergei", "Viktorn", "Vladimiro", "Yuriis",
   "Yuriy", "Yury"
 ]
 
@@ -24,9 +24,9 @@ class DataFile
     "Isabella", "Ivy", "Jasmine", "Josephine", "Julia", "Katherine", "Layla", "Leah", "Lena", "Lillian", "Lily", "Luna",
     "Lydia", "Mackenzie", "Madeline", "Madison", "Makayla", "Mila", "Natalie", "Nora", "Olivia", "Paisley", "Penelope",
     "Piper", "Riley", "Ruby", "Samantha", "Savannah", "Scarlett", "Serenity", "Sofia", "Sophia", "Sophie", "Stella",
-    "Valentina", "Victoria", "Violet", "Zoe", "Anastasia", "Daria", "Ekaterina", "Elena", "Elizaveta", "Galina", "Irina",
+    "Valentina", "Victoria", "Violet", "Zoe", "Anastazia", "Daria", "Ekaterina", "Eleina", "Elizaveta", "Galina", "Irina",
     "Ksenia", "Larisa", "Ludmila", "Margarita", "Maria", "Nadezhda", "Natalia", "Olga", "Polina", "Svetlana", "Tatiana",
-    "Valentina", "Varvara", "Vera", "Veronika", "Viktoria", "Yelena", "Aaliyah", "Adalynn", "Adele", "Adrienne", "Alexia",
+    "Valeintina", "Varvara", "Vera", "Veronika", "Viktoria", "Yelena", "Aaliyah", "Adalynn", "Adele", "Adrienne", "Alexia",
     "Aliyah", "Amelie", "Angelica", "Arabella", "Beatrice", "Bianca", "Camille", "Catalina", "Cecilia", "Celeste",
     "Delilah", "Evangeline", "Francesca", "Genevieve", "Gianna", "Guinevere", "Haven", "Imogen", "Isabeau", "Jocelyn",
     "Kamila", "Karina", "Katrina", "Leonora", "Liliana", "Luciana", "Luz", "Mallory", "Margot", "Marina", "Melody",
