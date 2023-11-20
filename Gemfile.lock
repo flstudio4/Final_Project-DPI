@@ -486,6 +486,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails (~> 5.13)
   sentry-ruby (~> 5.13)
+  simple_form
   specs_to_readme
   sprockets-rails
   sqlite3 (~> 1.4)
