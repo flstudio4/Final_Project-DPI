@@ -16,6 +16,7 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
     @message = Message.new(chat_id: @chat.id)
     @messages = @chat.messages.includes(:author).order(created_at: :asc)
+    authorize @chat
 
     other_user_id = @chat.sender_id == current_user.id ? @chat.receiver_id : @chat.sender_id
 
