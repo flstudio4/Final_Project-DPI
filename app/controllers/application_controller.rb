@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Pundit
+  include Pundit::Authorization
   before_action :authenticate_user!, except: [:welcome]
   protect_from_forgery with: :exception
 
