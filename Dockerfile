@@ -15,6 +15,9 @@ ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1"
 
 # Update gems and bundler
+RUN gem update --system --no-document && \
+    gem install -N bundler
+
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -22,6 +25,9 @@ FROM base as build
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp nodejs npm pkg-config python-is-python3
+
+# Install Node.js
+    rm -rf /tmp/node-build-master
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./

@@ -17,7 +17,7 @@ gem "carrierwave"
 
 gem "cloudinary"
 
-#gem "pundit"
+gem "pundit"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
