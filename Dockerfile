@@ -26,8 +26,8 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp nodejs npm pkg-config python-is-python3
 
-# Install Node.js
-    rm -rf /tmp/node-build-master
+## Install Node.js
+#    rm -rf /tmp/node-build-master
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
