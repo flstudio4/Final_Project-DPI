@@ -30,6 +30,7 @@ module RailsTemplate
     config.action_controller.default_protect_from_forgery = false
     config.generators.system_tests = nil
     config.time_zone = 'Central Time (US & Canada)'
-
+    config.enable_dependency_loading = true
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
