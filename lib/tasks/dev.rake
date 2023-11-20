@@ -7,7 +7,7 @@ task({ :sample_data => :environment }) do
   avatar_links2 = File.readlines("males.txt").map(&:chomp)
   puts "loaded males.txt"
   if Rails.env.development?
-    User.destroy_all
+    #User.destroy_all
   end
 
   if Rails.env.production?
