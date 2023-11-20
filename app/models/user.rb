@@ -32,7 +32,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  #mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
