@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.author = current_user
     @message.author_id = current_user.id
+    authorize @message
 
     respond_to do |format|
       if  @message.save
