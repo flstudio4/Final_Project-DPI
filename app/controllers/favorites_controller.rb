@@ -1,10 +1,12 @@
 class FavoritesController < ApplicationController
+  include ChatManagement
   layout 'custom'
-  before_action :set_favorite, only: %i[ show edit update destroy ]
+  before_action :set_favorite, only: [:destroy]
+  before_action :set_user, only: [:create]
 
   # GET /favorites or /favorites.json
   def index
-    @favorites = Favorite.all.where(:liking_user_id => current_user.id)
+    @favorites = Favorite.all.where(:liking_user_id => current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /favorites/1 or /favorites/1.json
@@ -22,50 +24,48 @@ class FavoritesController < ApplicationController
 
   # POST /favorites or /favorites.json
   def create
-    @favorite = Favorite.new(favorite_params)
+    @favorite = current_user.favorites.build(liked_user: @user)
 
-    respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to favorite_url(@favorite), notice: "Favorite was successfully created." }
-        format.json { render :show, status: :created, location: @favorite }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
+    if @favorite.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to profile_path(@user), notice: 'User was successfully added to favorites.' }
       end
-    end
-  end
-
-  # PATCH/PUT /favorites/1 or /favorites/1.json
-  def update
-    respond_to do |format|
-      if @favorite.update(favorite_params)
-        format.html { redirect_to favorite_url(@favorite), notice: "Favorite was successfully updated." }
-        format.json { render :show, status: :ok, location: @favorite }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
-      end
+    else
+      redirect_to profile_path(@user), alert: 'Unable to add user to favorites.'
     end
   end
 
   # DELETE /favorites/1 or /favorites/1.json
   def destroy
-    @favorite.destroy
-
-    respond_to do |format|
-      format.html { redirect_to favorites_url, notice: "Favorite was successfully destroyed." }
-      format.json { head :no_content }
+    @user = @favorite.liked_user
+    if @favorite.destroy
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to profile_path(@user), notice: 'User was successfully removed from favorites.' }
+      end
+    else
+      redirect_to profile_path(@user), alert: 'Unable to remove user from favorites.'
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_favorite
-      @favorite = Favorite.find(params[:id])
-    end
+  def send_message_to_profile
+    super(params[:id].to_i)
+  end
 
-    # Only allow a list of trusted parameters through.
-    def favorite_params
-      params.require(:favorite).permit(:liking_user_id, :liked_user_id)
-    end
+  private
+
+  def set_user
+    @user = User.find(params[:id] || params[:liked_user_id])
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_favorite
+    @favorite = Favorite.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def favorite_params
+    params.require(:favorite).permit(:liking_user_id, :liked_user_id)
+  end
 end

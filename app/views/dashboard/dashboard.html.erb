@@ -9,13 +9,12 @@
     </div>
   </div>
   <div class="col">
-
     <div class="card mx-auto mb-3">
-      <div class="card-header">
+      <div class="card-header text-center">
         Location
       </div>
       <div class="card-body">
-        <h3><%= current_user.country + ", " %><%= current_user.state + ", " %><%= current_user.city %></h3>
+        <h2><%= current_user.country + ", " %><%= current_user.state + ", " %><%= current_user.city %></h2>
       </div>
     </div>
 
@@ -33,15 +32,21 @@
         Statistics
       </div>
       <div class="card-body">
-        <h6>Chats - <%= @chats_count %></h6>
+        <span style="display: flex; justify-content: space-between;"><h6><i class="fa-solid fa-comments" style="color: cornflowerblue;"></i> Chats - <%= @chats_count %></h6>
+          <a href="/chats" style="text-align: right;">details</a>
+        </span>
         <hr>
-        <h6>Messages sent - <%= @messages_count %></h6>
+        <h6><i class="fa-solid fa-message" style="color: blueviolet;"></i> Messages sent - <%= @messages_count %></h6>
         <hr>
-        <span style="display: flex; justify-content: space-between;"><h6>Blocked users - <%= @blocked_users.count %></h6>
+        <span style="display: flex; justify-content: space-between;"><h6><i class="fa-solid fa-lock" style="color: red;"></i> Blocked users - <%= @blocked_users_count %></h6>
           <a href="/blocks" style="text-align: right;">details</a>
         </span>
         <hr>
-        <h6>Visitors - N/A </h6>
+        <span style="display: flex; justify-content: space-between;"><h6><i class="fa-solid fa-star" style="color: #858d11;"></i> Favorites - <%= @favorite_users_count %></h6>
+          <a href="/favorites" style="text-align: right;">details</a>
+        </span>
+        <hr>
+        <h6><i class="fa-solid fa-eye" style="color: darkgreen"></i> Visitors - N/A </h6>
       </div>
     </div>
 

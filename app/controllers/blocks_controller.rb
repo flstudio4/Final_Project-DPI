@@ -24,6 +24,7 @@ class BlocksController < ApplicationController
   # POST /blocks or /blocks.json
   def create
     @block = current_user.blocked_users.new(blocked_id: params[:blocked_id])
+    authorize @block
     if @block.save
       respond_to do |format|
         format.turbo_stream
@@ -50,6 +51,7 @@ class BlocksController < ApplicationController
   # DELETE /blocks/1 or /blocks/1.json
   def destroy
     @block = current_user.blocked_users.find_by(id: params[:id])
+    authorize @block
     @blocked_user = @block.blocked if @block.present?
 
     if @block&.destroy
@@ -70,6 +72,6 @@ class BlocksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def block_params
-      params.require(:block).permit(:blocker_id, :blocked_id)
+      params.require(:block).permit(:blocked_id)
     end
 end

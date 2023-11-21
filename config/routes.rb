@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/search', to: 'profiles#search'
   get 'profiles/:id/send_message', to: 'chats#send_message', as: :send_message
   get 'profiles/:id/send_message', to: 'profiles#send_message_to_profile', as: :send_message_to_profile
-
+  get 'favorites/:id/send_message', to: 'favorites#send_message_to_liked  ', as: :send_message_to_liked
 
   devise_for :users
 
@@ -22,16 +22,18 @@ Rails.application.routes.draw do
     member do
       post 'block'
       delete 'unblock'
+      post 'like'
+      delete 'unlike'
     end
   end
 
   resources :blocks, only: [:index, :create, :destroy]
   resources :favorites
-  resources :messages
+  resources :messages, only: [:create, :destroy]
   resources :chats, only: [:index, :create, :destroy]
 
   resources :chats do
-    resources :messages
+    resources :messages, only: [:create, :destroy]
   end
 
 end

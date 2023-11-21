@@ -60,6 +60,27 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def like
+    @user = User.find(params[:id])
+    Favorite.create(liking_user: current_user, liked_user: @user)
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @user, notice: 'User has been added to favorites.' }
+    end
+  end
+
+  def unlike
+    @user = User.find(params[:id])
+    favorite = Favorite.find_by(liking_user: current_user, liked_user: @user)
+    favorite&.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @user, notice: 'User has been removed from favorites.' }
+    end
+  end
+
   private
   def post_params
     params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)

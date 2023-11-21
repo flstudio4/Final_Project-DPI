@@ -1,0 +1,3 @@
+<%= turbo_stream.update "like_button" do %>
+  <%= render partial: 'profiles/unlike_button', locals: { user: @user } %>
+<% end %>

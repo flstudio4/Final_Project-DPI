@@ -1,0 +1,3 @@
+<%= link_to like_profile_path(@user), method: :post, data: { turbo_method: :post, turbo_frame: "like_button" }, class: "btn btn-outline-warning mb-1 col-6 d-md-block mx-auto" do %>
+  <i class="fa-solid fa-heart"></i> Like
+<% end %>

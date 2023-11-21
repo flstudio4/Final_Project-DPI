@@ -66,6 +66,13 @@ class User < ApplicationRecord
   has_many :blocked_users, class_name: 'Block', foreign_key: 'blocker_id', dependent: :destroy
   has_many :blockers, class_name: 'Block', foreign_key: 'blocked_id', dependent: :destroy
 
+  has_many :favorites, class_name: 'Favorite', foreign_key: 'liking_user_id', dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :liked_user
+
+  # Association to access the users who have favorited the current user
+  has_many :favorited_by, class_name: 'Favorite', foreign_key: 'liked_user_id', dependent: :destroy
+  has_many :favoriters, through: :favorited_by, source: :liking_user
+
   scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
   scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }
 
