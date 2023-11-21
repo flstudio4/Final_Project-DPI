@@ -52,7 +52,9 @@
 
           <div class="form-group">
             <% avatar_was_invalid = resource.errors.include?(:avatar) %>
-
+            <% if resource.errors.include?(:avatar) %>
+              <p class="text-danger">Please re-select the file to upload.</p>
+            <% end %>
             <%= f.label :avatar, "Avatar" %>
             <%= f.file_field :avatar, class: "form-control#{' is-invalid' if avatar_was_invalid}" %>
 
@@ -86,7 +88,7 @@
             <% state_was_invalid = resource.errors.include?(:state) %>
 
             <%= f.label :state, "State" %>
-            <%= f.select :state, options_for_select(us_states), {}, class: "form-control#{' is-invalid' if state_was_invalid}" %>
+            <%= f.select :state, options_for_select(us_states, @user.state), {}, class: "form-control#{' is-invalid' if state_was_invalid}" %>
 
             <% if state_was_invalid %>
               <% resource.errors.full_messages_for(:state).each do |message| %>
@@ -220,19 +222,18 @@
 
           <div class="form-group">
             <% password_was_invalid = resource.errors.include?(:password) %>
-
-            <% password_class = "form-control" %>
-
-            <% if was_validated %>
-              <% if password_was_invalid %>
-                <% password_class << " is-invalid" %>
-              <% else %>
-                <% password_class << " is-valid" %>
-              <% end %>
-            <% end %>
+            <% password_class = 'form-control' + (
+              if was_validated
+                if password_was_invalid
+                  ' is-invalid'
+                else
+                  resource.password.present? ? ' is-valid' : ''
+                end
+              else
+                ''
+              end) %>
 
             <%= f.label :password %>
-
             <%= f.password_field :password, class: password_class %>
 
             <% if password_was_invalid %>
@@ -246,19 +247,18 @@
 
           <div class="form-group">
             <% password_confirmation_was_invalid = resource.errors.include?(:password_confirmation) %>
-
-            <% password_confirmation_class = "form-control" %>
-
-            <% if was_validated %>
-              <% if password_confirmation_was_invalid %>
-                <% password_confirmation_class << " is-invalid" %>
-              <% else %>
-                <% password_confirmation_class << " is-valid" %>
-              <% end %>
-            <% end %>
+            <% password_confirmation_class = 'form-control' + (
+              if was_validated
+                if password_confirmation_was_invalid
+                  ' is-invalid'
+                else
+                  resource.password_confirmation.present? && resource.password == resource.password_confirmation ? ' is-valid' : ''
+                end
+              else
+                ''
+              end) %>
 
             <%= f.label :password_confirmation %>
-
             <%= f.password_field :password_confirmation, class: password_confirmation_class %>
 
             <% if password_confirmation_was_invalid %>
@@ -269,6 +269,7 @@
               <% end %>
             <% end %>
           </div>
+
 
           <%= f.button class: "btn btn-outline-primary btn-block mt-3" %>
 
