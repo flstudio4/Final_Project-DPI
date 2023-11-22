@@ -81,10 +81,13 @@
 </div>
 
 <script>
-    // Function to scroll to the bottom of the chat
     function scrollToBottom() {
         var messagesContainer = document.querySelector('.card-body');
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        } else {
+            console.log("Just ignore me");
+        }
     }
 
     // Scroll to the bottom when Turbo loads the page

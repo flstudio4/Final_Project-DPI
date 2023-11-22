@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   layout 'custom'
 
   def index
-    @users = User.all.order(:created_at => :asc).paginate(page: params[:page], per_page: 10)
+    @users = User.all.order(:created_at => :desc).paginate(page: params[:page], per_page: 10)
     render 'admin/admin_panel'
   end
 
