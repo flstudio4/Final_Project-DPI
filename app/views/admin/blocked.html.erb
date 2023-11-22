@@ -1,0 +1,6 @@
+<% provide(:title, "Blocked") %>
+<% content_for :h1, 'Blocked' %>
+
+<% @blocked_by.each do |block| %>
+  <p>Block ID: <%= block.id %>, Blocker: <%= block.blocker_id %>, Blocked: <%= block.blocked_id %></p>
+<% end %>

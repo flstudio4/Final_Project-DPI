@@ -1,0 +1,31 @@
+<% provide(:title, "Admin") %>
+
+<div class="container mt-4">
+  <% @users.each do |user| %>
+    <div class="row mb-2" id="<%= dom_id(user) %>">
+      <div class="col-12 mx-auto">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <%= link_to profile_path(user), class: "text-decoration-none" do %>
+              <img src="<%= user.avatar %>" class="rounded-circle me-2" style="width: 50px; height: 50px;" alt="User Avatar">
+              <span><%= user.name.capitalize %></span>
+            <% end %>
+            <div class="ms-auto">
+              <%= link_to send_message_to_profile_path(user), class: "btn btn-outline-primary btn-sm" do %>
+                <i class="fa-solid fa-message"></i> Message
+              <% end %>
+              <%= link_to profile_path(user), class: "btn btn-outline-secondary btn-sm" do %>
+                <i class="fa-solid fa-user"></i> Profile
+              <% end %>
+              <%= link_to user_full_info_path(user), class: "btn btn-outline-danger btn-sm" do %>
+                <i class="fa-regular fa-address-card"></i> Info
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate @users %>
+</div>

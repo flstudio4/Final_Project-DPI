@@ -1,0 +1,6 @@
+<% provide(:title, "Liked") %>
+<% content_for :h1, 'Liked' %>
+
+<% @liked_by.each do |like| %>
+  <p>Like ID: <%= like.id %>, Liking User: <%= like.liking_user_id %>, Liked User: <%= like.liked_user_id %></p>
+<% end %>

@@ -1,0 +1,60 @@
+<% provide(:title, "#{@user.name.capitalize} info") %>
+<div class="container">
+  <div class="card-group">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3><%= @user.name.capitalize %></h3>
+      </div>
+      <div class="card-body text-center">
+        <%= image_tag @user.avatar.url, style: 'width: 400px;' %>
+      </div>
+      <div class="card-footer">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <%= link_to chats_admin_path, class: "btn btn-outline-primary btn-sm" do %>
+            <i class="fa-solid fa-message"></i> Chats
+          <% end %>
+          <%= link_to blocked_admin_path, class: "btn btn-outline-danger btn-sm" do %>
+            <i class="fa-solid fa-lock"></i> Blocked by
+          <% end %>
+          <%= link_to blocks_admin_path, class: "btn btn-outline-danger btn-sm" do %>
+            <i class="fa-solid fa-lock"></i> Blocked users
+          <% end %>
+          <%= link_to likes_admin_path, class: "btn btn-outline-warning btn-sm" do %>
+            <i class="fa-solid fa-message"></i> Liked users
+          <% end %>
+          <%= link_to liked_admin_path, class: "btn btn-outline-warning btn-sm" do %>
+            <i class="fa-solid fa-message"></i> Liked by
+          <% end %>
+          <%= link_to delete_user_path(@user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this chat?' }, class: "btn btn-outline-danger btn-sm" do %>
+            <i class="fa-solid fa-circle-xmark"></i> Delete User
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>Info</h3>
+      </div>
+      <div class="card-body">
+        <p>user_id: <%= @user.id %></p>
+        <p>username: <%= @user.username %></p>
+        <p>Name: <%= @user.name %></p>
+        <p>Email: <%= @user.email %></p>
+        <hr>
+        <p>Gender: <%= @user.gender %></p>
+        <p>Country: <%= @user.country %></p>
+        <p>State: <%= @user.state %></p>
+        <p>City: <%= @user.city %></p>
+        <p>Bio: <%= @user.bio %></p>
+        <p>Date of Birth: <%= @user.dob %></p>
+        <hr>
+        <p>created_at: <%= @user.created_at %></p>
+        <p>updated_at: <%= @user.updated_at %></p>
+        <p>confirmed_at: <%= @user.confirmed_at %></p>
+        <p>confirmation_sent_at: <%= @user.confirmation_sent_at %></p>
+        <p>unconfirmed_email: <%= @user.unconfirmed_email %></p>
+      </div>
+    </div>
+  </div>
+</div>

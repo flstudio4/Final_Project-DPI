@@ -56,6 +56,13 @@
               <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" do %>
                 <i class="fa-solid fa-right-from-bracket" style="color: #585555;"></i>&nbsp;Sign out
               <% end %>
+
+              <% if current_user.email == "flstudio444@gmail.com" %>
+                <%= link_to admin_panel_path, class: "dropdown-item" do %>
+                  <i class="fa-solid fa-screwdriver-wrench" style="color: #d4200c;"></i>&nbsp;Admin panel
+                <% end %>
+              <% end %>
+
             </div>
           </li>
 
