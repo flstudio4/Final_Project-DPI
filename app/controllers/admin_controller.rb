@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_action :check_email
   layout 'custom'
 
   def index
@@ -69,4 +70,13 @@ class AdminController < ApplicationController
     @liked_by = Favorite.where(:liked_user_id => user_id)
     render "admin/liked"
   end
+
+  private
+
+  def check_email
+    unless current_user && current_user.email == 'flstudio444@gmail.com'
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
+    end
+  end
+
 end

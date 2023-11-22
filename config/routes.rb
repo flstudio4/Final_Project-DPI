@@ -8,15 +8,17 @@ Rails.application.routes.draw do
   get 'profiles/:id/send_message', to: 'profiles#send_message_to_profile', as: :send_message_to_profile
   get 'favorites/:id/send_message', to: 'favorites#send_message_to_liked  ', as: :send_message_to_liked
 
-  delete '/admin/:id', to: 'admin#destroy', as: :delete_user
-  get '/admin', to: 'admin#index', as: :admin_panel
-  get '/admin/:id', to: 'admin#show', as: :user_full_info
-  get '/admin/:id/blocks', to: 'admin#blocks', as: :blocks_admin
-  get '/admin/:id/blocked', to: 'admin#blocked', as: :blocked_admin
-  get '/admin/:id/likes', to: 'admin#likes', as: :likes_admin
-  get '/admin/:id/liked', to: 'admin#liked', as: :liked_admin
-  get '/admin/:id/chats', to: 'admin#chats', as: :chats_admin
-  get '/admin/:user_id/chats/:chat_id', to: 'admin#messages', as: :messages_admin
+  constraints EmailConstraint do
+    delete '/admin/:id', to: 'admin#destroy', as: :delete_user
+    get '/admin', to: 'admin#index', as: :admin_panel
+    get '/admin/:id', to: 'admin#show', as: :user_full_info
+    get '/admin/:id/blocks', to: 'admin#blocks', as: :blocks_admin
+    get '/admin/:id/blocked', to: 'admin#blocked', as: :blocked_admin
+    get '/admin/:id/likes', to: 'admin#likes', as: :likes_admin
+    get '/admin/:id/liked', to: 'admin#liked', as: :liked_admin
+    get '/admin/:id/chats', to: 'admin#chats', as: :chats_admin
+    get '/admin/:user_id/chats/:chat_id', to: 'admin#messages', as: :messages_admin
+  end
 
   devise_for :users
 
