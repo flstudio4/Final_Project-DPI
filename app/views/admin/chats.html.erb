@@ -1,9 +1,7 @@
 <% provide(:title, "Chats") %>
 <% content_for :h1, 'Chats' %>
 
-<!-- app/views/admin/chats.html.erb -->
 <% @chats.each do |chat| %>
   <p>Chat ID: <%= chat.id %>, Sender: <%= chat.sender_id %>, Receiver: <%= chat.receiver_id %></p>
-  <!-- More chat details here -->
 <% end %>
 

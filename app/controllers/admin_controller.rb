@@ -46,14 +46,14 @@ class AdminController < ApplicationController
   def blocks
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @blocker_to = Block.where(:blocker_id => user_id)
+    @blocker_to = Block.where(:blocker_id => user_id).paginate(page: params[:page], per_page: 10)
     render "admin/blocks"
   end
 
   def blocked
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @blocked_by = Block.where(:blocked_id => user_id)
+    @blocked_by = Block.where(:blocked_id => user_id).paginate(page: params[:page], per_page: 10)
     render "admin/blocked"
   end
 
