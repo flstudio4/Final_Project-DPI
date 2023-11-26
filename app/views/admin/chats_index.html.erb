@@ -1,4 +1,4 @@
-<% provide(:title, "#{@user.name}'s chats") %>
+<% provide(:title, "#{@user.name}'s chats".html_safe) %>
 <% content_for :h1, "#{@user.name}'s chats" %>
 
 <%= stylesheet_link_tag "chats" %>

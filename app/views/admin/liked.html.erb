@@ -1,6 +1,22 @@
-<% provide(:title, "Liked") %>
-<% content_for :h1, 'Liked' %>
+<% provide(:title, "Liked by") %>
+<% content_for :h1, "#{@user.name.capitalize} liked by these users" %>
 
-<% @liked_by.each do |like| %>
-  <p>Like ID: <%= like.id %>, Liking User: <%= like.liking_user_id %>, Liked User: <%= like.liked_user_id %></p>
-<% end %>
+<%= link_to 'Back to user info', user_full_info_path(@user), class: 'btn btn-outline-primary me-auto' %>
+
+<div class="container mt-4">
+  <% @liked_by.each do |favorite| %>
+    <div class="row mb-2" id="<%= dom_id(favorite) %>">
+      <div class="col-8 mx-auto">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <%= link_to profile_path(favorite.liking_user), class: "text-decoration-none" do %>
+              <img src="<%= favorite.liking_user.avatar %>" class="rounded-circle me-2" style="width: 50px; height: 50px;" alt="User Avatar">
+              <span><%= favorite.liking_user.name.capitalize %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate @liked_by, class: 'pagination justify-content-center' %>
+</div>

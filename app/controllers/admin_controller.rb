@@ -46,28 +46,28 @@ class AdminController < ApplicationController
   def blocks
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @blocker_to = Block.where(:blocker_id => user_id).paginate(page: params[:page], per_page: 10)
+    @blocker_to = Block.where(:blocker_id => user_id).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     render "admin/blocks"
   end
 
   def blocked
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @blocked_by = Block.where(:blocked_id => user_id).paginate(page: params[:page], per_page: 10)
+    @blocked_by = Block.where(:blocked_id => user_id).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     render "admin/blocked"
   end
 
   def likes
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @likes = Favorite.where(:liking_user_id => user_id)
+    @likes = Favorite.where(:liking_user_id => user_id).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     render "admin/likes"
   end
 
   def liked
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @liked_by = Favorite.where(:liked_user_id => user_id)
+    @liked_by = Favorite.where(:liked_user_id => user_id).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     render "admin/liked"
   end
 

@@ -1,13 +1,7 @@
-<% provide(:title, "#{@user.name}'s messages") %>
+<% provide(:title, "#{@user.name}'s messages".html_safe) %>
 <% content_for :h1, "#{@user.name}'messages" %>
 
 <%= stylesheet_link_tag "chats" %>
-
-<% if @user == @chat.sender %>
-  <% provide(:title, "Chat with #{@chat.receiver.name.capitalize}") %>
-<% else %>
-  <% provide(:title, "Chat with #{@chat.sender.name.capitalize}") %>
-<% end %>
 
 <div class="container my-4">
   <div class="card" style="height: calc(100vh - 150px);">
@@ -45,6 +39,14 @@
                   <div class="d-flex align-items-center">
                     <div class="rounded px-2 py-1" style="background-color: white; word-wrap: break-word; flex-grow: 1;">
                       <p class="mb-0" style="word-break: break-word;"><%= message.content %></p>
+                    </div>
+                    <div class="ms-2"> <!-- Margin from the message body -->
+                      <%= link_to message_path(message),
+                                  method: :delete,
+                                  data: { turbo_method: :delete },
+                                  title: 'Delete Message', class: "icon-link" do %>
+                        <i class="fa-regular fa-trash-can" style="color: #f80303;"></i>
+                      <% end %>
                     </div>
                   </div>
                 </div>
