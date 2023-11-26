@@ -14,6 +14,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  gender                 :string
+#  last_seen_at           :datetime
 #  name                   :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -79,6 +80,11 @@ class User < ApplicationRecord
   def age
     (Date.today - self.dob).to_i / 365
   end
+
+  def online?
+    last_seen_at.present? && last_seen_at > 5.minutes.ago
+  end
+
 
   def self.ransackable_attributes(auth_object = nil)
     ["state", "city", "country", "age_min", "age_max"]
