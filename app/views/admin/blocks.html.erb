@@ -1,6 +1,8 @@
 <% provide(:title, "Blocks") %>
 <% content_for :h1, "#{@user.name.capitalize} blocked these users" %>
 
+<%= link_to 'Back to user info', user_full_info_path(@user), class: 'btn btn-outline-primary mb-2' %>
+
 <div class="container mt-4">
   <% @blocker_to.each do |block| %>
     <div class="row mb-2" id="<%= dom_id(block.blocked) %>">
