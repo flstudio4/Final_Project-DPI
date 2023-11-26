@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   constraints EmailConstraint do
     delete '/admin/:id', to: 'admin#destroy', as: :delete_user
     get '/admin', to: 'admin#index', as: :admin_panel
-    get '/admin/:id', to: 'admin#show', as: :user_full_info
+    get '/admin/:id', to: 'admin#user_info', as: :user_full_info
     get '/admin/:id/blocks', to: 'admin#blocks', as: :blocks_admin
     get '/admin/:id/blocked', to: 'admin#blocked', as: :blocked_admin
     get '/admin/:id/likes', to: 'admin#likes', as: :likes_admin

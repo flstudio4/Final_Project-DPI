@@ -1,7 +1,0 @@
-<% provide(:title, "Chats") %>
-<% content_for :h1, 'Chats' %>
-
-<% @chats.each do |chat| %>
-  <p>Chat ID: <%= chat.id %>, Sender: <%= chat.sender_id %>, Receiver: <%= chat.receiver_id %></p>
-<% end %>
-

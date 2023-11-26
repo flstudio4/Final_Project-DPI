@@ -7,10 +7,10 @@ class AdminController < ApplicationController
     render 'admin/admin_panel'
   end
 
-  def show
+  def user_info
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    render "admin/show"
+    render "admin/user_info"
   end
 
   def destroy
@@ -32,15 +32,15 @@ class AdminController < ApplicationController
     @chat = Chat.find(chat_id)
     @chats = Chat.where(sender_id: user_id).or(Chat.where(receiver_id: user_id))
     @messages = Message.where(chat_id: chat_id)
-    render "admin/messages"
+    render "admin/chats_show"
   end
 
   def chats
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @chats = Chat.where(sender_id: user_id).or(Chat.where(receiver_id: user_id))
+    @chats = Chat.where(sender_id: user_id).or(Chat.where(receiver_id: user_id)).paginate(page: params[:page], per_page: 10)
     @messages = Message.where(:author_id => user_id)
-    render "admin/chats"
+    render "admin/chats_index"
   end
 
   def blocks

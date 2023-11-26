@@ -1,6 +1,0 @@
-<% provide(:title, "Messages") %>
-<% content_for :h1, 'Messages' %>
-
-<% @messages.each do |message| %>
-  <p>Message ID: <%= message.id %>, Author: <%= message.author_id %>, Content: <%= message.content %></p>
-<% end %>
