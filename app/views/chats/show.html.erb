@@ -89,67 +89,67 @@
   </div>
 </div>
 
-<script>
-    function scrollToBottom() {
-        var messagesContainer = document.querySelector('.card-body');
-        if (messagesContainer) {
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        } else {
-            console.log("Just ignore me");
-        }
-    }
+<!--<script>-->
+<!--    function scrollToBottom() {-->
+<!--        var messagesContainer = document.querySelector('.card-body');-->
+<!--        if (messagesContainer) {-->
+<!--            messagesContainer.scrollTop = messagesContainer.scrollHeight;-->
+<!--        } else {-->
+<!--            console.log("Just ignore me");-->
+<!--        }-->
+<!--    }-->
 
-    // Scroll to the bottom when Turbo loads the page
-    document.addEventListener('turbo:load', scrollToBottom);
+<!--    // Scroll to the bottom when Turbo loads the page-->
+<!--    document.addEventListener('turbo:load', scrollToBottom);-->
 
-    // MutationObserver to detect when new messages are added and scroll to bottom
-    var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-            if (mutation.addedNodes.length) {
-                scrollToBottom();
-            }
-        });
-    });
+<!--    // MutationObserver to detect when new messages are added and scroll to bottom-->
+<!--    var observer = new MutationObserver(function (mutations) {-->
+<!--        mutations.forEach(function (mutation) {-->
+<!--            if (mutation.addedNodes.length) {-->
+<!--                scrollToBottom();-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
 
-    // Start observing the target node for configured mutations
-    observer.observe(document.getElementById('messages'), {childList: true, subtree: true});
+<!--    // Start observing the target node for configured mutations-->
+<!--    observer.observe(document.getElementById('messages'), {childList: true, subtree: true});-->
 
-    // Disconnect the observer when it's no longer needed to prevent memory leaks
-    function disconnectObserver() {
-        observer.disconnect();
-    }
+<!--    // Disconnect the observer when it's no longer needed to prevent memory leaks-->
+<!--    function disconnectObserver() {-->
+<!--        observer.disconnect();-->
+<!--    }-->
 
 
-    document.addEventListener('turbo:load', function () {
-        var textarea = document.querySelector('.chat-textarea');
+<!--    document.addEventListener('turbo:load', function () {-->
+<!--        var textarea = document.querySelector('.chat-textarea');-->
 
-        function resizeTextarea() {
-            textarea.style.height = '0'; // Reset the height
-            textarea.style.height = textarea.scrollHeight + 'px'; // Set new height
-        }
+<!--        function resizeTextarea() {-->
+<!--            textarea.style.height = '0'; // Reset the height-->
+<!--            textarea.style.height = textarea.scrollHeight + 'px'; // Set new height-->
+<!--        }-->
 
-        if (textarea) {
-            textarea.addEventListener('input', resizeTextarea);
-            resizeTextarea(); // Adjust for initial content
-        }
+<!--        if (textarea) {-->
+<!--            textarea.addEventListener('input', resizeTextarea);-->
+<!--            resizeTextarea(); // Adjust for initial content-->
+<!--        }-->
 
-        var messageForm = document.getElementById('new_message_form');
-        if (messageForm) {
-            messageForm.addEventListener('submit', function () {
-                // Resize the textarea right before the form is submitted
-                resizeTextarea();
+<!--        var messageForm = document.getElementById('new_message_form');-->
+<!--        if (messageForm) {-->
+<!--            messageForm.addEventListener('submit', function () {-->
+<!--                // Resize the textarea right before the form is submitted-->
+<!--                resizeTextarea();-->
 
-                // Note: No event.preventDefault(), allow the form to submit
-            });
+<!--                // Note: No event.preventDefault(), allow the form to submit-->
+<!--            });-->
 
-            // Listen for turbo stream submit-end event
-            document.addEventListener('turbo:submit-end', (event) => {
-                if (event.detail.success) {
-                    // Reset the form and resize the textarea after the message is sent
-                    messageForm.reset();
-                    resizeTextarea(); // Resize after resetting the form
-                }
-            });
-        }
-    });
-</script>
+<!--            // Listen for turbo stream submit-end event-->
+<!--            document.addEventListener('turbo:submit-end', (event) => {-->
+<!--                if (event.detail.success) {-->
+<!--                    // Reset the form and resize the textarea after the message is sent-->
+<!--                    messageForm.reset();-->
+<!--                    resizeTextarea(); // Resize after resetting the form-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
