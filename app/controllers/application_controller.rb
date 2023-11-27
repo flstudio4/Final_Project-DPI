@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   before_action :authenticate_user!, except: [:welcome]
-  before_action :update_last_seen_at, unless: :devise_controller?
+  # before_action :update_last_seen_at, unless: :devise_controller?
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
