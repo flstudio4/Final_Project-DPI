@@ -1,8 +1,6 @@
 <% provide(:title, "#{@user.name}'s messages".html_safe) %>
 <% content_for :h1, "#{@user.name}'messages" %>
 
-<%= stylesheet_link_tag "chats" %>
-
 <div class="container my-4">
   <div class="card" style="height: calc(100vh - 150px);">
     <div class="card-header d-flex justify-content-between align-items-center">
