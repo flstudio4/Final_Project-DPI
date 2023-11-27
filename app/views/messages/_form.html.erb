@@ -1,3 +1,46 @@
+<style>
+    .chat-input-container {
+        display: flex;
+        align-items: center;
+        padding: 6px 12px;
+        background: #FFFFFF; /* White background */
+        border: 1px solid #EAEAEA; /* Light border for the container */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        border-radius: 20px; /* Rounded corners */
+        position: relative; /* Context for absolute positioning */
+        margin: 10px; /* Spacing from the window edges */
+    }
+
+    .chat-textarea:focus {
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glowing border effect on focus */
+    }
+
+    .chat-textarea {
+        flex-grow: 1;
+        border: none; /* Remove border to prevent nested box appearance */
+        background: transparent; /* Match background with the container */
+        padding: 8px 16px; /* Adjust padding as needed */
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 15px; /* Slightly less than container to fit seamlessly */
+        resize: none; /* Remove the resize handle */
+        outline: none; /* Remove the outline on focus */
+    }
+
+    .send-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        margin-left: 8px; /* Space between the textarea and the button */
+    }
+
+    .send-button .fa-paper-plane {
+        color: #007BFF; /* Use a color that stands out, such as Bootstrap's blue */
+        font-size: 24px; /* Icon size */
+    }
+</style>
+
 <%= form_with model: @message, data: { turbo_frame: "new_message" }, id: 'new_message_form', local: false do |form| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">

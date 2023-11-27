@@ -31,9 +31,9 @@
                   <p class="mb-1 text-muted text-truncate">
                     <% if last_message %>
                       <% if last_message.author_id == current_user.id %>
-                        <%= "You: #{truncate(last_message.content, length: 20)}".html_safe %>
+                        <%= "You: #{truncate(last_message.content, length: 15)}".html_safe %>
                       <% else %>
-                        <%= truncate(last_message.content, length: 20).html_safe %>
+                        <%= truncate(last_message.content, length: 15).html_safe %>
                       <% end %>
                     <% else %>
                       No messages yet
