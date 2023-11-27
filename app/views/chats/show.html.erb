@@ -11,6 +11,69 @@
 
 <%#= stylesheet_link_tag "chats" %>
 
+<style>
+    /* Container for the chat input and send button */
+    .chat-input-container {
+        display: flex;
+        align-items: center;
+        padding: 6px 12px;
+        background: #FFFFFF; /* White background */
+        border: 1px solid #EAEAEA; /* Light border for the container */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        border-radius: 20px; /* Rounded corners */
+        position: relative; /* Context for absolute positioning */
+        margin: 10px; /* Spacing from the window edges */
+    }
+
+    /* Textarea styling */
+    .chat-textarea {
+        flex-grow: 1;
+        border: none; /* Remove border to prevent nested box appearance */
+        background: transparent; /* Match background with the container */
+        padding: 8px 16px; /* Adjust padding as needed */
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 15px; /* Slightly less than container to fit seamlessly */
+        resize: none; /* Remove the resize handle */
+        outline: none; /* Remove the outline on focus */
+    }
+
+    /* Send button styling */
+    .send-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        margin-left: 8px; /* Space between the textarea and the button */
+    }
+
+    /* Send button icon */
+    .send-button .fa-paper-plane {
+        color: #007BFF; /* Use a color that stands out, such as Bootstrap's blue */
+        font-size: 24px; /* Icon size */
+    }
+
+    /* Adjust the focus style */
+    .chat-textarea:focus {
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glowing border effect on focus */
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: rotate(0deg); }
+        10% { transform: rotate(12deg); }
+        20% { transform: rotate(-14deg); }
+        30% { transform: rotate(14deg); }
+        40%, 50%, 60% { transform: rotate(-12deg); }
+        70%, 80%, 90% { transform: rotate(12deg); }
+    }
+
+    .icon-link:hover .fa-trash-can {
+        animation: shake 0.5s; /* Adjust duration as needed */
+        animation-iteration-count: infinite;
+    }
+
+</style>
+
 <% if current_user == @chat.sender %>
   <% provide(:title, "Chat with #{@chat.receiver.name.capitalize}") %>
 <% else %>
