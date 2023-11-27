@@ -9,7 +9,7 @@
     });
 </script>
 
-<%= stylesheet_link_tag "chats" %>
+<%#= stylesheet_link_tag "chats" %>
 
 <% if current_user == @chat.sender %>
   <% provide(:title, "Chat with #{@chat.receiver.name.capitalize}") %>
