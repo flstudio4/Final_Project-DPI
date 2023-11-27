@@ -57,17 +57,3 @@
     animation: shake 0.5s; /* Adjust duration as needed */
     animation-iteration-count: infinite;
 }
-
-.profile-container {
-    position: relative;
-    display: inline-block;
-}
-
-.status-icon {
-    width: 12px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-    /* Adjust size and other styles as needed */
-}

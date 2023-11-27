@@ -18,16 +18,11 @@
 
               <%= link_to "chats/#{chat.id}", class: 'd-flex align-items-center text-decoration-none flex-grow-1' do %>
 
-                <div class="profile-container">
                 <% if chat_link && chat_link.avatar.present? %>
                   <%= image_tag chat_link.avatar.url, class: 'rounded-circle', width: 50, height: 50 %>
-                    <% if chat_link.online? %>
-                      <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #08f750;"></i>
-                    <% end %>
                 <% else %>
                   <img src="default_avatar.jpg" class="rounded-circle" width="50" height="50">
                 <% end %>
-                </div>
 
                 <div class="ms-3 d-flex flex-column">
                   <% if chat_link %>
