@@ -8,7 +8,7 @@ Rails.application.configure do
     port: 587,
     domain: 'where.singles', # replace with your domain
     user_name: 'apikey', # this is the string literal 'apikey', not the ID of your API key
-    password: ENV['sendgrid_api_key'], # replace with your SendGrid API key
+    password: ENV['API_SENDGRID'], # replace with your SendGrid API key
     authentication: 'plain',
     enable_starttls_auto: true
   }
