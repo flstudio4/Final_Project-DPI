@@ -12,17 +12,43 @@
 
 <style>
     @keyframes shake {
-        0%, 100% { transform: rotate(0deg); }
-        10% { transform: rotate(12deg); }
-        20% { transform: rotate(-14deg); }
-        30% { transform: rotate(14deg); }
-        40%, 50%, 60% { transform: rotate(-12deg); }
-        70%, 80%, 90% { transform: rotate(12deg); }
+        0%, 100% {
+            transform: rotate(0deg);
+        }
+        10% {
+            transform: rotate(12deg);
+        }
+        20% {
+            transform: rotate(-14deg);
+        }
+        30% {
+            transform: rotate(14deg);
+        }
+        40%, 50%, 60% {
+            transform: rotate(-12deg);
+        }
+        70%, 80%, 90% {
+            transform: rotate(12deg);
+        }
     }
 
     .icon-link:hover .fa-trash-can {
         animation: shake 0.5s; /* Adjust duration as needed */
         animation-iteration-count: infinite;
+    }
+
+    .profile-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .status-icon {
+        width: 12px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        /* Adjust size and other styles as needed */
     }
 </style>
 
@@ -38,12 +64,22 @@
       <%= link_to 'Back to chats', "#", class: 'btn btn-outline-primary me-auto', id: 'back-button', onclick: "event.preventDefault(); history.back();" %>
 
       <div class="d-flex flex-grow-1 justify-content-center align-items-center">
-        <% if current_user == @chat.sender %>
-          <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.receiver_id}" %>&nbsp;
-          <h4 class="mb-0"><%= "Chat with #{@chat.receiver.name.capitalize}" %></h4>
-        <% else %>
-          <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender_id}" %>&nbsp;
+        <% if current_user == @chat.receiver %>
+          <div class="profile-container">
+            <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender_id}" %>&nbsp;
+            <% if @chat.sender.online? %>
+              <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #3ef308;"></i>
+            <% end %>
+          </div>
           <h4 class="mb-0"><%= "Chat with #{@chat.sender.name.capitalize}" %></h4>
+        <% else %>
+          <div class="profile-container">
+            <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender_id}" %>&nbsp;
+            <% if @chat.receiver.online? %>
+              <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #3ef308;"></i>
+            <% end %>
+          </div>
+          <h4 class="mb-0"><%= "Chat with #{@chat.receiver.name.capitalize}" %></h4>
         <% end %>
       </div>
     </div>

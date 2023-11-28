@@ -2,7 +2,21 @@
 <% content_for :h1, 'My Chats' %>
 
 <%#= stylesheet_link_tag "chats" %>
+<style>
+    .profile-container {
+        position: relative;
+        display: inline-block;
+    }
 
+    .status-icon {
+        width: 12px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        /* Adjust size and other styles as needed */
+    }
+</style>
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -17,11 +31,16 @@
               <% last_message = chat.messages.last %>
 
               <%= link_to "chats/#{chat.id}", class: 'd-flex align-items-center text-decoration-none flex-grow-1' do %>
-                <% if chat_link && chat_link.avatar.present? %>
-                  <%= image_tag chat_link.avatar.url, class: 'rounded-circle', width: 50, height: 50 %>
-                <% else %>
-                  <img src="default_avatar.jpg" class="rounded-circle" width="50" height="50">
-                <% end %>
+                <div class="profile-container">
+                  <% if chat_link && chat_link.avatar.present? %>
+                    <%= image_tag chat_link.avatar.url, class: 'rounded-circle', width: 50, height: 50 %>
+                    <% if chat_link.online? %>
+                      <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #3ef308;"></i>
+                    <% end %>
+                  <% else %>
+                    <img src="default_avatar.jpg" class="rounded-circle" width="50" height="50">
+                  <% end %>
+                </div>
                 <div class="ms-3 d-flex flex-column">
                   <% if chat_link %>
                     <h5 class="mb-1 text-dark flex-grow-1 text-truncate"><%= chat_link.name.capitalize %></h5>
