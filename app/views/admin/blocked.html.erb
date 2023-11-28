@@ -1,7 +1,7 @@
 <% provide(:title, "Blocked") %>
 <% content_for :h1, "#{@user.name.capitalize} is blocked by" %>
 
-<%= link_to 'Back to user info', user_full_info_path(@user), class: 'btn btn-outline-primary mb-2' %>
+<%= link_to 'Back to user info', "#", class: 'btn btn-outline-primary mb-2', onclick: "event.preventDefault(); history.back();" %>
 
 <div class="container mt-4">
   <% @blocked_by.each do |block| %>

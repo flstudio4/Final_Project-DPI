@@ -1,7 +1,7 @@
 <% provide(:title, "Likes") %>
 <% content_for :h1, "#{@user.name.capitalize} likes these users" %>
 
-<%= link_to 'Back to user info', user_full_info_path(@user), class: 'btn btn-outline-primary me-auto' %>
+<%= link_to 'Back to user info', "#", class: 'btn btn-outline-primary me-auto', onclick: "event.preventDefault(); history.back();" %>
 
 <div class="container mt-4">
   <% @likes.each do |favorite| %>
