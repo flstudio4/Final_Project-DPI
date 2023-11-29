@@ -74,14 +74,14 @@ class AdminController < ApplicationController
   def visitors
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @visitors = Visit.all.where(:visited_id => current_user.id).order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
+    @visitors = Visit.all.where(:visited_id => @user.id).order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
     render 'admin/visitors'
   end
 
   def visited
     user_id = params.fetch(:id)
     @user = User.find(user_id)
-    @visited = Visit.all.where(:visitor_id => current_user.id).order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
+    @visited = Visit.all.where(:visitor_id => @user.id).order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
     render 'admin/visited'
   end
 
