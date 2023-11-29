@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
     @user = User.find(user_id)
     @is_blocked_by_current_user = current_user.blocked_users.exists?(blocked_id: @user.id)
     @is_current_user_blocked = @user.blocked_users.exists?(blocked_id: current_user.id)
+    record_visit unless current_user == @user
     render 'profiles/show'
   end
 
@@ -82,6 +83,15 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def record_visit
+    visit = Visit.find_or_initialize_by(visitor: current_user, visited: @user)
+    if visit.persisted?
+      visit.touch
+    else
+      visit.save
+    end
+  end
   def post_params
     params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)
   end

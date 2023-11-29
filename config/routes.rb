@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'profiles/:id/send_message', to: 'profiles#send_message_to_profile', as: :send_message_to_profile
   get 'favorites/:id/send_message', to: 'favorites#send_message_to_liked  ', as: :send_message_to_liked
 
+  get '/visits', to: 'visits#index', as: :visitors
+  delete '/visits/:id', to: 'visits#destroy', as: 'delete_visit'
+
   constraints EmailConstraint do
     delete '/admin/:id', to: 'admin#destroy', as: :delete_user
     get '/admin', to: 'admin#index', as: :admin_panel
@@ -18,6 +21,8 @@ Rails.application.routes.draw do
     get '/admin/:id/liked', to: 'admin#liked', as: :liked_admin
     get '/admin/:id/chats', to: 'admin#chats', as: :chats_admin
     get '/admin/:user_id/chats/:chat_id', to: 'admin#messages', as: :messages_admin
+    get '/admin/:id/visitors', to: 'admin#visitors', as: :visitors_admin
+    get '/admin/:id/visited', to: 'admin#visited', as: :visited_admin
   end
 
   devise_for :users

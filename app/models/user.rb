@@ -74,6 +74,9 @@ class User < ApplicationRecord
   has_many :favorited_by, class_name: 'Favorite', foreign_key: 'liked_user_id', dependent: :destroy
   has_many :favoriters, through: :favorited_by, source: :liking_user
 
+  has_many :visited_visits, foreign_key: :visited_id, class_name: 'Visit'
+  has_many :visitors, through: :visited_visits
+
   scope :age_gt, ->(age) { where("dob <= ?", age.to_i.years.ago.to_date) }
   scope :age_lt, ->(age) { where("dob >= ?", age.to_i.years.ago.to_date) }
 

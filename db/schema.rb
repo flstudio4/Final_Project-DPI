@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_26_230938) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_29_160120) do
   create_table "blocks", force: :cascade do |t|
     t.integer "blocker_id"
     t.integer "blocked_id"
@@ -78,4 +78,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_230938) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["visited_id"], name: "index_visits_on_visited_id"
+    t.index ["visitor_id"], name: "index_visits_on_visitor_id"
+  end
+
+  add_foreign_key "visits", "users", column: "visited_id"
+  add_foreign_key "visits", "users", column: "visitor_id"
 end
