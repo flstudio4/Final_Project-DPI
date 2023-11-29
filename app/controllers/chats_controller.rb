@@ -5,14 +5,9 @@ class ChatsController < ApplicationController
 
   # GET /chats or /chats.json
   def index
-    chats_table = Chat.arel_table
-    case_statement = Arel::Nodes::Case.new
-    case_statement.when(chats_table[:last_message_at].eq(nil)).then(1)
-    case_statement.else(0)
-
     @chats = Chat.where(sender_id: current_user.id)
                  .or(Chat.where(receiver_id: current_user.id))
-                 .order(case_statement, chats_table[:last_message_at].desc)
+                 .order(last_message_at: :desc)
                  .paginate(page: params[:page], per_page: 10)
   end
 
@@ -97,6 +92,6 @@ class ChatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chat_params
-      params.require(:chat).permit(:sender_id, :receiver_id, :closed_by_sender, :closed_by_receiver)
+      params.require(:chat).permit(:sender_id, :receiver_id, :last_message_at)
     end
 end
