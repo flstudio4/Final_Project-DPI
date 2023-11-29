@@ -10,48 +10,6 @@
 
 </script>
 
-<style>
-    @keyframes shake {
-        0%, 100% {
-            transform: rotate(0deg);
-        }
-        10% {
-            transform: rotate(12deg);
-        }
-        20% {
-            transform: rotate(-14deg);
-        }
-        30% {
-            transform: rotate(14deg);
-        }
-        40%, 50%, 60% {
-            transform: rotate(-12deg);
-        }
-        70%, 80%, 90% {
-            transform: rotate(12deg);
-        }
-    }
-
-    .icon-link:hover .fa-trash-can {
-        animation: shake 0.5s; /* Adjust duration as needed */
-        animation-iteration-count: infinite;
-    }
-
-    .profile-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .status-icon {
-        width: 12px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(50%, -50%);
-        /* Adjust size and other styles as needed */
-    }
-</style>
-
 <% if current_user == @chat.sender %>
   <% provide(:title, "Chat with #{@chat.receiver.name.capitalize}") %>
 <% else %>
@@ -61,7 +19,7 @@
 <div class="container my-4">
   <div class="card" style="height: calc(100vh - 150px);">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <%= link_to 'Back', request.referer, class: 'btn btn-outline-primary me-auto' %>
+      <%= link_to 'Back', "/chats", class: 'btn btn-outline-primary me-auto' %>
 
       <div class="d-flex flex-grow-1 justify-content-center align-items-center">
         <% if current_user == @chat.receiver %>
