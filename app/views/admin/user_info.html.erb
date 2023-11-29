@@ -84,19 +84,27 @@
       </tr>
       <tr>
         <th scope="row">created_at</th>
-        <td><%= @user.created_at %></td>
+        <td><%= @user.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></td>
       </tr>
       <tr>
         <th scope="row">updated_at</th>
-        <td><%= @user.updated_at %></td>
+        <td><%= @user.updated_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></td>
       </tr>
       <tr>
         <th scope="row">confirmed_at</th>
-        <td><%= @user.confirmed_at %></td>
+        <% if @user.confirmed_at.nil? %>
+          <td><%= @user.confirmed_at %></td>
+        <% else %>
+          <td><%= @user.confirmed_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></td>
+        <% end %>
       </tr>
       <tr>
         <th scope="row">confirmation_sent_at</th>
-        <td><%= @user.confirmation_sent_at %></td>
+        <% if @user.confirmation_sent_at.nil? %>
+          <td><%= @user.confirmation_sent_at %></td>
+        <% else %>
+          <td><%= @user.confirmation_sent_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></td>
+        <% end %>
       </tr>
       <tr>
         <th scope="row">unconfirmed_email</th>
