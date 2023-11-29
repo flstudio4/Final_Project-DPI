@@ -5,9 +5,14 @@ class ChatsController < ApplicationController
 
   # GET /chats or /chats.json
   def index
+    chats_table = Chat.arel_table
+    case_statement = Arel::Nodes::Case.new
+    case_statement.when(chats_table[:last_message_at].eq(nil)).then(1)
+    case_statement.else(0)
+
     @chats = Chat.where(sender_id: current_user.id)
                  .or(Chat.where(receiver_id: current_user.id))
-                 .order(Arel.sql("last_message_at DESC NULLS LAST"))
+                 .order(case_statement, chats_table[:last_message_at].desc)
                  .paginate(page: params[:page], per_page: 10)
   end
 
