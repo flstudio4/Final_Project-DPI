@@ -66,7 +66,7 @@
       <div class="d-flex flex-grow-1 justify-content-center align-items-center">
         <% if current_user == @chat.receiver %>
           <div class="profile-container">
-            <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender_id}" %>&nbsp;
+            <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender.id}" %>&nbsp;
             <% if @chat.sender.online? %>
               <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #3ef308;"></i>
             <% end %>
@@ -74,7 +74,7 @@
           <h4 class="mb-0"><%= "Chat with #{@chat.sender.name.capitalize}" %></h4>
         <% else %>
           <div class="profile-container">
-            <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.receiver_id}" %>&nbsp;
+            <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.receiver.id}" %>&nbsp;
             <% if @chat.receiver.online? %>
               <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #3ef308;"></i>
             <% end %>
