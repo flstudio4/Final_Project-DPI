@@ -1,147 +1,147 @@
 h1 {
-  font-size: 3em; /* Adjust size as needed */
-  font-weight: bold; /* Makes the text bolder */
-  margin-bottom: 40px;
-  font-family: cursive, Consolas, serif;
-  color: cornflowerblue;
-  text-shadow: #333333 2px 2px;
-  text-align: center;
+    font-size: 3em; /* Adjust size as needed */
+    font-weight: bold; /* Makes the text bolder */
+    margin-bottom: 40px;
+    font-family: cursive, Consolas, serif;
+    color: cornflowerblue;
+    text-shadow: #333333 2px 2px;
+    text-align: center;
 }
 
 h2 {
-  text-align: center;
+    text-align: center;
 }
 
 h4 {
-  text-align: center;
-  margin-bottom: 25px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 h5 {
-  font-family: 'Indie Flower', cursive;
+    font-family: 'Indie Flower', cursive;
 }
 
 /* Styling the pagination container */
 .pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
+    display: flex;
+    justify-content: center;
+    list-style: none;
 }
 
 /* Styling the individual pagination links */
 .pagination a {
-  margin: 5px;
-  padding: 5px 10px;
-  text-decoration: none;
-  border: 1px solid darkblue;
-  background-color: #F7F7F7;
-  color: #333;
-  border-radius: 5px;
+    margin: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid darkblue;
+    background-color: #F7F7F7;
+    color: #333;
+    border-radius: 5px;
 }
 
 /* Styling the currently active page link */
 .pagination .current {
-  margin: 5px;
-  padding: 5px 10px;
-  text-decoration: none;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: cornflowerblue;
-  color: #fff;
+    margin: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: #fff;
 }
 
 /* Styling the "previous" and "next" links */
 .pagination .previous, .pagination .next {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .navbar {
-  border-radius: 30px;
-  background: linear-gradient(to left, lavenderblush, lavender);
-  opacity: 0.95;
-  font-family: "Tahoma", Helvetica, Roboto, Arial, sans-serif;
-  font-size: 1.2em;
-  margin-top: 15px;
-  margin-bottom: 10px;
+    border-radius: 30px;
+    background: linear-gradient(to left, lavenderblush, lavender);
+    opacity: 0.95;
+    font-family: "Tahoma", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 1.2em;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .dropdown-menu {
-  border-radius: 10px;
-  background: linear-gradient(to left, lavenderblush, lavender);
-  margin-bottom: 5px;
+    border-radius: 10px;
+    background: linear-gradient(to left, lavenderblush, lavender);
+    margin-bottom: 5px;
 }
 
 .navbar-toggler {
-  border-radius: 70px;
+    border-radius: 70px;
 }
 
 body {
-  background: linear-gradient(to right, #ff85a2, #85a8ff);
-  color: #333;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+    background: linear-gradient(to right, #ff85a2, #85a8ff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 .nav-link:hover {
-  color: olive;
+    color: olive;
 }
 
 .card {
-  background-color: #eef2ff;
-  box-shadow: 0 10px 20px rgba(130, 153, 241, 0.75), 0 10px 20px rgba(10, 10, 10, 0.76);
+    background-color: #eef2ff;
+    box-shadow: 0 10px 20px rgba(130, 153, 241, 0.75), 0 10px 20px rgba(10, 10, 10, 0.76);
 
 }
 
 @media only screen and (max-width: 600px) {
-  /* Styling the pagination container */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-  }
+    /* Styling the pagination container */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
 
-  /* Styling the individual pagination links */
-  .pagination a {
-    margin: 2px;
-    padding: 2px;
-    text-decoration: none;
-    background-color: #f0f0f0;
-    color: #333;
-    height: 30px;
-  }
+    /* Styling the individual pagination links */
+    .pagination a {
+        margin: 2px;
+        padding: 2px;
+        text-decoration: none;
+        background-color: #f0f0f0;
+        color: #333;
+        height: 30px;
+    }
 
-  /* Styling the currently active page link */
-  .pagination .current {
-    margin: 2px;
-    padding: 2px;
-    text-decoration: none;
-    background-color: cornflowerblue;
-    color: #fff;
-  }
+    /* Styling the currently active page link */
+    .pagination .current {
+        margin: 2px;
+        padding: 2px;
+        text-decoration: none;
+        background-color: cornflowerblue;
+        color: #fff;
+    }
 
-  /* Styling the "previous" and "next" links */
-  .pagination .previous, .pagination .next {
-    font-weight: bold;
-    margin: 1px;
-    padding: 1px;
-  }
+    /* Styling the "previous" and "next" links */
+    .pagination .previous, .pagination .next {
+        font-weight: bold;
+        margin: 1px;
+        padding: 1px;
+    }
 
-  body {
-    background: linear-gradient(to right, #ff85a2, #85a8ff);
-    color: #333;
+    body {
+        background: linear-gradient(to right, #ff85a2, #85a8ff);
+        color: #333;
 
-    height: 100vh;
-  }
+        height: 100vh;
+    }
 }
 
 #scrollable {
-  max-height: 40%; /* Adjust the height as needed */
-  overflow-y: auto;
+    max-height: 40%; /* Adjust the height as needed */
+    overflow-y: auto;
 }
 
 .navbar, .dropdown-menu {
-  z-index: 1050; /* You may need to adjust this value */
+    z-index: 1050; /* You may need to adjust this value */
 }
 
 
@@ -149,196 +149,198 @@ body {
 
 
 .profile-container {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .status-icon {
-  width: 12px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-  /* Adjust size and other styles as needed */
+    width: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    /* Adjust size and other styles as needed */
 }
+
 @keyframes shake {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(12deg);
-  }
-  20% {
-    transform: rotate(-14deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40%, 50%, 60% {
-    transform: rotate(-12deg);
-  }
-  70%, 80%, 90% {
-    transform: rotate(12deg);
-  }
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(12deg);
+    }
+    20% {
+        transform: rotate(-14deg);
+    }
+    30% {
+        transform: rotate(14deg);
+    }
+    40%, 50%, 60% {
+        transform: rotate(-12deg);
+    }
+    70%, 80%, 90% {
+        transform: rotate(12deg);
+    }
 }
 
 .icon-link:hover .fa-trash-can {
-  animation: shake 0.5s; /* Adjust duration as needed */
-  animation-iteration-count: infinite;
+    animation: shake 0.5s; /* Adjust duration as needed */
+    animation-iteration-count: infinite;
 }
 
 /* Container for the chat input and send button */
 .chat-input-container {
-  display: flex;
-  align-items: center;
-  padding: 6px 12px;
-  background: #FFFFFF; /* White background */
-  border: 1px solid #EAEAEA; /* Light border for the container */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  border-radius: 20px; /* Rounded corners */
-  position: relative; /* Context for absolute positioning */
-  margin: 10px; /* Spacing from the window edges */
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: #FFFFFF; /* White background */
+    border: 1px solid #EAEAEA; /* Light border for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 20px; /* Rounded corners */
+    position: relative; /* Context for absolute positioning */
+    margin: 10px; /* Spacing from the window edges */
 }
 
 /* Textarea styling */
 .chat-textarea {
-  flex-grow: 1;
-  border: none; /* Remove border to prevent nested box appearance */
-  background: transparent; /* Match background with the container */
-  padding: 8px 16px; /* Adjust padding as needed */
-  font-size: 14px;
-  line-height: 20px;
-  border-radius: 15px; /* Slightly less than container to fit seamlessly */
-  resize: none; /* Remove the resize handle */
-  outline: none; /* Remove the outline on focus */
+    flex-grow: 1;
+    border: none; /* Remove border to prevent nested box appearance */
+    background: transparent; /* Match background with the container */
+    padding: 8px 16px; /* Adjust padding as needed */
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 15px; /* Slightly less than container to fit seamlessly */
+    resize: none; /* Remove the resize handle */
+    outline: none; /* Remove the outline on focus */
 }
 
 /* Send button styling */
 .send-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: 8px; /* Space between the textarea and the button */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 8px; /* Space between the textarea and the button */
 }
 
 /* Send button icon */
 .send-button .fa-paper-plane {
-  color: #007BFF; /* Use a color that stands out, such as Bootstrap's blue */
-  font-size: 24px; /* Icon size */
+    color: #007BFF; /* Use a color that stands out, such as Bootstrap's blue */
+    font-size: 24px; /* Icon size */
 }
 
 /* Adjust the focus style */
 .chat-textarea:focus {
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glowing border effect on focus */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glowing border effect on focus */
 }
 
 .message-author {
-  font-size: 1.2em;
-  color: cornflowerblue;
-  text-decoration: none;
+    font-size: 1.2em;
+    color: cornflowerblue;
+    text-decoration: none;
 }
 
 .message-timestamp {
-  font-size: 0.75em;
-  color: #6c757d; /* Assuming you want a muted color */
+    font-size: 0.75em;
+    color: #6c757d; /* Assuming you want a muted color */
 }
 
 .message-content {
-  padding: 10px 12px;
-  background-color: white;
-  border-radius: 16px;
-  word-wrap: break-word;
-  margin-bottom: 0;
+    padding: 10px 12px;
+    background-color: white;
+    border-radius: 16px;
+    word-wrap: break-word;
+    margin-bottom: 0;
 }
 
 .message-content p {
-  margin-bottom: 0; /* Override default paragraph margin */
+    margin-bottom: 0; /* Override default paragraph margin */
 }
 
 .icon-link .fa-trash-can {
-  color: #f80303;
+    color: #f80303;
 }
 
 /* Additional CSS for consistent spacing around messages */
 .message-box {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px; /* Adjust this value to increase/decrease spacing */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust this value to increase/decrease spacing */
 }
+
 .message-box .message-content {
-  flex-grow: 1;
-  margin-right: 8px; /* Space between message content and delete icon */
+    flex-grow: 1;
+    margin-right: 8px; /* Space between message content and delete icon */
 }
 
 .message-content > div > p {
-  margin-bottom: 0; /* Remove margin from paragraph tags */
+    margin-bottom: 0; /* Remove margin from paragraph tags */
 }
 
 #messages li {
-  margin-bottom: 10px; /* This controls the space between messages */
-  padding: 0;
+    margin-bottom: 10px; /* This controls the space between messages */
+    padding: 0;
 }
 
 #messages > li, .message-content > div > p, .message-content p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 #messages {
-  padding-left: 0; /* Removes padding for bullet points */
-  list-style-type: none; /* Removes bullet points */
+    padding-left: 0; /* Removes padding for bullet points */
+    list-style-type: none; /* Removes bullet points */
 }
 
 .message-item {
-  display: flex;
-  padding: 0;
-  margin-bottom: 10px; /* Adjust space between messages */
+    display: flex;
+    padding: 0;
+    margin-bottom: 10px; /* Adjust space between messages */
 }
 
 .avatar-image {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 .message-content-container {
-  flex-grow: 1;
-  margin-left: 8px;
+    flex-grow: 1;
+    margin-left: 8px;
 }
 
 .message-metadata .message-author {
-  font-size: 1.2em;
-  color: cornflowerblue;
-  text-decoration: none;
-  margin-right: 5px; /* Space between author name and timestamp */
+    font-size: 1.2em;
+    color: cornflowerblue;
+    text-decoration: none;
+    margin-right: 5px; /* Space between author name and timestamp */
 }
 
 .message-metadata .message-timestamp {
-  font-size: 0.75em;
-  color: #6c757d;
+    font-size: 0.75em;
+    color: #6c757d;
 }
 
 .message-body {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .message-text {
-  background-color: white;
-  border-radius: 16px;
-  padding: 8px;
-  word-wrap: break-word;
-  flex-grow: 1;
+    background-color: white;
+    border-radius: 16px;
+    padding: 8px;
+    word-wrap: break-word;
+    flex-grow: 1;
 }
 
 .message-text div {
-  margin: 0; /* Override default margins from simple_format */
+    margin: 0; /* Override default margins from simple_format */
 }
 
 .message-delete {
-  margin-left: 8px; /* Space from the message text */
+    margin-left: 8px; /* Space from the message text */
 }
 
 .icon-link .fa-trash-can {
-  color: #f80303;
+    color: #f80303;
 }

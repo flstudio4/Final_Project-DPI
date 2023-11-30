@@ -5,18 +5,18 @@
 
 <div class="container mt-4">
   <% @blocked_by.each do |block| %>
-  <div class="row mb-2" id="<%= dom_id(block.blocker) %>">
-    <div class="col-8 mx-auto">
-      <div class="card">
-        <div class="card-body d-flex align-items-center">
-          <%= link_to profile_path(block.blocker), class: "text-decoration-none" do %>
-            <img src="<%= block.blocker.avatar %>" class="rounded-circle me-2" style="width: 50px; height: 50px;" alt="User Avatar">
-            <span><%= block.blocker.name.capitalize %></span>
-          <% end %>
+    <div class="row mb-2" id="<%= dom_id(block.blocker) %>">
+      <div class="col-8 mx-auto">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <%= link_to profile_path(block.blocker), class: "text-decoration-none" do %>
+              <img src="<%= block.blocker.avatar %>" class="rounded-circle me-2" style="width: 50px; height: 50px;" alt="User Avatar">
+              <span><%= block.blocker.name.capitalize %></span>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
   <%= will_paginate @blocked_by, class: 'pagination justify-content-center' %>
 </div>
