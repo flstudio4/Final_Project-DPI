@@ -4,14 +4,16 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    domain: 'where.singles', # replace with your domain
-    user_name: 'apikey', # this is the string literal 'apikey', not the ID of your API key
-    password: ENV['API_SENDGRID'], # replace with your SendGrid API key
-    authentication: 'plain',
-    enable_starttls_auto: true
+    address: 'mail.privateemail.com',
+    port: 465, # or 587 if using TLS/STARTTLS
+    domain: 'where.singles',
+    user_name: 'admin@where.singles',
+    password: ENV["NAMECHEAP_PASSWORD"],
+    authentication: 'plain', # or 'login'
+    enable_starttls_auto: true, # set to false if using SSL
+    openssl_verify_mode: 'none' # or remove this line if SSL issues are resolved
   }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
