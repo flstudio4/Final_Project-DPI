@@ -1,5 +1,5 @@
 <% provide(:title, "#{@user.name}'s messages".html_safe) %>
-<% content_for :h1, "#{@user.name}'messages" %>
+<% content_for :h1, "#{@user.name}'s messages" %>
 
 <div class="container my-4">
   <div class="card" style="height: calc(100vh - 150px);">
@@ -8,45 +8,41 @@
 
       <div class="d-flex flex-grow-1 justify-content-center align-items-center">
         <% if @user == @chat.sender %>
-          <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.receiver_id}" %>&nbsp;
-          <h4 class="mb-0"><%= "Chat with #{@chat.receiver.name.capitalize}" %></h4>
+          <%= link_to image_tag(@chat.receiver.avatar.url, class: 'rounded-circle avatar-image'), "/profiles/#{@chat.receiver_id}" %>&nbsp;
+          <h4 class="mb-0">Chat with <%= @chat.receiver.name.capitalize %></h4>
         <% else %>
-          <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{@chat.sender_id}" %>&nbsp;
-          <h4 class="mb-0"><%= "Chat with #{@chat.sender.name.capitalize}" %></h4>
+          <%= link_to image_tag(@chat.sender.avatar.url, class: 'rounded-circle avatar-image'), "/profiles/#{@chat.sender_id}" %>&nbsp;
+          <h4 class="mb-0">Chat with <%= @chat.sender.name.capitalize %></h4>
         <% end %>
       </div>
     </div>
-    <div class="card-body" style="overflow-y: auto; height: calc(100vh - 150px);">
+
+    <div class="card-body" style="overflow-y: auto;">
       <ul class="list-unstyled" id="messages">
         <% @messages.each do |message| %>
-          <li id="message_<%= message.id %>" class="px-2" style="margin-bottom: 5px;">
+          <li id="message_<%= message.id %>" class="message-item">
             <div class="d-flex align-items-start">
-              <!-- Avatar with original size -->
-              <%= link_to image_tag(message.author.avatar.url, class: 'rounded-circle', width: 40, height: 40), "/profiles/#{message.author.id}" %>
+              <%= link_to image_tag(message.author.avatar.url, class: 'rounded-circle avatar-image'), "/profiles/#{message.author.id}" %>
 
-              <!-- Message Content with Delete Button aligned to first line -->
-              <div class="flex-grow-1 ms-2" style="width: calc(100% - 50px);"> <!-- Adjust width as necessary -->
-                <!-- Message Box -->
-                <div>
-                  <!-- Username with comma, Date and Time in AM/PM format -->
-                  <div class="mb-1">
-                    <%= link_to message.author.name.capitalize, "/profiles/#{message.author.id}", class: '', style: 'font-size: 1.2em; color: cornflowerblue; text-decoration: none;' %>
-                    <span class="text-muted" style="font-size: 0.75em;"><%= message.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
+              <div class="message-content-container">
+                <div class="message-metadata">
+                  <%= link_to message.author.name.capitalize, "/profiles/#{message.author.id}", class: 'message-author' %>
+                  <span class="message-timestamp"><%= message.created_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
+                </div>
+                <div class="message-body">
+                  <div class="message-text">
+                    <%= simple_format(message.content, {}, wrapper_tag: "div") %>
                   </div>
-                  <!-- Message Content and Delete Button on the same line -->
-                  <div class="d-flex align-items-center">
-                    <div class="rounded px-2 py-1" style="background-color: white; word-wrap: break-word; flex-grow: 1;">
-                      <p class="mb-0" style="word-break: break-word;"><%= message.content %></p>
-                    </div>
-                    <div class="ms-2"> <!-- Margin from the message body -->
+                  <% if message.author == current_user %>
+                    <div class="message-delete">
                       <%= link_to message_path(message),
                                   method: :delete,
                                   data: { turbo_method: :delete },
                                   title: 'Delete Message', class: "icon-link" do %>
-                        <i class="fa-regular fa-trash-can" style="color: #f80303;"></i>
+                        <i class="fa-regular fa-trash-can"></i>
                       <% end %>
                     </div>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -56,3 +52,26 @@
     </div>
   </div>
 </div>
+
+<script>
+    function scrollToBottom() {
+        var messagesContainer = document.querySelector('.card-body');
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        } else {
+            console.log("Just ignore me");
+        }
+    }
+
+    // Scroll to the bottom when Turbo loads the page
+    document.addEventListener('turbo:load', scrollToBottom);
+
+    // MutationObserver to detect when new messages are added and scroll to bottom
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            if (mutation.addedNodes.length) {
+                scrollToBottom();
+            }
+        });
+    });
+</script>

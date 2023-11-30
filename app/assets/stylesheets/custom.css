@@ -232,3 +232,113 @@ body {
 .chat-textarea:focus {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glowing border effect on focus */
 }
+
+.message-author {
+  font-size: 1.2em;
+  color: cornflowerblue;
+  text-decoration: none;
+}
+
+.message-timestamp {
+  font-size: 0.75em;
+  color: #6c757d; /* Assuming you want a muted color */
+}
+
+.message-content {
+  padding: 10px 12px;
+  background-color: white;
+  border-radius: 16px;
+  word-wrap: break-word;
+  margin-bottom: 0;
+}
+
+.message-content p {
+  margin-bottom: 0; /* Override default paragraph margin */
+}
+
+.icon-link .fa-trash-can {
+  color: #f80303;
+}
+
+/* Additional CSS for consistent spacing around messages */
+.message-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust this value to increase/decrease spacing */
+}
+.message-box .message-content {
+  flex-grow: 1;
+  margin-right: 8px; /* Space between message content and delete icon */
+}
+
+.message-content > div > p {
+  margin-bottom: 0; /* Remove margin from paragraph tags */
+}
+
+#messages li {
+  margin-bottom: 10px; /* This controls the space between messages */
+  padding: 0;
+}
+
+#messages > li, .message-content > div > p, .message-content p {
+  margin: 0;
+  padding: 0;
+}
+
+#messages {
+  padding-left: 0; /* Removes padding for bullet points */
+  list-style-type: none; /* Removes bullet points */
+}
+
+.message-item {
+  display: flex;
+  padding: 0;
+  margin-bottom: 10px; /* Adjust space between messages */
+}
+
+.avatar-image {
+  width: 40px;
+  height: 40px;
+}
+
+.message-content-container {
+  flex-grow: 1;
+  margin-left: 8px;
+}
+
+.message-metadata .message-author {
+  font-size: 1.2em;
+  color: cornflowerblue;
+  text-decoration: none;
+  margin-right: 5px; /* Space between author name and timestamp */
+}
+
+.message-metadata .message-timestamp {
+  font-size: 0.75em;
+  color: #6c757d;
+}
+
+.message-body {
+  display: flex;
+  align-items: center;
+}
+
+.message-text {
+  background-color: white;
+  border-radius: 16px;
+  padding: 8px;
+  word-wrap: break-word;
+  flex-grow: 1;
+}
+
+.message-text div {
+  margin: 0; /* Override default margins from simple_format */
+}
+
+.message-delete {
+  margin-left: 8px; /* Space from the message text */
+}
+
+.icon-link .fa-trash-can {
+  color: #f80303;
+}
