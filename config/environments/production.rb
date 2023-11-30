@@ -9,9 +9,9 @@ Rails.application.configure do
     domain: 'where.singles',
     user_name: 'admin@where.singles',
     password: ENV["NAMECHEAP_PASSWORD"],
-    authentication: 'plain', # or 'login'
-    enable_starttls_auto: true, # set to false if using SSL
-    openssl_verify_mode: 'none' # or remove this line if SSL issues are resolved
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    ssl: true
   }
 
   # Code is not reloaded between requests.
