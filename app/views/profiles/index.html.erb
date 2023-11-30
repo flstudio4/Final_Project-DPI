@@ -71,6 +71,9 @@
                   </div>
                   <div class="modal-body">
                     <%= image_tag("#{profile.avatar}", alt: "#{profile.name.capitalize}'s photo", class: "img-fluid rounded-start rounded-end mx-auto") %>
+                    <div class="container border p-2 mt-3">
+                      <%= profile.bio %>
+                    </div>
                   </div>
                   <div class="modal-footer justify-content-md-center">
 
