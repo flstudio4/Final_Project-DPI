@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "flstudio444@gmail.com"
+  default from: "admin@where.singles"
   layout "mailer"
 end
