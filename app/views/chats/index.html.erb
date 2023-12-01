@@ -28,6 +28,9 @@
                 <div class="ms-3 d-flex flex-column">
                   <% if chat_link %>
                     <h5 class="mb-1 text-dark flex-grow-1 text-truncate"><%= chat_link.name.capitalize %></h5>
+                    <% if chat_link.email == "flstudio444@gmail.com" %>
+                      <h6 style="font-family: Tahoma, serif; color: rgb(231,83,83); font-weight: bolder; text-shadow: greenyellow 2px 2px">Admin</h6>
+                    <% end %>
                   <% else %>
                     <h5 class="mb-1 text-dark flex-grow-1 text-truncate">Unknown User</h5>
                   <% end %>
