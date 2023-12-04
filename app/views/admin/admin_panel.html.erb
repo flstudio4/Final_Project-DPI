@@ -6,9 +6,14 @@
       <div class="col-12 mx-auto">
         <div class="card">
           <div class="card-body d-flex align-items-center">
+            <div class="profile-container">
             <%= link_to profile_path(user), class: "text-decoration-none" do %>
               <img src="<%= user.avatar %>" class="rounded-circle me-2" style="width: 50px; height: 50px;" alt="User Avatar">
-              <span><%= user.name.capitalize %></span>
+                <% if user.online? %>
+                  <i class="fa-solid fa-circle fa-beat-fade status-icon" style="color: #3ef308;"></i>
+                <% end %>
+                </div>
+                <span><%= user.name.capitalize %></span>
             <% end %>
             <div class="ms-auto">
               <%= link_to send_message_to_profile_path(user), class: "btn btn-outline-primary btn-sm" do %>
