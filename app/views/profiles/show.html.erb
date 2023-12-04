@@ -1,9 +1,6 @@
 <% provide(:title, "#{ @user.name.capitalize }") %>
 
 <h1><%= @user.name.capitalize + ", " %><%= @user.age %></h1>
-<% if @user.email == "flstudio444@gmail.com" %>
-  <h1 style="font-family: Tahoma, serif; color: rgb(231,83,83); text-shadow: black 1px 1px">Admin</h1>
-<% end %>
 
 <div class="row">
   <div class="col">
