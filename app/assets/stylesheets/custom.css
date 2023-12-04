@@ -1,3 +1,13 @@
+@charset "utf-8";
+
+body {
+    background: linear-gradient(to right, #ff85a2, #85a8ff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
 h1 {
     font-size: 3em; /* Adjust size as needed */
     font-weight: bold; /* Makes the text bolder */
@@ -75,16 +85,12 @@ h5 {
     border-radius: 70px;
 }
 
-body {
-    background: linear-gradient(to right, #ff85a2, #85a8ff);
-    color: #333;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-}
-
 .nav-link:hover {
     color: olive;
+}
+
+.navbar, .dropdown-menu {
+    z-index: 1050;
 }
 
 .card {
@@ -138,10 +144,6 @@ body {
 #scrollable {
     max-height: 40%; /* Adjust the height as needed */
     overflow-y: auto;
-}
-
-.navbar, .dropdown-menu {
-    z-index: 1050; /* You may need to adjust this value */
 }
 
 

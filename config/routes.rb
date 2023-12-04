@@ -54,9 +54,3 @@ Rails.application.routes.draw do
   end
 
 end
-# ------------------------------------------------------------------------------------------------------------------------
-# https://gist.github.com/withoutwax/46a05861aa4750384df971b641170407  Helpful resource for messing with devise controller
-# https://github.com/ID25/rails_emoji_picker  emoji
-# reset the last two commits
-# ------------------------------------------------------------------------------------------------------------------------
-#
