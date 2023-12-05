@@ -1,4 +1,4 @@
-# 'Singles' dating web app
+# 'Singles' dating app
 
 Welcome to Singles, a Ruby on Rails application designed to help people find their perfect match!
 
