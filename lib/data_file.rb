@@ -1,20 +1,20 @@
 class DataFile
-  
+
   # Thanks ChatGpt for providing names for me, despite resisting and trying to convonce me to use Faker
 
   $male_names = [
-  "Adam", "Aiden", "Alex", "Alexander", "Andrew", "Anthony", "Archer", "Asher", "Benjamin", "Caleb", "Cameron",
-  "Carter", "Charles", "Christopher", "Daniel", "David", "Declan", "Dominic", "Eli", "Elias", "Elijah", "Eliott",
-  "Emmett", "Ethan", "Everett", "Felix", "Gabriel", "George", "Henry", "Hudson", "Hunter", "Isaac", "Jack", "Jackson",
-  "Jacob", "James", "Jason", "John", "Jonathan", "Joseph", "Joshua", "Josiah", "Julian", "Kaden", "Landon", "Leo",
-  "Liam", "Lincoln", "Logan", "Lucas", "Mason", "Matthew", "Maxwell", "Michael", "Nathan", "Nicholas", "Noah", "Oliver",
-  "Oscar", "Owen", "Patrick", "Samuel", "Sebastian", "Theodore", "Thomas", "Tristan", "Victor", "William", "Wyatt",
-  "Xander", "Zachary", "Zane", "Aleksandr", "Andrey", "Antono", "Artem", "Dmitri", "Fedor", "Ivan", "Kirill",
-  "Konstantin", "Maksim", "Mikhail", "Nikita", "Nikolay", "Pavel", "Sergey", "Stanislav", "Vadim", "Viktor", "Vladimir",
-  "Yuriont", "Aleksandron", "Alexeiko", "Anatoli", "Andrei", "Anton", "Arkadi", "Boris", "Dmitrii", "Evgenii", "Fyodor",
-  "Grigori", "Igor", "Ilya", "Leonid", "Mikhailos", "Nikolai", "Pavelo", "Pyotr", "Sergei", "Viktorn", "Vladimiro", "Yuriis",
-  "Yuriy", "Yury"
-]
+    "Adam", "Aiden", "Alex", "Alexander", "Andrew", "Anthony", "Archer", "Asher", "Benjamin", "Caleb", "Cameron",
+    "Carter", "Charles", "Christopher", "Daniel", "David", "Declan", "Dominic", "Eli", "Elias", "Elijah", "Eliott",
+    "Emmett", "Ethan", "Everett", "Felix", "Gabriel", "George", "Henry", "Hudson", "Hunter", "Isaac", "Jack", "Jackson",
+    "Jacob", "James", "Jason", "John", "Jonathan", "Joseph", "Joshua", "Josiah", "Julian", "Kaden", "Landon", "Leo",
+    "Liam", "Lincoln", "Logan", "Lucas", "Mason", "Matthew", "Maxwell", "Michael", "Nathan", "Nicholas", "Noah", "Oliver",
+    "Oscar", "Owen", "Patrick", "Samuel", "Sebastian", "Theodore", "Thomas", "Tristan", "Victor", "William", "Wyatt",
+    "Xander", "Zachary", "Zane", "Aleksandr", "Andrey", "Antono", "Artem", "Dmitri", "Fedor", "Ivan", "Kirill",
+    "Konstantin", "Maksim", "Mikhail", "Nikita", "Nikolay", "Pavel", "Sergey", "Stanislav", "Vadim", "Viktor", "Vladimir",
+    "Yuriont", "Aleksandron", "Alexeiko", "Anatoli", "Andrei", "Anton", "Arkadi", "Boris", "Dmitrii", "Evgenii", "Fyodor",
+    "Grigori", "Igor", "Ilya", "Leonid", "Mikhailos", "Nikolai", "Pavelo", "Pyotr", "Sergei", "Viktorn", "Vladimiro", "Yuriis",
+    "Yuriy", "Yury"
+  ]
 
   $female_names = [
     "Magdalina", "Abigail", "Ada", "Adriana", "Aisha", "Alejandra", "Alexandra", "Alice", "Alina", "Alicia", "Amelia", "Ana",
@@ -32,7 +32,7 @@ class DataFile
     "Kamila", "Karina", "Katrina", "Leonora", "Liliana", "Luciana", "Luz", "Mallory", "Margot", "Marina", "Melody",
     "Miranda", "Nadia", "Nayeli", "Noelle", "Ophelia", "Rosalie", "Seraphina", "Sienna", "Sylvia", "Talia", "Viviana",
     "Wren", "Zara"
-]
+  ]
 
   $conversational_phrases = [
     "How's it going?",

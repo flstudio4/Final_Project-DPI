@@ -85,13 +85,13 @@ class ChatsController < ApplicationController
     Block.exists?(blocker_id: other_user.id, blocked_id: user.id)
   end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chat
-      @chat = Chat.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chat
+    @chat = Chat.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def chat_params
-      params.require(:chat).permit(:sender_id, :receiver_id, :last_message_at)
-    end
+  # Only allow a list of trusted parameters through.
+  def chat_params
+    params.require(:chat).permit(:sender_id, :receiver_id, :last_message_at)
+  end
 end

@@ -28,13 +28,13 @@ class MessagesController < ApplicationController
     authorize @message
 
     respond_to do |format|
-      if  @message.save
-          format.turbo_stream do
-            render turbo_stream: [
-              turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
-            ]
-          end
-          format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
+      if @message.save
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
+          ]
+        end
+        format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
       else
         format.turbo_stream do
           render chats_path turbo_stream: turbo_stream.replace('message_form', partial: 'messages/form', locals: { message: @message })
@@ -68,13 +68,14 @@ class MessagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def message_params
-      params.require(:message).permit(:chat_id, :author_id, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_message
+    @message = Message.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def message_params
+    params.require(:message).permit(:chat_id, :author_id, :content)
+  end
 end

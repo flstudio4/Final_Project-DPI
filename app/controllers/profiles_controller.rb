@@ -92,6 +92,7 @@ class ProfilesController < ApplicationController
       visit.save
     end
   end
+
   def post_params
     params.require(:q).permit(:state_cont, :city_cont, :country_cont, :age_min_cont, :age_max_cont)
   end

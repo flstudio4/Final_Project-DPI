@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :gender, :avatar, :country, :state, :city, :dob, :bio, :name)}
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :gender, :avatar, :country, :state, :city, :dob, :bio, :name) }
 
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :avatar, :country, :state, :city, :bio, :password, :password_confirmation, :current_password, :name)}
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :avatar, :country, :state, :city, :bio, :password, :password_confirmation, :current_password, :name) }
   end
 
   private
@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || dashboard_path)
   end
+
   def update_last_seen_at
     current_user.update(last_seen_at: Time.current) if user_signed_in?
   end

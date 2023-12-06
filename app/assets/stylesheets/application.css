@@ -16,44 +16,44 @@
  *= require_self
  */
 
- h1 {
-   margin-top: 10px;
-   margin-bottom: 25px;
-   text-align: center;
-   font-size: 3.5em;
-   font-family: cursive, Consolas, serif;
-   color: cornflowerblue;
-   text-shadow: #333333 2px 2px;
+h1 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 3.5em;
+    font-family: cursive, Consolas, serif;
+    color: cornflowerblue;
+    text-shadow: #333333 2px 2px;
 }
 
 article {
-   font-family: 'Indie Flower', cursive;
-   padding: 25px;
-   width: 100%;
+    font-family: 'Indie Flower', cursive;
+    padding: 25px;
+    width: 100%;
 }
 
 article h2 {
-   text-align: center;
-   font-size: 2em;
+    text-align: center;
+    font-size: 2em;
 }
 
 article p {
-   font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 div#buttons {
-   width: 100%;
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 #landing1, #landing2 {
-   color: darkblue;
-   font-family: 'Indie Flower', 'Arial Narrow', Arial, sans-serif;
-   font-size: 1.7em;
-   font-weight: bolder;
+    color: darkblue;
+    font-family: 'Indie Flower', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.7em;
+    font-weight: bolder;
 }
 
 body {
@@ -79,7 +79,7 @@ body {
     background-color: #28a745; /* Green background on hover/focus */
     color: white; /* White text on hover/focus */
     transform: translateY(-3px); /* Slight lift */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 #landing2 {
@@ -93,5 +93,5 @@ body {
     background-color: #6c757d; /* Grey background on hover/focus */
     color: white; /* White text on hover/focus */
     transform: translateY(-3px); /* Slight lift */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }

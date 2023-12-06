@@ -17,7 +17,7 @@ module ChatManagement
   private
 
   def find_or_create_chat(sender_id, receiver_id)
-      Chat.find_by(sender_id: sender_id, receiver_id: receiver_id) ||
+    Chat.find_by(sender_id: sender_id, receiver_id: receiver_id) ||
       Chat.find_by(sender_id: receiver_id, receiver_id: sender_id) ||
       Chat.create(sender_id: sender_id, receiver_id: receiver_id, last_message_at: Time.current)
   end

@@ -40,8 +40,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  before_save {self.email = email.downcase}
-  before_save {self.username = username.downcase}
+  before_save { self.email = email.downcase }
+  before_save { self.username = username.downcase }
 
   before_update :remove_old_avatar, if: :avatar_changed?
   before_destroy :remove_avatar_from_cloudinary
@@ -89,7 +89,6 @@ class User < ApplicationRecord
   def online?
     last_seen_at.present? && last_seen_at > 5.minutes.ago
   end
-
 
   def self.ransackable_attributes(auth_object = nil)
     ["state", "city", "country", "age_min", "age_max"]

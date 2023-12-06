@@ -1,6 +1,7 @@
 class VisitsController < ApplicationController
   layout 'custom'
   before_action :set_visit, only: [:destroy]
+
   def index
     @visitors = Visit.all.where(:visited_id => current_user.id).order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
     render "visits/index"
