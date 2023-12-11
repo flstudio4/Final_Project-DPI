@@ -1,4 +1,6 @@
-# 'Singles' dating app
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+# <i class="fa-solid fa-heart fa-beat" style="color: #f21f07;"></i> Singles dating app
 
 Welcome to Singles, a Ruby on Rails application designed to help people find their perfect match!
 
