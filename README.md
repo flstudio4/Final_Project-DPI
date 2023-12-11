@@ -19,13 +19,15 @@ Singles is a modern and user-friendly dating platform built with Ruby on Rails. 
 
 ## Features
 
-- User Registration and Authentication
+- User Registration, Authorization, and Authentication
+- User online status
 - User Profiles with Photos and Personal Details
 - Messaging and Chat
-- User Notifications *
+- Visitors
+- User Notifications(coming soon) *
 - Search and Filtering Options
 - Privacy Controls
-- Responsive Design for Mobile and Desktop
+- Responsive Design for Mobile, Tablet, and Desktop
 
 ## Getting Started
 
@@ -48,5 +50,19 @@ Before you begin, ensure you have met the following requirements:
 3. ```rails db:create```
    
 4. ```rails db:migrate```
-5. ```rails s```
+5. Comment out line in models/user - mount_uploader
+6. ```rake sample_data```
+7. Uncomment mount_uploader back
+8. ```rails s```
+
+### License
+
+Copyright (c) 2023 Dmitrii Sumenko
+
+All rights reserved.
+
+Permission is granted to clone this repository and run the software locally for trial purposes only. No part of this software, including its source code, may be reproduced, modified, distributed, or used for any commercial or non-commercial purpose beyond local trial use without the prior written permission of the author or copyright holder.
+
+For trial use, the software is provided "as is" without warranty of any kind, express or implied. No support or maintenance is implied or provided.
+
 
