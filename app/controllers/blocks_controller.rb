@@ -59,8 +59,6 @@ class BlocksController < ApplicationController
         format.turbo_stream
         format.html { redirect_to profiles_path(@blocked_user), notice: 'Block removed.' }
       end
-    else
-      # Handle errors
     end
   end
 

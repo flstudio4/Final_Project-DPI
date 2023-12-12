@@ -32,5 +32,4 @@ class Message < ApplicationRecord
     # or nil if there are no more messages
     chat.update(last_message_at: last_message&.created_at)
   end
-
 end

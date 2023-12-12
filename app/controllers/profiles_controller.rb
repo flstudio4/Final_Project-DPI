@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
+  layout 'custom'
   include ChatManagement
 
   before_action :set_profile, only: [:show]
   before_action :redirect_if_current_profile, only: [:show]
-  layout 'custom'
 
   def show
     user_id = params.fetch(:id)

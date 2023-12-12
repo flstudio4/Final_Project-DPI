@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title><%= full_title(yield(:title)) %></title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= favicon_link_tag '/favicon.ico' %>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag '/favicon.ico' %>
 
-  <%= render partial: "shared/cdn_assets" %>
+    <%= render partial: "shared/cdn_assets" %>
 
-  <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
 
-  <%= javascript_importmap_tags %>
-</head>
+    <%= javascript_importmap_tags %>
+  </head>
 
-<body>
-<div class="container">
-  <%= render partial: "shared/navbar" %>
-</div>
-<div class="container">
-  <h1 id="main_h1"><%= yield :h1 %></h1>
-</div>
+  <body>
+    <div class="container">
+      <%= render partial: "shared/navbar" %>
+    </div>
+    <div class="container">
+      <h1 id="main_h1"><%= yield :h1 %></h1>
+    </div>
 
-<div class="container pb-3">
-  <% if notice.present? %>
-    <%= render partial: "shared/flash", locals: { message: notice, css_class: "success" } %>
-  <% end %>
+    <div class="container pb-3">
+      <% if notice.present? %>
+        <%= render partial: "shared/flash", locals: { message: notice, css_class: "success" } %>
+      <% end %>
 
-  <% if alert.present? %>
-    <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
-  <% end %>
+      <% if alert.present? %>
+        <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
+      <% end %>
 
 
-  <%= yield %>
+      <%= yield %>
 
-</div>
-</body>
+    </div>
+  </body>
 </html>

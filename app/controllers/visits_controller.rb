@@ -10,6 +10,7 @@ class VisitsController < ApplicationController
   def destroy
     if @visit.visited_id == current_user.id
       @visit.destroy
+
       respond_to do |format|
         format.html { redirect_to chats_path }
         format.turbo_stream

@@ -30,9 +30,8 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.turbo_stream do
-          render turbo_stream: [
+          render turbo_stream:
             turbo_stream.append('messages', partial: 'messages/message', locals: { message: @message })
-          ]
         end
         format.html { redirect_to chats_path(@message.chat_id), notice: "Message sent!" }
       else

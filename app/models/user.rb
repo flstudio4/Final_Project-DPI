@@ -35,10 +35,8 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+  # Include devise modules
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
 
   before_save { self.email = email.downcase }
   before_save { self.username = username.downcase }
@@ -70,7 +68,6 @@ class User < ApplicationRecord
   has_many :favorites, class_name: 'Favorite', foreign_key: 'liking_user_id', dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :liked_user
 
-  # Association to access the users who have favorited the current user
   has_many :favorited_by, class_name: 'Favorite', foreign_key: 'liked_user_id', dependent: :destroy
   has_many :favoriters, through: :favorited_by, source: :liking_user
 
@@ -140,8 +137,6 @@ class User < ApplicationRecord
   end
 
   def extract_public_id(url_or_id)
-    # Extract the public ID from the URL if necessary
-    # This is a placeholder implementation; adjust as per your app's logic
     url_or_id.split('/').last.split('.').first
   end
 end
