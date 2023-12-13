@@ -10,7 +10,7 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [License](#license)
-- [Official website](#Visit project's webpage)
+- [Official website](#webpage)
 
 ## About
 
@@ -64,5 +64,5 @@ Permission is granted to clone this repository and run the software locally for 
 
 For trial use, the software is provided "as is" without warranty of any kind, express or implied. No support or maintenance is implied or provided.
 
-###  Visit project's webpage
+###  Webpage
 https://where.singles
