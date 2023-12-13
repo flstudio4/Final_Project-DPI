@@ -1,6 +1,6 @@
 # :heart: Singles dating app
 
-Welcome to Singles, a Ruby on Rails application designed to help people find their perfect match!
+### Welcome to Singles, a Ruby on Rails application designed to help people find their perfect match!
 
 ## Table of Contents
 
@@ -10,6 +10,7 @@ Welcome to Singles, a Ruby on Rails application designed to help people find the
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [License](#license)
+- [Official website](#Visit project's webpage)
 
 ## About
 
@@ -63,4 +64,5 @@ Permission is granted to clone this repository and run the software locally for 
 
 For trial use, the software is provided "as is" without warranty of any kind, express or implied. No support or maintenance is implied or provided.
 
-
+###  Visit project's webpage
+https://where.singles
