@@ -14,7 +14,7 @@
             <% end %>
             <div class="ms-auto">
               <span class="text-muted ms-2"><%= visitor.updated_at.in_time_zone('Central Time (US & Canada)').strftime("%-d %b %Y, %l:%M %p") %></span>
-              <%= link_to delete_visit_path(visitor), data: { turbo_method: :delete }, class: 'icon-link', title: 'Delete Chat' do %>
+              <%= link_to delete_visit_path(visitor), data: { turbo_method: :delete }, class: 'icon-link', title: 'Delete visitor' do %>
                 <i class="fa-regular fa-trash-can" style="color: #f80303;"></i>
               <% end %>
             </div>
