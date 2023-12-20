@@ -45,14 +45,9 @@ Before you begin, ensure you have met the following requirements:
    ```git clone https://github.com/flstudio4/Final_Project-DPI.git)https://github.com/flstudio4/Final_Project-DPI.git```
    
 2. ```bundle install```
-   
-3. ```rails db:create```
-   
-4. ```rails db:migrate```
-5. Comment out line in models/user - mount_uploader
-6. ```rake sample_data```
-7. Uncomment mount_uploader back
-8. ```rails s```
+3. Database already contains sample data("alice@example.com", "password" and others)
+
+4. ```rails s```
 
 ### License
 
