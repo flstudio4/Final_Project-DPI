@@ -14,6 +14,7 @@
 <% provide(:title, "Chat with #{chat_partner.name.capitalize}") %>
 
 <div class="container my-4">
+<%# inline style not ideal %>
   <div class="card" style="height: calc(100vh - 150px);">
     <div class="card-header d-flex justify-content-between align-items-center">
       <%= link_to 'Back', chats_path, class: 'btn btn-outline-primary me-auto' %>
